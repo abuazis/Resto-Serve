@@ -1,0 +1,62 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    background-color: #ededed;
+}
+
+.font-default {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bg-salmon {
+    background-color: #ff4242;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    height: 100%;
+    position: fixed;
+}
+
+/* Profile Bar */
+.profile-bar {
+    width: 230px;
+    height: 50px;
+    border-radius: 6px;
+    /* position: absolute;
+    bottom: 590px;
+    float: right; */
+}
+
+.profile-bar h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* Container Menu */
+.container-menu {
+    margin-left: 95px;
+    height: 656px;
+    padding-top: 33px;
+}
+.sec-tab {
+    border-radius: 3px;
+    height: 280px;
+}
+.sec-tab h1 {
+    font-size: 19pt;
+}
+.sec-tab img {
+    border: 4.5px solid #ff4242;
+    border-radius: 100%;
+}
+
+@media (max-width: 500px) {
+    .sec-tab p {
+        font-size: 3.1vw;
+    }
+}

@@ -1,0 +1,125 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    background-color: #ededed;
+}
+
+.font-default {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bg-salmon {
+    background-color: #ff4242;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    height: 100%;
+    position: fixed;
+}
+
+/* Profile Bar */
+.profile-bar {
+    width: 230px;
+    height: 50px;
+    border-radius: 6px;
+    /* position: absolute;
+    bottom: 590px;
+    float: right; */
+}
+
+.profile-bar h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* Container Menu */
+.container-menu {
+    margin-left: 95px;
+    height: 656px;
+}
+
+.tab {
+    border-radius: 3px;
+    height: 280px;
+    border: 4px solid #FF4242;
+    border-radius: 7px;
+}
+
+.tab h1 {
+    font-size: 19pt;
+}
+
+.judul-menu {
+    position: relative;
+    top: -70px;
+    z-index: 99;
+    background: #FFFFFF;
+    border-radius: 3px;
+    width: 150px;
+}
+
+.harga-menu {
+    position: relative;
+    top: -80px;
+    z-index: 99;
+    background: #FF4242;
+    color: white;
+    border-radius: 3px;
+    width: 130px;
+}
+
+.btn-edit {
+    position: relative;
+    top: -270px;
+    right: 10px;
+}
+
+.btn-hapus {
+    position: relative;
+    right: 20px;
+}
+
+.top-bar {
+    height: 70px;
+    border-radius: 7px;
+}
+
+.pagination {
+    margin-left: 500%;
+}
+
+.pagination li a {
+    color: #FF4242 !important;
+}
+
+form input,
+form select,
+form textarea {
+    height: 40px;
+    color: #494949;
+    padding-left: 10px;
+    background: rgba(101, 101, 101, 0.24);
+    border: 2px solid #494949;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form textarea {
+    height: 140px;
+}
+
+.cari {
+    position: relative;
+    top: 15px;
+    float: right;
+}
+.border-salmon {
+    border: 4px solid #FF4242;
+    border-radius: 7px;
+}
