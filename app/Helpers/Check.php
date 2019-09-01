@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Level;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class Check {
@@ -18,16 +19,16 @@ class Check {
 
     public static function connection()
     {
-        $level = Auth::user()->id_level();
-        if($level == '1') {
+        $level = User::find(Auth::id());
+        if($level->id_level == '1') {
             return 'mysql';
-        } elseif($level == '2') {
+        } elseif($level->id_level == '2') {
             return 'mysql_waiter';
-        } elseif($level == '3') {
+        } elseif($level->id_level == '3') {
             return 'mysql_kasir';
-        } elseif($level == '4') {
+        } elseif($level->id_level == '4') {
             return 'mysql_owner';
-        } elseif($level == '5') {
+        } elseif($level->id_level == '5') {
             return 'mysql_pelanggan';
         }
     }

@@ -64,6 +64,20 @@
                 focusCancel: true
             });
         });
+        document.querySelector(".btn-logout").addEventListener('click', function (e) {
+            e.preventDefault();
+            swal({
+                title: "Wanna Logout?",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonText: "Logout",
+                confirmButtonColor: "#ff4242",
+                cancelButtonColor: "#999999",
+                reverseButtons: true,
+                focusConfirm: false,
+                focusCancel: true
+            })
+        });
     </script>
 
 </body>

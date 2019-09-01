@@ -21,9 +21,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
         return view('dashboard');
     });
 
-    Route::get('/menu', function () {
-        return view('menu');
-    });
+    Route::get('/menu', 'MenuController@index');
 
     Route::get('/order', function () {
         return view('order');
@@ -46,7 +44,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     });
 
     Route::get('/logout', 'HomeController@logout');
-    
+
 });
 
 Auth::routes();

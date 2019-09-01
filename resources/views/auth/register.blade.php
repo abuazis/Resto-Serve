@@ -5,7 +5,9 @@
     @stop
     @section('content')
         <center>
-            <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
+            <a href="/">
+                <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
+            </a>
         </center>
         <form method="POST" action="{{ route('register') }}" class="ml-5 mr-5 mt-4 font-default">
             @csrf
@@ -50,11 +52,11 @@
             </div>
         </form>
         <center>
-            <a href="../index.html">
+            <a href="/">
                 <img src="{{asset('img/back.png')}}" class="mx-auto" alt="">
             </a>
             <br>
             <br>
-            <a href="login.html" class="text-decoration-none text-white font-default text-center">Have Account?</a>
+            <a href="/login" class="text-decoration-none text-white font-default text-center">Have Account?</a>
         </center>
     @endsection

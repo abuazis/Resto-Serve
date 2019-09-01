@@ -62,7 +62,7 @@
             <a href="/login">
               <button class="btn-login mr-4 log">LOGIN</button>
             </a>
-            <a href="/registrasi">
+            <a href="/register">
               <button class="btn-login ml-4 reg">REGISTRASI</button>
             </a>
           </div>
@@ -128,19 +128,25 @@
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <button class="mt-3">ORDER NOW</button>
+              <a href="/order">
+                <button class="mt-3">ORDER NOW</button>
+              </a>
             </div>
             <div class="col-md-4 text-center mb-5" data-aos="fade-down" data-aos-easing="linear" data-duration="4000">
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <button class="mt-3">ORDER NOW</button>
+              <a href="/order">
+                <button class="mt-3">ORDER NOW</button>
+              </a>
             </div>
             <div class="col-md-4 text-center mb-5" data-aos="fade-left" data-aos-easing="linear" data-duration="3000">
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <button class="mt-3">ORDER NOW</button>
+              <a href="/order">
+                <button class="mt-3">ORDER NOW</button>
+              </a>
             </div>
           </div>
         </div>

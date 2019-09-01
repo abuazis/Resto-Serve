@@ -5,7 +5,9 @@
     @stop
     @section('content')
         <center>
-            <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
+            <a href="/">
+                <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
+            </a>
         </center>
         <form method="POST" action="{{ route('login') }}" class="ml-5 mr-5 mt-5 font-default">
             @csrf
@@ -32,15 +34,15 @@
             </div>
         </form>
         <center>
-            <a href="../">
+            <a href="/">
                 <img src="{{asset('img/back.png')}}" class="mx-auto" alt="">
             </a>
             <br>
             <br>
             <br>
-            <a href="registrasi.html" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
+            <a href="/register" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
             @if(Route::has('password.request'))
-                <a href="registrasi.html" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
+                <a href="/forgot" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
             @endif
         </center>
     @endsection

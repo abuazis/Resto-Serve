@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
     @section('title', 'Menu | RestoServe')
     @section('css')
         <link rel="stylesheet" href="{{asset('custom/menu.css')}}">
@@ -106,14 +106,16 @@
             </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
-                <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                    <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
-                </a>
-                <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
+            @foreach ($menus as $menu)
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
+                    <a href="" data-toggle="modal" data-target="#exampleModalMenu">
+                        <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
+                    </a>
+                    <div class="harga-menu font-default ml-3 font-weight-bold text-center">Rp. {{$menu->harga}}</div>
+                    <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">{{$menu->nama_menu}}</div>
+                </div>
+            @endforeach
+            {{-- <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
                 <a href="" data-toggle="modal" data-target="#exampleModalMenu">
                     <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
                 </a>
@@ -133,7 +135,7 @@
                 </a>
                 <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
                 <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
+            </div> --}}
         </div>
         <div class="row mx-auto mb-5 d-flex ">
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
