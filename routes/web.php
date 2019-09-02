@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
     Route::get('/menu', 'MenuController@index');
 
-    Route::get('/menu/create', 'MenuController@create');
+    Route::post('/menu/create', 'MenuController@create');
 
     Route::get('/order', function () {
         return view('order');

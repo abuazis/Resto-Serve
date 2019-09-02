@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="harga-menu font-default ml-3 font-weight-bold text-center">Rp. {{$menu->harga}}</div>
-                    <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">{{$menu->nama_menu}}</div>
+                    <div class="judul-menu font-default ml-3 text-center font-weight-bold">{{$menu->nama_menu}}</div>
                 </div>
             @endforeach
         </div>
@@ -124,6 +124,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
+                                                    @csrf
                                                     <label for="Kategori" class="font-default">Nama Kategori</label>
                                                     @error('kategori')
                                                         <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
@@ -133,9 +134,7 @@
                                                     <select name="kategori" id="kategori" class="w-100 @error('kategori') no-valid @enderror">
                                                         <option value="">--- Select Category ----</option>
                                                         @foreach ($categories as $category)
-                                                            <option value="{{$category->id}}" {{ old('kategori') == $category->id ? 'selected' : '' }}>
-                                                                {{$category->nama_kategori}}
-                                                            </option>
+                                                            <option value="{{$category->id}}" {{ old('kategori') == $category->id ? 'selected' : '' }}>{{$category->nama_kategori}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -191,7 +190,7 @@
                                                             <strong>{{$message}}</strong>
                                                         </span>
                                                     @enderror
-                                                    <textarea name="Deskripsi" id="Deskripsi" class="w-100 @error('harga') no-valid @enderror" cols="50"
+                                                    <textarea name="deskripsi" id="deskripsi" class="w-100 @error('deskripsi') no-valid @enderror" cols="50"
                                                         placeholder="Deskripsikan Menu">{{old('deskripsi')}}</textarea>
                                                 </div>
                                             </div>
@@ -205,7 +204,7 @@
                                                 @enderror
                                                 <div class="custom-file">
                                                     <input type="file" name="gambar" class="custom-file-input font-default"
-                                                        id="validatedCustomFile" required>
+                                                        id="validatedCustomFile">
                                                     <label class="custom-file-label" for="validatedCustomFile">Choose Menu
                                                         Picture</label>
                                                 </div>
