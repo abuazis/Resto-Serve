@@ -37,6 +37,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -44,41 +45,7 @@
     <script src="{{asset('chart/chart.js/dist/Chart.js')}}"></script>
     <script src="{{asset('chart/chart.js/dist/Chart.min.js')}}"></script>
     <script src="{{asset('custom/chart.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-    <script>
-        $('.ubah').click(function () {
-            $('#exampleModalMenu').modal('hide');
-        });
-
-        document.querySelector(".btn-deletes").addEventListener('click', function (e) {
-            e.preventDefault();
-            swal({
-                title: "Are You Sure?",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonText: "Delete It",
-                confirmButtonColor: "#ff4242",
-                cancelButtonColor: "#999999",
-                reverseButtons: true,
-                focusConfirm: false,
-                focusCancel: true
-            });
-        });
-        document.querySelector(".btn-logout").addEventListener('click', function (e) {
-            e.preventDefault();
-            swal({
-                title: "Wanna Logout?",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonText: "Logout",
-                confirmButtonColor: "#ff4242",
-                cancelButtonColor: "#999999",
-                reverseButtons: true,
-                focusConfirm: false,
-                focusCancel: true
-            })
-        });
-    </script>
+    <script src="{{asset('custom/alert.js')}}"></script>
 
 </body>
 

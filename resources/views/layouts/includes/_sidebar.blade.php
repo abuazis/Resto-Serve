@@ -25,7 +25,7 @@
         </a>
     </div>
     <div class="row mt-5 pt-3">
-        <a href="/logout" class="d-inline-block mx-auto mt-4 pt-1 text-decoration-none">
+        <a href="/logout" class="d-inline-block mx-auto mt-4 pt-1 text-decoration-none btn-logout">
             <i class="fas fa-sign-out-alt fa-2x text-white text-center d-inline-block ml-2"></i><br>
             <span class="font-default text-white" style="font-size: 10px;">LOGOUT</span>
         </a>

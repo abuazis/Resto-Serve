@@ -17,61 +17,52 @@
         <div class="row mx-auto no-gutters">
             <div class="category-bar w-100 bg-white mb-3 mr-3 rounded">
                 <ul class="nav justify-content-center font-default">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pizza</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pasta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Chicken</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dessert</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Drink</a>
-                    </li>
+                    @foreach ($categories as $category)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu/{{$category->nama_kategori}}">{{$category->nama_kategori}}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
         <div class="row mx-auto">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
-                <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                    <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
-                </a>
-                <div class="modal fade mx-auto" id="exampleModalMenu" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title font-default" id="exampleModalLabel">Detail Menu</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <center>
-                                            <img src="{{asset('img/pizza-buah.png')}}" class="border-salmon" alt="">
-                                        </center>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h1 class="font-default font-weight-bold">Splitza Classic</h1>
-                                        <h2
-                                            class="bg-salmon text-white price d-inline-block font-default pl-2 pr-2 rounded mt-1">
-                                            Rp. 150.900</h2>
-                                        <p class="font-default mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                            elit. Beatae quia ad quos odio ducimus magni atque tenetur</p>
-                                        <div class="row mt-5">
-                                            <div class="col-md-5">
-                                                <button class="btn btn-danger btn-block font-default btn-deletes">
-                                                    Hapus
-                                                </button>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <button class="btn btn-light border-dark btn-block font-default ubah"
-                                                    data-toggle="modal" data-target="#exampleModalEdit">
-                                                    Edit
-                                                </button>
+            @foreach ($menus as $menu)
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
+                    <a href="" data-toggle="modal" data-target="#exampleModalMenu">
+                        <img src="{{asset('img/'.$menu->gambar)}}" class="tab img-fluid shadow" alt="">
+                    </a>
+                    <div class="modal fade mx-auto" id="exampleModalMenu" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title font-default" id="exampleModalLabel">Detail Menu</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <center>
+                                                <img src="{{asset('img/'.$menu->gambar)}}" class="border-salmon" alt="">
+                                            </center>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h1 class="font-default font-weight-bold">Splitza Classic</h1>
+                                            <h2
+                                                class="bg-salmon text-white price d-inline-block font-default pl-2 pr-2 rounded mt-1">
+                                                Rp. {{$menu->harga}}</h2>
+                                            <p class="font-default mt-2">{{$menu->deskripsi}}</p>
+                                            <div class="row mt-5">
+                                                <div class="col-md-5">
+                                                    <button class="btn btn-danger btn-block font-default btn-deletes">
+                                                        Hapus
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <button class="btn btn-light border-dark btn-block font-default ubah"
+                                                        data-toggle="modal" data-target="#exampleModalEdit">
+                                                        Edit
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -79,34 +70,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="harga-menu font-default ml-3 font-weight-bold text-center">Rp. {{$menu->harga}}</div>
+                    <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">{{$menu->nama_menu}}</div>
                 </div>
-                <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
-                <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                    <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
-                </a>
-                <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
-                <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                    <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
-                </a>
-                <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 tab-last col-pad">
-                <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                    <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
-                </a>
-                <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-            </div>
+            @endforeach
         </div>
         <div class="row mx-auto">
-            @foreach ($menus as $menu)
+            {{-- @foreach ($menus as $menu)
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
                     <a href="" data-toggle="modal" data-target="#exampleModalMenu">
                         <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
@@ -114,7 +84,7 @@
                     <div class="harga-menu font-default ml-3 font-weight-bold text-center">Rp. {{$menu->harga}}</div>
                     <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">{{$menu->nama_menu}}</div>
                 </div>
-            @endforeach
+            @endforeach --}}
             {{-- <div class="col-12 col-md-6 col-lg-4 col-xl-3 col-pad">
                 <a href="" data-toggle="modal" data-target="#exampleModalMenu">
                     <img src="{{asset('img/pizza-buah.png')}}" class="tab img-fluid shadow" alt="">
@@ -142,83 +112,113 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title font-default" id="exampleModalLabel">Insert New Menu</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Kategori" class="font-default">Nama Kategori</label><br>
-                                                <select name="kategori" id="kategori" class="w-100">
-                                                    <option value="">--- Select Category ----</option>
-                                                    <option value="">Pizza</option>
-                                                    <option value="">Pasta</option>
-                                                    <option value="">Dessert</option>
-                                                    <option value="">Chicken</option>
-                                                    <option value="">Drink</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Status" class="font-default">Status Menu</label><br>
-                                                <select name="status" id="status" class="w-100">
-                                                    <option value="">--- Select Status ----</option>
-                                                    <option value="">Tersedia</option>
-                                                    <option value="">Tidak tersedia</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Nama" class="font-default">Nama Menu</label><br>
-                                                <input type="text" name="nama" id="nama" class="w-100"
-                                                    placeholder="Masukan Nama Menu">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Harga" class="font-default">Harga Menu</label><br>
-                                                <input type="text" name="harga" id="harga" class="w-100"
-                                                    placeholder="Masukan Harga Menu">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="Deskripsi" class="font-default">Deskripsi Menu</label><br>
-                                                <textarea name="Deskripsi" id="Deskripsi" class="w-100" cols="50"
-                                                    placeholder="Deskripsikan Menu"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input font-default"
-                                                    id="validatedCustomFile" required>
-                                                <label class="custom-file-label" for="validatedCustomFile">Choose Menu
-                                                    Picture</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                        <form action="/menu/create" method="POST" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h5 class="modal-title font-default" id="exampleModalLabel">Insert New Menu</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary font-default"
-                                data-dismiss="modal">Close</button>
-                            <button type="button" class="btn bg-salmon text-white font-default">Save Menu</button>
-                        </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="Kategori" class="font-default">Nama Kategori</label>
+                                                    @error('kategori')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <select name="kategori" id="kategori" class="w-100 @error('kategori') no-valid @enderror">
+                                                        <option value="">--- Select Category ----</option>
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{$category->id}}" {{ old('kategori') == $category->id ? 'selected' : '' }}>
+                                                                {{$category->nama_kategori}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="Status" class="font-default">Status Menu</label>
+                                                    @error('status')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <select name="status" id="status" class="w-100 @error('status') no-valid @enderror">
+                                                        <option value="">--- Select Status ----</option>
+                                                        <option value="Tersedia" {{ old('status') == 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
+                                                        <option value="Tidak Tersedia" {{ old('status') == 'Tidak Tersedia' ? 'selected' : '' }}>Tidak tersedia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="Nama" class="font-default">Nama Menu</label>
+                                                    @error('nama')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <input type="text" name="nama" id="nama" class="w-100 @error('nama') no-valid @enderror"
+                                                        placeholder="Masukan Nama Menu" value="{{old('nama')}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="Harga" class="font-default">Harga Menu</label>
+                                                    @error('harga')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <input type="text" name="harga" id="harga" class="w-100 @error('harga') no-valid @enderror"
+                                                        placeholder="Masukan Harga Menu">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="Deskripsi" class="font-default">Deskripsi Menu</label>
+                                                    @error('deskripsi')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <textarea name="Deskripsi" id="Deskripsi" class="w-100 @error('harga') no-valid @enderror" cols="50"
+                                                        placeholder="Deskripsikan Menu">{{old('deskripsi')}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                @error('gambar')
+                                                    <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                        <strong>{{$message}}</strong>
+                                                    </span>
+                                                @enderror
+                                                <div class="custom-file">
+                                                    <input type="file" name="gambar" class="custom-file-input font-default"
+                                                        id="validatedCustomFile" required>
+                                                    <label class="custom-file-label" for="validatedCustomFile">Choose Menu
+                                                        Picture</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary font-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-salmon text-white font-default">Save Menu</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
