@@ -20,7 +20,22 @@ class MenuController extends Controller
 
         $menuModel = new Menu;
         $menuModel->setConnection(Check::connection());
-        $menus = $menuModel->get();
+        $menus = $menuModel->paginate(8);
+
+        return view('menu', compact('menus', 'categories', 'types'));
+    }
+
+    public function category($name)
+    {
+        $categoryModel = new Category;
+        $categoryModel->setConnection(Check::connection());
+        $categories = $categoryModel->get();
+        $types = $categoryModel->get();
+
+        $menuModel = new Menu;
+        $menuModel->setConnection(Check::connection());
+        $kategori = $categoryModel->where('nama_kategori', $name)->first();
+        $menus = $menuModel->where('id_kategori', $kategori->id)->paginate(8);
 
         return view('menu', compact('menus', 'categories', 'types'));
     }
