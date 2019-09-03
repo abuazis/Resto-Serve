@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+Use Alert;
 use App\Helpers\Check;
 use App\Category;
 use App\Menu;
@@ -50,6 +51,7 @@ class MenuController extends Controller
         }
 
         $menuModel->save();
+        Alert::toast('Menu Ditambahkan','success');
 
         return redirect('/menu')->with('sukses', 'Berhasil Menambah Menu');
     }
@@ -80,6 +82,7 @@ class MenuController extends Controller
         }
 
         $menuModel->save();
+        Alert::toast('Menu Diedit','success');
 
         return redirect('/menu')->with('sukses', 'Berhasil Mengedit Menu');
     }
@@ -92,6 +95,7 @@ class MenuController extends Controller
 
         Storage::delete('uploads/'.$menuModel->gambar);
         $menuModel->where('id', $id)->delete();
+        Alert::toast('Menu Dihapus','success');
 
         return redirect('/menu')->with('Sukses', 'Berhasil Menghapus Menu');
     }

@@ -32,6 +32,7 @@
     </div>
 
     <div class="container-menu pt-3">
+        @include('sweetalert::alert')
         @yield('content')
     </div>
 
