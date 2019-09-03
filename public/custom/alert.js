@@ -1,5 +1,5 @@
 $('.ubah').click(function () {
-    $('#exampleModalMenu').modal('hide');
+    $('.modal-detail').modal('hide');
 });
 
 var el = document.querySelector(".btn-deletes");
@@ -16,6 +16,11 @@ if(el){
             reverseButtons: true,
             focusConfirm: false,
             focusCancel: true
+        },
+        function (isConfirm) {
+            if(isConfirm) {
+                $('.btn-deletes').trigger('click', {});
+            }
         });
     });
 }

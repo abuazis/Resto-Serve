@@ -28,10 +28,10 @@
         <div class="row mx-auto">
             @foreach ($menus as $menu)
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
-                    <a href="" data-toggle="modal" data-target="#exampleModalMenu">
+                    <a href="" data-toggle="modal" data-target="#exampleModalMenu{{$menu->id}}">
                         <img src="{{asset('img/'.$menu->gambar)}}" class="tab img-fluid shadow" alt="">
                     </a>
-                    <div class="modal fade mx-auto" id="exampleModalMenu" tabindex="-1" role="dialog"
+                    <div class="modal fade mx-auto modal-detail" id="exampleModalMenu{{$menu->id}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
@@ -46,20 +46,20 @@
                                             </center>
                                         </div>
                                         <div class="col-md-6">
-                                            <h1 class="font-default font-weight-bold">Splitza Classic</h1>
+                                            <h1 class="font-default font-weight-bold">{{$menu->nama_menu}}</h1>
                                             <h2
                                                 class="bg-salmon text-white price d-inline-block font-default pl-2 pr-2 rounded mt-1">
                                                 Rp. {{$menu->harga}}</h2>
                                             <p class="font-default mt-2">{{$menu->deskripsi}}</p>
                                             <div class="row mt-5">
                                                 <div class="col-md-5">
-                                                    <button class="btn btn-danger btn-block font-default btn-deletes">
+                                                    <a href="/menu/remove/{{$menu->id}}" class="btn btn-danger btn-block font-default">
                                                         Hapus
-                                                    </button>
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <button class="btn btn-light border-dark btn-block font-default ubah"
-                                                        data-toggle="modal" data-target="#exampleModalEdit">
+                                                        data-toggle="modal" data-target="#exampleModalEdit{{$menu->id}}">
                                                         Edit
                                                     </button>
                                                 </div>
@@ -112,7 +112,7 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <form action="/menu/create" method="POST" enctype="multipart/form-data">
+                        <form action="/menu/store" method="POST" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h5 class="modal-title font-default" id="exampleModalLabel">Insert New Menu</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -177,7 +177,7 @@
                                                         </span>
                                                     @enderror
                                                     <input type="text" name="harga" id="harga" class="w-100 @error('harga') no-valid @enderror"
-                                                        placeholder="Masukan Harga Menu">
+                                                        placeholder="Masukan Harga Menu" value="{{old('harga')}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -221,90 +221,121 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title font-default" id="exampleModalLabel">Edit New Menu</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <form action="" method="post">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Kategori" class="font-default">Nama Kategori</label><br>
-                                                <select name="kategori" id="kategori" class="w-100">
-                                                    <option value="">--- Select Category ----</option>
-                                                    <option value="">Pizza</option>
-                                                    <option value="">Pasta</option>
-                                                    <option value="">Dessert</option>
-                                                    <option value="">Chicken</option>
-                                                    <option value="">Drink</option>
-                                                </select>
+            @foreach($menus as $menu)
+                <div class="modal fade" id="exampleModalEdit{{$menu->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <form action="/menu/update/{{$menu->id}}" method="POST" enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title font-default" id="exampleModalLabel">Edit Data Menu</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        @csrf
+                                                        <label for="Kategori" class="font-default">Nama Kategori</label>
+                                                        @error('kategori')
+                                                            <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                                <strong>{{$message}}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        <select name="kategori" id="kategori" class="w-100 @error('kategori') no-valid @enderror">
+                                                            <option value="">--- Select Category ----</option>
+                                                            @foreach ($types as $type)
+                                                                <option value="{{$type->id}}" @if($type->id == $menu->id_kategori) selected @endif>{{$type->nama_kategori}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="Status" class="font-default">Status Menu</label>
+                                                        @error('status')
+                                                            <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                                <strong>{{$message}}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        <select name="status" id="status" class="w-100 @error('status') no-valid @enderror">
+                                                            <option value="">--- Select Status ----</option>
+                                                            <option value="Tersedia" @if($menu->status_menu == 'Tersedia') selected @endif>Tersedia</option>
+                                                            <option value="Tidak Tersedia" @if($menu->status_menu == 'Tidak Tersedia') selected @endif>Tidak tersedia</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Status" class="font-default">Status Menu</label><br>
-                                                <select name="status" id="status" class="w-100">
-                                                    <option value="">--- Select Status ----</option>
-                                                    <option value="">Tersedia</option>
-                                                    <option value="">Tidak tersedia</option>
-                                                </select>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="Nama" class="font-default">Nama Menu</label>
+                                                        @error('nama')
+                                                            <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                                <strong>{{$message}}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        <input type="text" name="nama" id="nama" class="w-100 @error('nama') no-valid @enderror"
+                                                            placeholder="Masukan Nama Menu" value="{{$menu->nama_menu}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="Harga" class="font-default">Harga Menu</label>
+                                                        @error('harga')
+                                                            <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                                <strong>{{$message}}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        <input type="text" name="harga" id="harga" class="w-100 @error('harga') no-valid @enderror"
+                                                            placeholder="Masukan Harga Menu" value="{{$menu->harga}}">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="Deskripsi" class="font-default">Deskripsi Menu</label>
+                                                        @error('deskripsi')
+                                                            <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                                <strong>{{$message}}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        <textarea name="deskripsi" id="deskripsi" class="w-100 @error('deskripsi') no-valid @enderror" cols="50"
+                                                            placeholder="Deskripsikan Menu">{{$menu->deskripsi}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    @error('gambar')
+                                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <div class="custom-file">
+                                                        <input type="file" name="gambar" class="custom-file-input font-default"
+                                                            id="validatedCustomFile">
+                                                        <label class="custom-file-label" for="validatedCustomFile">Choose Menu
+                                                            Picture</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Nama" class="font-default">Nama Menu</label><br>
-                                                <input type="text" name="nama" id="nama" class="w-100"
-                                                    placeholder="Masukan Nama Menu">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="Harga" class="font-default">Harga Menu</label><br>
-                                                <input type="text" name="harga" id="harga" class="w-100"
-                                                    placeholder="Masukan Harga Menu">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label for="Deskripsi" class="font-default">Deskripsi Menu</label><br>
-                                                <textarea name="Deskripsi" id="Deskripsi" class="w-100" cols="50"
-                                                    placeholder="Deskripsikan Menu"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input font-default"
-                                                    id="validatedCustomFile" required>
-                                                <label class="custom-file-label" for="validatedCustomFile">Choose Menu
-                                                    Picture</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary font-default"
-                                data-dismiss="modal">Close</button>
-                            <button type="button" class="btn bg-salmon text-white font-default">Save Menu</button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary font-default"
+                                        data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn bg-salmon text-white font-default">Save Menu</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
             <div class="col-sm-6">
                 <nav aria-label="Page navigation example">
                     <div class="text-center">
