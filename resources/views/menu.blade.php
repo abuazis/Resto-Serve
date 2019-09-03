@@ -53,7 +53,7 @@
                                             <p class="font-default mt-2">{{$menu->deskripsi}}</p>
                                             <div class="row mt-5">
                                                 <div class="col-md-5">
-                                                    <a href="/menu/remove/{{$menu->id}}" class="btn btn-danger btn-block font-default">
+                                                    <a href="/menu/remove/{{$menu->id}}" class="btn btn-danger btn-block font-default" onclick="return confirm('Are You Sure ?');">
                                                         Hapus
                                                     </a>
                                                 </div>
