@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categoryModel = new Category;
         $categoryModel->setConnection(Check::connection());
@@ -20,7 +20,12 @@ class MenuController extends Controller
 
         $menuModel = new Menu;
         $menuModel->setConnection(Check::connection());
-        $menus = $menuModel->paginate(8);
+
+        if($request->has('cari')) {
+            $menus = $menuModel->where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
+        } else {
+            $menus = $menuModel->paginate(8);
+        }
 
         return view('menu', compact('menus', 'categories', 'types'));
     }

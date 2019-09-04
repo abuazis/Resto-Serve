@@ -18,7 +18,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="text" name="username" class="w-100 @error('username') no-valid @enderror" placeholder="Masukan Username Anda" />
+                <input type="text" name="username" class="w-100 @error('username') no-valid @enderror" placeholder="Masukan Username Anda" value="{{old('username')}}"/>
             </div>
             <div class="form-group">
                 <label for="Password" class="text-white">Password</label>
@@ -27,7 +27,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="password" name="password" class="w-100 @error('password') no-valid @enderror" placeholder="Masukan Password Anda" />
+                <input type="password" name="password" class="w-100 @error('password') no-valid @enderror" placeholder="Masukan Password Anda" value="{{old('username')}}"/>
             </div>
             <div class="form-group mt-4">
                 <button type="submit" class="submit mt-3">LOGIN</button>
@@ -42,7 +42,7 @@
             <br>
             <a href="/register" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
             @if(Route::has('password.request'))
-                <a href="/forgot" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
+                <a href="/password/reset" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
             @endif
         </center>
     @endsection

@@ -8,10 +8,13 @@
             <div class="top-bar w-100 bg-white mb-3 mr-3">
                 <h1 class="fas fa-hamburger ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Menu Tab</h3>
-                <form action="" method="get" class="d-inline-block cari mr-4">
-                    <input type="text" name="cari" id="cari" placeholder="Find Menu...">
-                    <button class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
-                </form>
+                @if(Request::segment(1) == 'menu')
+                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                        @csrf
+                        <input type="text" name="cari" id="cari" placeholder="Find Menu...">
+                        <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
+                    </form>
+                @endif
             </div>
         </div>
         <div class="row mx-auto no-gutters">

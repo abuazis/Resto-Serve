@@ -18,6 +18,6 @@ class Menu extends Model
 
     public function category()
     {
-        return $this->hasMany(Category::class, 'id_kategori');
+        return $this->belongsTo(Category::class, 'id_kategori');
     }
 }
