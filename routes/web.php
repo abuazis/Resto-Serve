@@ -28,9 +28,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/menu/update/{id}', 'MenuController@update');
     Route::get('/menu/remove/{id}', 'MenuController@remove');
 
-    Route::get('/order', function () {
-        return view('order');
-    });
+    Route::get('/order', 'OrderController@index');
 
     Route::get('/order/create', function () {
         return view('create_order');

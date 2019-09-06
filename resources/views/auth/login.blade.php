@@ -9,7 +9,7 @@
                 <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
             </a>
         </center>
-        <form method="POST" action="{{ route('login') }}" class="ml-5 mr-5 mt-5 font-default">
+        <form method="POST" action="{{ route('login') }}" class="ml-5 mr-5 mt-5 mb-5 font-default">
             @csrf
             <div class="form-group">
                 <label for="Username" class="text-white">Username</label>
@@ -32,14 +32,22 @@
             <div class="form-group mt-4">
                 <button type="submit" class="submit mt-3">LOGIN</button>
             </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <a href="" class="btn btn-danger py-1 px-3 font-default mr-3 btn-block">
+                        <i class="fab fa-google-plus-square"></i>
+                        Google
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="" class="btn btn-primary py-1 px-3 font-default btn-block">
+                        <i class="fab fa-facebook-square"></i>
+                        Facebook
+                    </a>
+                </div>
+            </div>
         </form>
         <center>
-            <a href="/">
-                <img src="{{asset('img/back.png')}}" class="mx-auto" alt="">
-            </a>
-            <br>
-            <br>
-            <br>
             <a href="/register" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
             @if(Route::has('password.request'))
                 <a href="/password/reset" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>

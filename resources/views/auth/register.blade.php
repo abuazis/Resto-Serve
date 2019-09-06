@@ -9,7 +9,7 @@
                 <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
             </a>
         </center>
-        <form method="POST" action="{{ route('register') }}" class="ml-5 mr-5 mt-4 font-default">
+        <form method="POST" action="{{ route('register') }}" class="ml-5 mr-5 mt-4 mb-4 font-default">
             @csrf
             <div class="form-group">
                 <label for="Username" class="text-white">Username</label>
@@ -47,16 +47,25 @@
                 @enderror
                 <input type="Password" name="password_confirmation" class="w-100 @error('password_confirmation') no-valid @enderror" value="{{old('password_confirmation')}}" placeholder="Masukan Konfirmasi Password Anda" />
             </div>
-            <div class="form-group">
+            <div class="form-group mb-4">
                 <button type="submit" class="submit mt-3">REGISTRASI</button>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="" class="btn btn-danger py-1 px-3 font-default mr-3 btn-block">
+                        <i class="fab fa-google-plus-square"></i>
+                        Google
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="" class="btn btn-primary py-1 px-3 font-default btn-block">
+                        <i class="fab fa-facebook-square"></i>
+                        Facebook
+                    </a>
+                </div>
             </div>
         </form>
         <center>
-            <a href="/">
-                <img src="{{asset('img/back.png')}}" class="mx-auto" alt="">
-            </a>
-            <br>
-            <br>
             <a href="/login" class="text-decoration-none text-white font-default text-center">Have Account?</a>
         </center>
     @endsection

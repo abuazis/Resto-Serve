@@ -41,66 +41,76 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Wahid Hasyim</td>
-                            <td>07B</td>
-                            <td>10:09:07 WIB</td>
-                            <td>-</td>
-                            <td><span class="badge badge-success">Sudah Dibayar</span></td>
-                            <td>
-                                <a href="create_order.html" class="btn btn-sm btn-primary shadow mb-2"><i
-                                        class="fas fa-pen"></i></a>
-                                <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
-                                    data-target="#exampleModalMenu"><i class="fas fa-info-circle"></i></button>
-                                <button class="btn btn-sm btn-danger shadow btn-deletes mb-2"><i
-                                        class="fas fa-trash"></i></button>
-                            </td>
-                            <div class="modal fade" id="exampleModalMenu" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title font-default" id="exampleModalLabel">Detail Menu</h5>
+                        @foreach($orders as $order)
+                            <tr>
+                                <td>{{$order->nama_pelanggan}}</td>
+                                <td>{{$order->no_meja}}</td>
+                                <td>{{$order->waktu_order}}</td>
+                                <td>{{$order->keterangan}}</td>
+                                <td>
+                                    @if($order->status_order == 'Sudah Dibayar')
+                                        <span class="badge badge-success">Sudah Dibayar</span>
+                                    @else
+                                        <span class="badge badge-warning">Belum Dibayar</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="create_order.html" class="btn btn-sm btn-primary shadow mb-2"><i
+                                            class="fas fa-pen"></i></a>
+                                    <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
+                                        data-target="#exampleModalMenu{{$order->id}}"><i class="fas fa-info-circle"></i></button>
+                                    <button class="btn btn-sm btn-danger shadow btn-deletes mb-2"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @foreach($orders as $order)
+                    <div class="modal fade" id="exampleModalMenu{{$order->id}}" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title font-default" id="exampleModalLabel">Detail Menu</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mx-auto">
+                                        <div class="col-3">
+                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
+                                                class="border-salmon img-fluid" alt="">
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="row mx-auto">
-                                                <div class="col-3">
-                                                    <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                        class="border-salmon img-fluid" alt="">
-                                                </div>
-                                                <div class="col-3">
-                                                    <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                        class="border-salmon img-fluid" alt="">
-                                                </div>
-                                                <div class="col-3">
-                                                    <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                        class="border-salmon img-fluid" alt="">
-                                                </div>
-                                                <div class="col-3">
-                                                    <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                        class="border-salmon img-fluid" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="container pt-4 pb-4">
-                                                <h5 class="font-default font-weight-bold d-inline">Nama
-                                                    Pelanggan</h5>
-                                                <p class="font-default">Wahid Hasyim</p>
-                                                <h5 class="font-default font-weight-bold d-inline">No Meja</h5>
-                                                <p class="font-default">07B</p>
-                                                <h5 class="font-default font-weight-bold d-inline">Waktu Order</h5>
-                                                <p class="font-default">10:08:10 WIB</p>
-                                                <h5 class="font-default font-weight-bold d-inline">Keterangan</h5>
-                                                <p class="font-default">-</p>
-                                                <h5 class="font-default font-weight-bold d-inline">Status Bayar</h5><br>
-                                                <span class="badge badge-success font-default">Sudah Dibayar</span>
-                                            </div>
+                                        <div class="col-3">
+                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
+                                                class="border-salmon img-fluid" alt="">
                                         </div>
+                                        <div class="col-3">
+                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
+                                                class="border-salmon img-fluid" alt="">
+                                        </div>
+                                        <div class="col-3">
+                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
+                                                class="border-salmon img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="container pt-4 pb-4">
+                                        <h5 class="font-default font-weight-bold d-inline">Nama
+                                            Pelanggan</h5>
+                                        <p class="font-default">Wahid Hasyim</p>
+                                        <h5 class="font-default font-weight-bold d-inline">No Meja</h5>
+                                        <p class="font-default">07B</p>
+                                        <h5 class="font-default font-weight-bold d-inline">Waktu Order</h5>
+                                        <p class="font-default">10:08:10 WIB</p>
+                                        <h5 class="font-default font-weight-bold d-inline">Keterangan</h5>
+                                        <p class="font-default">-</p>
+                                        <h5 class="font-default font-weight-bold d-inline">Status Bayar</h5><br>
+                                        <span class="badge badge-success font-default">Sudah Dibayar</span>
                                     </div>
                                 </div>
                             </div>
-                        </tr>
-                    </tbody>
-                </table>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     @endsection

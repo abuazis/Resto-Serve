@@ -17,6 +17,7 @@
 
     <!-- Icon -->
     <link rel="icon" href="{{asset('img/icon.png')}}">
+    <script src="https://kit.fontawesome.com/7a87ef3e19.js"></script>
 
     <title>@yield('title')</title>
 </head>
