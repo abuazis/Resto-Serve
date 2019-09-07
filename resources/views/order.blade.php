@@ -18,18 +18,18 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="order.html"
+            <a href="/order"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="create_order.html"
+            <a href="/order/create"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 CREATE ORDER
             </a>
         </div>
         <div class="row mt-4 ml-1 mr-3">
             <div class="table-responsive">
-                <table class="table font-default rounded text-center">
+                <table class="table font-default rounded text-center" id="tableMenu">
                     <thead class="bg-salmon text-white">
                         <tr>
                             <th scope="col">Nama Pelanggan</th>
@@ -76,35 +76,32 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row mx-auto">
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
+                                        @php
+                                            $details = App\DetailOrder::where('id_order', $order->id)->get();
+                                        @endphp
+                                        @foreach ($details as $detail)
+                                            <div class="col-3">
+                                                <img src="{{asset('img/'.$detail->menu->gambar)}}" width="80"
+                                                    class="border-salmon img-fluid" alt="">
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="container pt-4 pb-4">
                                         <h5 class="font-default font-weight-bold d-inline">Nama
                                             Pelanggan</h5>
-                                        <p class="font-default">Wahid Hasyim</p>
+                                        <p class="font-default">{{$order->nama_pelanggan}}</p>
                                         <h5 class="font-default font-weight-bold d-inline">No Meja</h5>
-                                        <p class="font-default">07B</p>
+                                        <p class="font-default">{{$order->no_meja}}</p>
                                         <h5 class="font-default font-weight-bold d-inline">Waktu Order</h5>
-                                        <p class="font-default">10:08:10 WIB</p>
+                                        <p class="font-default">{{$order->waktu_order}}</p>
                                         <h5 class="font-default font-weight-bold d-inline">Keterangan</h5>
-                                        <p class="font-default">-</p>
+                                        <p class="font-default">{{$order->keterangan}}</p>
                                         <h5 class="font-default font-weight-bold d-inline">Status Bayar</h5><br>
-                                        <span class="badge badge-success font-default">Sudah Dibayar</span>
+                                        @if($order->status_order == 'Sudah Dibayar')
+                                            <span class="badge badge-success font-default">Sudah Dibayar</span>
+                                        @else
+                                            <span class="badge badge-warning font-default">Belum Dibayar</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

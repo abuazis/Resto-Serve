@@ -15,8 +15,14 @@ class OrderController extends Controller
         $orderModel->setConnection(Check::connection());
         $orders = $orderModel->get();
 
-        $detailModel = new DetailOrder;
-        $orderModel->setConnection(Check::connection());
+        // $detailOrder = new DetailOrder;
+        // $detailOrder->setConnection(Check::connection());
+        // foreach($orders as $order) {
+        //     $orderId = $order->id;
+        // }
+        // $detailOrder->where()
+        // $detailOrder->menu->gambar;
+
         return view('order', compact('orders'));
     }
 }

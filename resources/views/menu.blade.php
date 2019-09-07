@@ -11,7 +11,7 @@
                 @if(Request::segment(1) == 'menu')
                     <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
                         @csrf
-                        <input type="text" name="cari" id="cari" placeholder="Find Menu...">
+                        <input type="text" name="cari" id="cari" onkeyup="search()" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
                     </form>
                 @endif
@@ -28,9 +28,9 @@
                 </ul>
             </div>
         </div>
-        <div class="row mx-auto">
+        <div class="row mx-auto" id="tableMenu">
             @foreach ($menus as $menu)
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad tr">
                     <a href="" data-toggle="modal" data-target="#exampleModalMenu{{$menu->id}}">
                         <img src="{{asset('img/'.$menu->gambar)}}" class="tab img-fluid shadow" alt="">
                     </a>
@@ -73,8 +73,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="harga-menu font-default ml-3 font-weight-bold text-center">Rp. {{$menu->harga}}</div>
-                    <div class="judul-menu font-default ml-3 text-center font-weight-bold">{{$menu->nama_menu}}</div>
+                    <div class="harga-menu font-default ml-3 font-weight-bold text-center">
+                        <span>
+                            <p class="m-0 p-0">Rp. {{$menu->harga}}</p>
+                        </span>
+                    </div>
+                    <div class="judul-menu font-default ml-3 text-center font-weight-bold td">
+                        <span>
+                            <p class="m-0 p-0">{{$menu->nama_menu}}</p>
+                        </span>
+                    </div>
                 </div>
             @endforeach
         </div>
