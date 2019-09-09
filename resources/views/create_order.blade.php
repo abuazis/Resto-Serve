@@ -22,21 +22,11 @@
                 <div class="row mx-auto">
                     <div class="category-bar w-100 bg-white mb-3 rounded shadow">
                         <ul class="nav justify-content-center font-default">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pizza</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pasta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Chicken</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Dessert</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Drink</a>
-                            </li>
+                            @foreach ($categories as $category)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/order/create/{{$category->nama_kategori}}">{{$category->nama_kategori}}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -46,73 +36,15 @@
             <div class="row mt-3">
                 <div class="col-xl-6 overflow-auto select-menu pl-0">
                     <div class="row mx-auto">
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                    </div>
-                    <div class="row mx-auto">
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                    </div>
-                    <div class="row mx-auto">
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="" data-toggle="modal" data-target="#exampleModalMenu">
-                                <img src="{{asset('img/pizza-buah.png')}}" class="tab-order w-100 shadow" alt="">
-                            </a>
-                            <div class="harga-menu font-default ml-3 pl-3 font-weight-bold">Rp. 150.000</div>
-                            <div class="judul-menu font-default ml-3 pl-3 font-weight-bold">Splitza Classic</div>
-                        </div>
+                        @foreach($menus as $menu)
+                            <div class="col-md-4 item">
+                                <a href="/cart/add/{{$menu->id}}" class="add-to-cart">
+                                    <img src="{{asset('img/'.$menu->gambar)}}" class="tab-order w-100 shadow" alt="">
+                                </a>
+                                <div class="harga-menu font-default ml-3 text-center font-weight-bold">Rp. {{$menu->harga}}</div>
+                                <div class="judul-menu font-default ml-3 text-center font-weight-bold">{{$menu->nama_menu}}</div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -121,19 +53,19 @@
                             <a data-toggle="modal" data-target="#exampleModalDetail"
                                 class="btn-lg btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 SHOW CART
-                                <i class="fas fa-shopping-cart"></i>
+                                <i class="fas fa-shopping-cart shopping-cart"></i>
                             </a>
                         </div>
                     </div>
                     <div class="row mx-auto mt-2">
                         <div class="col-sm-6 pl-0">
-                            <a href="order.html"
+                            <a href="/order"
                                 class="btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 LIST ORDER
                             </a>
                         </div>
                         <div class="col-sm-6 pr-0 last-action">
-                            <a href="create_order.html"
+                            <a href="/order/create"
                                 class="btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 CREATE ORDER
                             </a>

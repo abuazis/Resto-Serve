@@ -107,7 +107,7 @@ class MenuController extends Controller
         return redirect('/menu')->with('sukses', 'Berhasil Mengedit Menu');
     }
 
-    public function remove($id)
+    public function destroy($id)
     {
         $menuModel = new Menu;
         $menuModel->setConnection(Check::connection());
