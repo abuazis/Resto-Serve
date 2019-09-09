@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Cart;
 use App\Menu;
 use App\Order;
 use App\Category;
@@ -21,7 +23,12 @@ class OrderController extends Controller
         $categories = Category::all();
         $menus = Menu::all();
 
-        return view('create_order', compact('menus', 'categories'));
+        $user = Auth::id();
+        $items = Cart::session($user)->getContent();
+        $total = Cart::session($user)->getTotal();
+        $quantity = Cart::session($user)->getTotalQuantity();
+
+        return view('create_order', compact('menus', 'categories', 'items', 'total', 'quantity'));
     }
 
     public function category($name)

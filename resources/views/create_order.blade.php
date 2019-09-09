@@ -41,7 +41,7 @@
                                 <a href="/cart/add/{{$menu->id}}" class="add-to-cart">
                                     <img src="{{asset('img/'.$menu->gambar)}}" class="tab-order w-100 shadow" alt="">
                                 </a>
-                                <div class="harga-menu font-default ml-3 text-center font-weight-bold">Rp. {{$menu->harga}}</div>
+                                <div class="harga-menu font-default ml-3 text-center font-weight-bold">Rp. {{number_format($menu->harga, 0, ',', '.')}}</div>
                                 <div class="judul-menu font-default ml-3 text-center font-weight-bold">{{$menu->nama_menu}}</div>
                             </div>
                         @endforeach
@@ -54,6 +54,9 @@
                                 class="btn-lg btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 SHOW CART
                                 <i class="fas fa-shopping-cart shopping-cart"></i>
+                                @if($quantity > 0)
+                                    <span class="badge badge-pill badge-danger font-default">{{$quantity}}</span>
+                                @endif
                             </a>
                         </div>
                     </div>
@@ -73,15 +76,15 @@
                     </div>
                     <div class="row">
                         <div class="container-form bg-white w-100 ml-3 mr-3 rounded p-4 shadow">
-                            <form action="" method="post">
+                            <form action="/order/store" method="POST">
                                 <div class="form-group">
                                     <label for="Nama" class="font-default">Nama Pelanggan</label><br>
                                     <input type="text" name="nama" id="nama" class="w-100"
                                         placeholder="Masukan Nama Menu">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Status" class="font-default">Status Menu</label><br>
-                                    <select name="status" id="status" class="w-100">
+                                    <label for="Meja" class="font-default">No Meja</label><br>
+                                    <select name="meja" id="meja" class="w-100">
                                         <option value="">--- No Meja ----</option>
                                         <option value="">01</option>
                                         <option value="">02</option>
@@ -91,11 +94,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="Deskripsi" class="font-default">Keterangan Order</label><br>
-                                    <textarea name="Deskripsi" id="Deskripsi" class="w-100" cols="50"
+                                    <textarea name="deskripsi" id="Deskripsi" class="w-100" cols="50"
                                         placeholder="Masukan Keterangan Order"></textarea>
                                 </div>
-                                <button type="button" class="btn btn-block bg-salmon text-white font-default">Save
-                                    Menu</button>
+                                <button type="submit" class="btn btn-block bg-salmon text-white font-default font-weight-bold">Create
+                                    Order</button>
                             </form>
                         </div>
                     </div>
@@ -109,70 +112,27 @@
                                     </h5>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="row mx-auto">
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
+                                    @foreach($items as $item)
+                                        <div class="row mx-auto mt-1">
+                                            <div class="col-3">
+                                                <img src="{{asset('img/'.$item->attributes->picture)}}" width="80"
+                                                    class="border-salmon img-fluid" alt="">
+                                            </div>
+                                            <div class="col-4 col-sm-5 d-flex pr-0 align-items-center">
+                                                <h5 class="font-default">{{$item->name}}</h5>
+                                            </div>
+                                            <div class="col-1 d-flex align-items-center p-0 justify-content-center">
+                                                <h5 class="font-default font-weight-bold text-danger">{{$item->quantity}}x</h5>
+                                            </div>
+                                            <div class="col-3 d-flex align-items-center text-right font-default">
+                                                <h5 class="font-weight-bold"> &nbsp;{{number_format($item->price * $item->quantity, 0, ',', '.')}}</h5>
+                                            </div>
                                         </div>
-                                        <div class="col-4 col-sm-5 d-flex align-items-center">
-                                            <h5 class="font-default">Splitza Classic</h5>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center justify-content-center">
-                                            <h5 class="font-default">2x</h5>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center text-right">
-                                            <h5 class="font-default font-weight-bold">150.900</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row mx-auto mt-1">
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-4 col-sm-5 d-flex align-items-center">
-                                            <h5 class="font-default">Splitza Classic</h5>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center justify-content-center">
-                                            <h5 class="font-default">1x</h5>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center text-right">
-                                            <h5 class="font-default font-weight-bold">150.900</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row mx-auto mt-1">
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-4 col-sm-5 d-flex align-items-center">
-                                            <h5 class="font-default">Splitza Classic</h5>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center justify-content-center">
-                                            <h5 class="font-default">1x</h5>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center text-right">
-                                            <h5 class="font-default font-weight-bold">150.900</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row mx-auto mt-1">
-                                        <div class="col-3">
-                                            <img src="{{asset('img/pizza-buah.png')}}" width="80"
-                                                class="border-salmon img-fluid" alt="">
-                                        </div>
-                                        <div class="col-4 col-sm-5 d-flex align-items-center">
-                                            <h5 class="font-default">Splitza Classic</h5>
-                                        </div>
-                                        <div class="col-1 d-flex align-items-center justify-content-center">
-                                            <h5 class="font-default">1x</h5>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center text-right">
-                                            <h5 class="font-default font-weight-bold">150.900</h5>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                     <div class="row mx-auto mt-3">
                                         <div class="col-md-12">
                                             <h4 class="font-default text-center">Total Pembayaran</h4>
-                                            <h2 class="font-default text-center font-weight-bold">Rp. 301.900</h2>
+                                            <h2 class="font-default text-center font-weight-bold">Rp. {{number_format($total, 0, ',', '.')}}</h2>
                                         </div>
                                     </div>
                                 </div>

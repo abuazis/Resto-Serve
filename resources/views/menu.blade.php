@@ -52,7 +52,7 @@
                                             <h1 class="font-default font-weight-bold">{{$menu->nama_menu}}</h1>
                                             <h2
                                                 class="bg-salmon text-white price d-inline-block font-default pl-2 pr-2 rounded mt-1">
-                                                Rp. {{$menu->harga}}</h2>
+                                                Rp. {{number_format($menu->harga, 0, ',', '.')}}</h2>
                                             <p class="font-default mt-2">{{$menu->deskripsi}}</p>
                                             <div class="row mt-5">
                                                 <div class="col-md-5">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="harga-menu font-default ml-3 font-weight-bold text-center">
                         <span>
-                            <p class="m-0 p-0">Rp. {{$menu->harga}}</p>
+                            <p class="m-0 p-0">Rp. {{number_format($menu->harga, 0, ',', '.')}}</p>
                         </span>
                     </div>
                     <div class="judul-menu font-default ml-3 text-center font-weight-bold td">
