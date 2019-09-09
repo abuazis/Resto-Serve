@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Check;
 use App\Menu;
 use App\Order;
 use App\Category;
@@ -12,36 +11,25 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orderModel = new Order;
-        $orderModel->setConnection(Check::connection());
-        $orders = $orderModel->get();
+        $orders = Order::all();
 
         return view('order', compact('orders'));
     }
 
     public function create()
     {
-        $categoryModel = new Category;
-        $categoryModel->setConnection(Check::connection());
-        $categories = $categoryModel->get();
-
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
-        $menus = $menuModel->get();
+        $categories = Category::all();
+        $menus = Menu::all();
 
         return view('create_order', compact('menus', 'categories'));
     }
 
     public function category($name)
     {
-        $categoryModel = new Category;
-        $categoryModel->setConnection(Check::connection());
-        $categories = $categoryModel->get();
+        $categories = Category::all();
 
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
-        $kategori = $categoryModel->where('nama_kategori', $name)->first();
-        $menus = $menuModel->where('id_kategori', $kategori->id)->paginate(8);
+        $kategori = Category::where('nama_kategori', $name)->first();
+        $menus = Menu::where('id_kategori', $kategori->id)->get();
 
         return view('create_order', compact('menus', 'categories'));
     }

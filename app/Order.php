@@ -2,11 +2,19 @@
 
 namespace App;
 
+use Check;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     protected $fillable = ['id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order'];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->bootIfNotBooted();
+        $this->fill($attributes);
+        $this->setConnection(Check::connection());
+    }
 
     public function detail_order()
     {

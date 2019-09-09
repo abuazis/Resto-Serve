@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 Use Alert;
-use App\Helpers\Check;
 use App\Category;
 use App\Menu;
 use Illuminate\Http\Request;
@@ -13,18 +12,13 @@ class MenuController extends Controller
 {
     public function index(Request $request)
     {
-        $categoryModel = new Category;
-        $categoryModel->setConnection(Check::connection());
-        $categories = $categoryModel->get();
-        $types = $categoryModel->get();
-
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
+        $categories = Category::all();
+        $types = Category::all();
 
         if($request->has('cari')) {
-            $menus = $menuModel->where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
+            $menus = Menu::where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
         } else {
-            $menus = $menuModel->paginate(8);
+            $menus = Menu::paginate(8);
         }
 
         return view('menu', compact('menus', 'categories', 'types'));
@@ -32,15 +26,11 @@ class MenuController extends Controller
 
     public function category($name)
     {
-        $categoryModel = new Category;
-        $categoryModel->setConnection(Check::connection());
-        $categories = $categoryModel->get();
-        $types = $categoryModel->get();
+        $categories = Category::all();
+        $types = Category::all();
 
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
-        $kategori = $categoryModel->where('nama_kategori', $name)->first();
-        $menus = $menuModel->where('id_kategori', $kategori->id)->paginate(8);
+        $kategori = Category::where('nama_kategori', $name)->first();
+        $menus = Menu::where('id_kategori', $kategori->id)->paginate(8);
 
         return view('menu', compact('menus', 'categories', 'types'));
     }
@@ -56,24 +46,23 @@ class MenuController extends Controller
             'gambar' => 'mimes:png,jpg,jpeg,svg',
         ]);
 
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
+        $menu = new Menu;
 
-        $menuModel->id_kategori = $request->kategori;
-        $menuModel->nama_menu = $request->nama;
-        $menuModel->harga = $request->harga;
-        $menuModel->status_menu = $request->status;
-        $menuModel->deskripsi = $request->deskripsi;
+        $menu->id_kategori = $request->kategori;
+        $menu->nama_menu = $request->nama;
+        $menu->harga = $request->harga;
+        $menu->status_menu = $request->status;
+        $menu->deskripsi = $request->deskripsi;
 
         if($request->has('gambar')) {
             $request->file('gambar')->move(public_path().'/uploads', $request->file('gambar')->getClientOriginalName());
-            $menuModel->gambar = $request->file('gambar')->getClientOriginalName();
+            $menu->gambar = $request->file('gambar')->getClientOriginalName();
         }
 
-        $menuModel->save();
-        Alert::toast('Menu Ditambahkan','success');
+        $menu->save();
+        Alert::toast('Menu Berhasil Ditambahkan','success');
 
-        return redirect('/menu')->with('sukses', 'Berhasil Menambah Menu');
+        return redirect('/menu');
     }
 
     public function update(Request $request, $id)
@@ -87,36 +76,33 @@ class MenuController extends Controller
             'gambar' => 'mimes:png,jpg,jpeg,svg',
         ]);
 
-        $menuModel = Menu::find($id);
-        $menuModel->setConnection(Check::connection());
+        $menu = Menu::find($id);
 
-        $menuModel->id_kategori = $request->kategori;
-        $menuModel->nama_menu = $request->nama;
-        $menuModel->harga = $request->harga;
-        $menuModel->status_menu = $request->status;
-        $menuModel->deskripsi = $request->deskripsi;
+        $menu->id_kategori = $request->kategori;
+        $menu->nama_menu = $request->nama;
+        $menu->harga = $request->harga;
+        $menu->status_menu = $request->status;
+        $menu->deskripsi = $request->deskripsi;
 
         if($request->has('gambar')) {
             $request->file('gambar')->move(public_path().'/uploads', $request->file('gambar')->getClientOriginalName());
-            $menuModel->gambar = $request->file('gambar')->getClientOriginalName();
+            $menu->gambar = $request->file('gambar')->getClientOriginalName();
         }
 
-        $menuModel->save();
-        Alert::toast('Menu Diedit','success');
+        $menu->save();
+        Alert::toast('Menu Berhasil Diedit','success');
 
-        return redirect('/menu')->with('sukses', 'Berhasil Mengedit Menu');
+        return redirect('/menu');
     }
 
     public function destroy($id)
     {
-        $menuModel = new Menu;
-        $menuModel->setConnection(Check::connection());
-        $menuModel->where('id', $id)->get();
+        $menuImage = Menu::where('id', $id)->first();
+        Storage::delete('uploads/'.$menuImage->gambar);
 
-        Storage::delete('uploads/'.$menuModel->gambar);
-        $menuModel->where('id', $id)->delete();
-        Alert::toast('Menu Dihapus','success');
+        Menu::find($id)->delete();
+        Alert::toast('Menu Berhasil Dihapus','success');
 
-        return redirect('/menu')->with('Sukses', 'Berhasil Menghapus Menu');
+        return redirect('/menu');
     }
 }

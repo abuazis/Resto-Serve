@@ -2,11 +2,19 @@
 
 namespace App;
 
+use Check;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
     protected $fillable = ['id_user', 'id_order', 'total_bayar', 'uang_dibayar', 'total_kembali'];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->bootIfNotBooted();
+        $this->fill($attributes);
+        $this->setConnection(Check::connection());
+    }
 
     public function detail_transaction()
     {
