@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Level::class, 'id_level');
     }
+
+    public function social_account()
+    {
+        return $this->hasMany(SocialAccount::class, 'id_user');
+    }
 }

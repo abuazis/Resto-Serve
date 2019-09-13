@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order'];
+    public $incrementing = false;
+    protected $primaryKey = 'id';
+    protected $fillable = ['id', 'id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order'];
 
     public function __construct(array $attributes = [])
     {

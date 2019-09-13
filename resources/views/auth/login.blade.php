@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="" class="btn btn-primary py-1 px-3 font-default btn-block">
+                    <a href="/auth/facebook" class="btn btn-primary py-1 px-3 font-default btn-block">
                         <i class="fab fa-facebook-square"></i>
                         Facebook
                     </a>

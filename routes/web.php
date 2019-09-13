@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/order', 'OrderController@index');
     Route::get('/order/create', 'OrderController@create');
     Route::get('/order/create/{name}', 'OrderController@category');
+    Route::post('/order/store', 'OrderController@store');
 
     Route::get('/cart/add/{id}', 'CartController@store');
 
@@ -51,5 +52,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 });
 
 Auth::routes();
+Route::get('/auth/{provider}', 'Auth\SocialiteController@redirectToProvider');
+Route::get('/auth/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback');
 
 Route::get('/home', 'HomeController@index')->name('home');

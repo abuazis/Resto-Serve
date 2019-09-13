@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailOrder extends Model
 {
     protected $fillable = ['id_menu', 'id_order', 'jumlah', 'harga', 'status_detail_order'];
+    public $timestamps = false;
 
     public function __construct(array $attributes = [])
     {

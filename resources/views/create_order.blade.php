@@ -77,25 +77,41 @@
                     <div class="row">
                         <div class="container-form bg-white w-100 ml-3 mr-3 rounded p-4 shadow">
                             <form action="/order/store" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <label for="Nama" class="font-default">Nama Pelanggan</label><br>
-                                    <input type="text" name="nama" id="nama" class="w-100"
-                                        placeholder="Masukan Nama Menu">
+                                    <label for="Nama" class="font-default">Nama Pelanggan</label>
+                                    @error('nama')
+                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+                                    <input type="text" name="nama" class="w-100 @error('nama') no-valid @enderror" id="nama" class="w-100"
+                                        placeholder="Masukan Nama Menu" value="{{old('nama')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Meja" class="font-default">No Meja</label><br>
-                                    <select name="meja" id="meja" class="w-100">
-                                        <option value="">--- No Meja ----</option>
-                                        <option value="">01</option>
-                                        <option value="">02</option>
-                                        <option value="">03</option>
-                                        <option value="">04</option>
+                                    <label for="Meja" class="font-default">No Meja</label>
+                                    @error('meja')
+                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+                                    <select name="meja" id="meja" class="w-100 @error('meja') no-valid @enderror">
+                                        <option>--- No Meja ----</option>
+                                        <option value="01" {{ old('meja') == '01' ? 'selected' : '' }}>01</option>
+                                        <option value="02" {{ old('meja') == '02' ? 'selected' : '' }}>02</option>
+                                        <option value="03" {{ old('meja') == '03' ? 'selected' : '' }}>03</option>
+                                        <option value="04" {{ old('meja') == '04' ? 'selected' : '' }}>04</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Deskripsi" class="font-default">Keterangan Order</label><br>
-                                    <textarea name="deskripsi" id="Deskripsi" class="w-100" cols="50"
-                                        placeholder="Masukan Keterangan Order"></textarea>
+                                    <label for="Keterangan" class="font-default">Keterangan Order</label>
+                                    @error('keterangan')
+                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+                                    <textarea name="keterangan" id="Keterangan" class="w-100 @error('keterangan') no-valid @enderror" cols="50"
+                                        placeholder="Masukan Keterangan Order">{{old('keterangan')}}</textarea>
                                 </div>
                                 <button type="submit" class="btn btn-block bg-salmon text-white font-default font-weight-bold">Create
                                     Order</button>
