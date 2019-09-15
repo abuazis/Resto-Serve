@@ -77,7 +77,7 @@
                                 <div class="modal-body">
                                     <div class="row mx-auto">
                                         @php
-                                            $details = App\DetailOrder::where('id_order', $order->id)->get();
+                                            $details = App\Models\DetailOrder::where('id_order', $order->id)->get();
                                         @endphp
                                         @foreach ($details as $detail)
                                             <div class="col-3">

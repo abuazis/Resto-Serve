@@ -134,14 +134,17 @@
                                                 <img src="{{asset('img/'.$item->attributes->picture)}}" width="80"
                                                     class="border-salmon img-fluid" alt="">
                                             </div>
-                                            <div class="col-4 col-sm-5 d-flex pr-0 align-items-center">
-                                                <h5 class="font-default">{{$item->name}}</h5>
+                                            <div class="col-sm-4 d-flex pr-0 align-items-center">
+                                                <h6 class="font-default">{{$item->name}}</h6>
                                             </div>
                                             <div class="col-1 d-flex align-items-center p-0 justify-content-center">
                                                 <h5 class="font-default font-weight-bold text-danger">{{$item->quantity}}x</h5>
                                             </div>
                                             <div class="col-3 d-flex align-items-center text-right font-default">
                                                 <h5 class="font-weight-bold"> &nbsp;{{number_format($item->price * $item->quantity, 0, ',', '.')}}</h5>
+                                            </div>
+                                            <div class="col-1 d-flex align-items-center text-right font-default">
+                                                <a href="/cart/remove/{{$item->id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     @endforeach

@@ -1,23 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Check;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Discount extends Model
 {
-    protected $fillable = ['nama_level', 'email_level'];
+    protected $fillable = ['kode', 'diskon', 'status'];
 
     public function __construct(array $attributes = [])
     {
         $this->bootIfNotBooted();
         $this->fill($attributes);
         $this->setConnection(Check::connection());
-    }
-
-    public function user()
-    {
-        return $this->hasMany(User::class, 'id_level');
     }
 }

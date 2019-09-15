@@ -29,22 +29,12 @@
                 @enderror
                 <input type="password" name="password" class="w-100 @error('password') no-valid @enderror" placeholder="Masukan Password Anda" value="{{old('username')}}"/>
             </div>
-            <div class="form-group mt-4">
-                <button type="submit" class="submit mt-3">LOGIN</button>
+            <div class="custom-control custom-checkbox mt-4 ml-1">
+                <input type="checkbox" name="remember" class="custom-control-input" id="remember">
+                <label class="custom-control-label text-white" for="remember">Remember Me</label>
             </div>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <a href="" class="btn btn-danger py-1 px-3 font-default mr-3 btn-block">
-                        <i class="fab fa-google-plus-square"></i>
-                        Google
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="/auth/facebook" class="btn btn-primary py-1 px-3 font-default btn-block">
-                        <i class="fab fa-facebook-square"></i>
-                        Facebook
-                    </a>
-                </div>
+            <div class="form-group mt-2">
+                <button type="submit" class="submit mt-3">LOGIN</button>
             </div>
         </form>
         <center>

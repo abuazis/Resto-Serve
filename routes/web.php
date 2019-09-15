@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
         return view('dashboard');
     });
 
+    // Routing For Menu Feature
     Route::get('/menu', 'MenuController@index');
     Route::get('/menu/{name}', 'MenuController@category');
     Route::get('/menu/destroy/{id}', 'MenuController@destroy');
@@ -28,12 +29,15 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/menu/store', 'MenuController@store');
     Route::post('/menu/update/{id}', 'MenuController@update');
 
+    // Routing For Order Feature
     Route::get('/order', 'OrderController@index');
     Route::get('/order/create', 'OrderController@create');
     Route::get('/order/create/{name}', 'OrderController@category');
     Route::post('/order/store', 'OrderController@store');
 
+    // // Routing For Cart Content
     Route::get('/cart/add/{id}', 'CartController@store');
+    Route::get('/cart/remove/{id}', 'CartController@remove');
 
     Route::get('/transaksi', function () {
         return view('transaksi');
@@ -54,5 +58,4 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 Auth::routes();
 Route::get('/auth/{provider}', 'Auth\SocialiteController@redirectToProvider');
 Route::get('/auth/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback');
-
 Route::get('/home', 'HomeController@index')->name('home');

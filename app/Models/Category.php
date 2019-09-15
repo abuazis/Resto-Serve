@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Check;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailTransaction extends Model
+class Category extends Model
 {
-    protected $fillable = ['id_transaksi', 'id_menu', 'jumlah', 'sub_total'];
+    protected $fillable = ['nama_kategori'];
 
     public function __construct(array $attributes = [])
     {
@@ -16,8 +16,8 @@ class DetailTransaction extends Model
         $this->setConnection(Check::connection());
     }
 
-    public function transaction()
+    public function menu()
     {
-        return $this->belongsTo(Transaction::class, 'id_transaksi');
+        return $this->hasMany(Menu::class, 'id_kategori');
     }
 }

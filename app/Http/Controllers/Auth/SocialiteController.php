@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
-use App\SocialAccount;
+use App\Models\SocialAccount;
 use App\User;
 
 class SocialiteController extends Controller
@@ -31,7 +31,7 @@ class SocialiteController extends Controller
         return redirect('/dashboard');
     }
 
-    private function findOrCreateUser($socialUser, $provider)
+    public function findOrCreateUser($socialUser, $provider)
     {
         $SocialAccount = SocialAccount::where('provider_id', $socialUser->getId())
             ->where('provider_name', $provider)

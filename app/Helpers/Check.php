@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Level;
+use App\Models\Level;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 

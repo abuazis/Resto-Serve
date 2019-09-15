@@ -1,12 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Check;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
+    // use SoftDeletes;
+
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order'];

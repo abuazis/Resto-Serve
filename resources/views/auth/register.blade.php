@@ -50,20 +50,6 @@
             <div class="form-group mb-4">
                 <button type="submit" class="submit mt-3">REGISTRASI</button>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="" class="btn btn-danger py-1 px-3 font-default mr-3 btn-block">
-                        <i class="fab fa-google-plus-square"></i>
-                        Google
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="/auth/facebook" class="btn btn-primary py-1 px-3 font-default btn-block">
-                        <i class="fab fa-facebook-square"></i>
-                        Facebook
-                    </a>
-                </div>
-            </div>
         </form>
         <center>
             <a href="/login" class="text-decoration-none text-white font-default text-center">Have Account?</a>

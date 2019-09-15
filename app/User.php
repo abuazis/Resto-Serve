@@ -44,16 +44,16 @@ class User extends Authenticatable
 
     public function transaction()
     {
-        return $this->hasMany(Transaction::class, 'id_transaksi');
-    }
-
-    public function level()
-    {
-        return $this->belongsTo(Level::class, 'id_level');
+        return $this->hasMany(App\Models\Transaction::class, 'id_transaksi');
     }
 
     public function social_account()
     {
-        return $this->hasMany(SocialAccount::class, 'id_user');
+        return $this->hasMany(App\Models\SocialAccount::class, 'id_user');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(App\Models\Level::class, 'id_level');
     }
 }

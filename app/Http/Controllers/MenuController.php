@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 Use Alert;
-use App\Category;
-use App\Menu;
+use App\Models\Category;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;

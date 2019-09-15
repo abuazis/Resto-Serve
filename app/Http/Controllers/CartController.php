@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Menu;
+use App\Models\Menu;
 use Check;
 use Auth;
 use Cart;
@@ -22,6 +22,14 @@ class CartController extends Controller
                 'picture' => $menu->gambar,
             ]
         ]);
+
+        return redirect()->back();
+    }
+
+    public function remove($id)
+    {
+        $user = Auth::id();
+        Cart::session($user)->remove($id);
 
         return redirect()->back();
     }
