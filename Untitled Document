@@ -1,0 +1,7 @@
+Progress Aplikasi Restaurant
+
+- Login berdasarkan berdasarkan authentikasi
+- Registrasi
+- Fitur Menu (CRUD, Live Search, Pagination)
+- Fitur Order (CRD, Cart Session)
+- Fitur Transaksi (On Progress Insert)

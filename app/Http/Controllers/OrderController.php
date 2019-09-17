@@ -15,9 +15,14 @@ use Illuminate\Support\Carbon;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('order');
+    }
+
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::latest()->get();
 
         return view('order', compact('orders'));
     }
@@ -92,6 +97,14 @@ class OrderController extends Controller
 
         Cart::clear();
         Alert::toast('Order Baru Ditambahkan','success');
+
+        return redirect('/order');
+    }
+
+    public function destroy($id)
+    {
+        Order::find($id)->delete();
+        Alert::toast('Order Berhasil Dihapus','success');
 
         return redirect('/order');
     }

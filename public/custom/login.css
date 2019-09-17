@@ -17,7 +17,9 @@ body {
 
 .container-login {
     width: 100%;
-    height: 656px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     background: linear-gradient(180deg, #000000 0%, rgba(60, 60, 60, 0.34) 100%), url('../img/image.png');
     background-size: cover;
 }
@@ -68,6 +70,7 @@ form input {
         margin-right: 0px !important;
         margin-left: 0px !important;
     }
+
     form input {
         height: 30px;
         font-size: 14px;

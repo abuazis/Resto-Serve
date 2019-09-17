@@ -55,12 +55,12 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="create_order.html" class="btn btn-sm btn-primary shadow mb-2"><i
-                                            class="fas fa-pen"></i></a>
+                                    {{-- <a href="create_order.html" class="btn btn-sm btn-primary shadow mb-2"><i
+                                            class="fas fa-pen"></i></a> --}}
                                     <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
                                         data-target="#exampleModalMenu{{$order->id}}"><i class="fas fa-info-circle"></i></button>
-                                    <button class="btn btn-sm btn-danger shadow btn-deletes mb-2"><i
-                                            class="fas fa-trash"></i></button>
+                                    <a href="/order/destroy/{{$order->id}}" class="btn btn-sm btn-danger shadow btn-deletes mb-2 text-white"><i
+                                            class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

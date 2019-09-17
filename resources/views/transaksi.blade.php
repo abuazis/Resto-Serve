@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="order_transaksi.html"
+            <a href="/transaksi/order"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="transaksi.html"
+            <a href="/transaksi"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST TRANSAKSI
             </a>

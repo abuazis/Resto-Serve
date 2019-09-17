@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    // use SoftDeletes;
+    use SoftDeletes;
 
     public $incrementing = false;
     protected $primaryKey = 'id';

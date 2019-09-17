@@ -86,7 +86,7 @@
                                         </span>
                                     @enderror
                                     <input type="text" name="nama" class="w-100 @error('nama') no-valid @enderror" id="nama" class="w-100"
-                                        placeholder="Masukan Nama Menu" value="{{old('nama')}}">
+                                        placeholder="Masukan Nama Pelanggan" value="{{old('nama')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="Meja" class="font-default">No Meja</label>
@@ -140,7 +140,7 @@
                                             <div class="col-1 d-flex align-items-center p-0 justify-content-center">
                                                 <h5 class="font-default font-weight-bold text-danger">{{$item->quantity}}x</h5>
                                             </div>
-                                            <div class="col-3 d-flex align-items-center text-right font-default">
+                                            <div class="col-3 d-flex align-items-center font-default">
                                                 <h5 class="font-weight-bold"> &nbsp;{{number_format($item->price * $item->quantity, 0, ',', '.')}}</h5>
                                             </div>
                                             <div class="col-1 d-flex align-items-center text-right font-default">

@@ -34,17 +34,18 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/order/create', 'OrderController@create');
     Route::get('/order/create/{name}', 'OrderController@category');
     Route::post('/order/store', 'OrderController@store');
+    Route::get('/order/destroy/{id}', 'OrderController@destroy');
 
-    // // Routing For Cart Content
+    // Routing For Cart Content
     Route::get('/cart/add/{id}', 'CartController@store');
     Route::get('/cart/remove/{id}', 'CartController@remove');
 
+    // Routing For Transaksi
+    Route::get('/transaksi/order', 'TransaksiController@order');
+    Route::post('/order/pay/{id}', 'TransaksiController@bayar');
+
     Route::get('/transaksi', function () {
         return view('transaksi');
-    });
-
-    Route::get('/transaksi/order', function () {
-        return view('order_transaksi');
     });
 
     Route::get('/laporan', function () {

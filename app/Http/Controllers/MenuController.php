@@ -6,11 +6,17 @@ Use Alert;
 use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('menu');
+    }
+
     public function index(Request $request)
     {
         $categories = Category::all();
@@ -99,7 +105,7 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $menuImage = Menu::where('id', $id)->first();
-        Storage::delete('uploads/'.$menuImage->gambar);
+        Storage::disk('local')->delete('public/uploads/'.$menuImage->gambar);
 
         Menu::find($id)->delete();
         Alert::toast('Menu Berhasil Dihapus','success');

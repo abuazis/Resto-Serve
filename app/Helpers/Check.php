@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class Check {
+
     public static function level(string $email)
     {
         $level = Level::where('email_level', $email)->first();

@@ -4,6 +4,7 @@ body {
     overflow-x: hidden;
     box-sizing: border-box;
     background-color: #ededed;
+    overflow-y: hidden;
 }
 
 .font-default {
