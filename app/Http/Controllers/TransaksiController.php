@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
+use Alert;
 use App\Models\Order;
 use App\Models\DetailOrder;
 use App\Models\DetailTransaction;
@@ -18,13 +20,13 @@ class TransaksiController extends Controller
 
     public function order()
     {
-        $orders = Order::latest()->get();
+        $orders = DB::table('vOrderKasir')->latest()->get();
         $details = DetailOrder::latest()->get();
 
         return view('order_transaksi', compact('orders', 'details'));
     }
 
-    public function bayar(Request $request, $id)
+    public function bayar(Request $request, $id) //masih error 'id_order' not found
     {
         $this->validate($request, [
             'bayar' => 'required',
@@ -35,10 +37,10 @@ class TransaksiController extends Controller
         $transaksi->id_order = $id;
         $transaksi->total_bayar = $request->total;
         $transaksi->uang_dibayar = $request->bayar;
-        $transaksi->total_kembali = $request->total - $request->bayar;
+        $transaksi->total_kembali = $request->bayar - $request->total;
         $transaksi->save();
 
-        $detailOrders = DetailOrder::where('id_order', $id);
+        $detailOrders = DetailOrder::where('id_order', $id)->get();
 
         foreach($detailOrders as $detailOrder) {
             $transaksi->detail_transaction()->saveMany([
@@ -51,8 +53,14 @@ class TransaksiController extends Controller
             ]);
         }
 
-        Alert::toast('Total Uang Kembali Rp.'.$request->total - $request->bayar,'success');
+        $order = Order::find($id);
+        $order->status_order = 'Sudah Dibayar';
+        $order->save();
+
+        Alert::toast('Total Uang Kembali Rp. '.number_format($request->total - $request->bayar, 0, ',', '.'),'success');
 
         return redirect()->back();
     }
+
+    //
 }

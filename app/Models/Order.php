@@ -12,7 +12,7 @@ class Order extends Model
 
     public $incrementing = false;
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order'];
+    protected $fillable = ['id', 'id_user', 'nama_pelanggan', 'no_meja', 'alamat', 'waktu_order', 'keterangan', 'status_order', 'total_pembayaran'];
 
     public function __construct(array $attributes = [])
     {

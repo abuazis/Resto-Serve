@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="order_transaksi.html"
+            <a href="#"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="transaksi.html"
+            <a href="/transaksi"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST TRANSAKSI
             </a>
@@ -46,11 +46,22 @@
                                 <td>{{$order->nama_pelanggan}}</td>
                                 <td>{{$order->no_meja}}</td>
                                 <td>{{$order->waktu_order}}</td>
-                                <td>-</td>
-                                <td><span class="badge badge-warning">Belum Dibayar</span></td>
+                                <td>{{$order->keterangan}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-light shadow" data-toggle="modal"
+                                    @if($order->status_order == 'Belum Dibayar')
+                                        <span class="badge badge-warning">Belum Dibayar</span>
+                                    @else
+                                        <span class="badge badge-success">Sudah Dibayar</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($order->status_order == 'Belum Dibayar')
+                                        <button class="btn btn-sm btn-light shadow" data-toggle="modal"
                                         data-target="#exampleModalInsert{{$order->id}}">INSERT TRANSAKSI</button>
+                                    @else
+                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalEdit{{$order->id}}"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModalDetail"><i class="fa fa-info-circle"></i></button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -122,70 +133,65 @@
                 </div>
             </div>
         @endforeach
-        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title font-default" id="exampleModalLabel">Insert Transaksi
-                        </h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row mx-auto">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
-                            </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">2x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
+        @foreach($orders as $order)
+            <div class="modal fade" id="exampleModalEdit{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-default" id="exampleModalLabel">Insert Transaksi
+                            </h5>
                         </div>
-                        <div class="row mx-auto mt-1">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
+                        <div class="modal-body">
+                            @php
+                                $details = App\Models\DetailOrder::where('id_order', $order->id)->get();
+                            @endphp
+                            @foreach($details as $detail)
+                                <div class="row mx-auto mb-1">
+                                    <div class="col-3">
+                                        <img src="{{asset('img/'.$detail->menu->gambar)}}" width="80" class="border-salmon img-fluid"
+                                            alt="">
+                                    </div>
+                                    <div class="col-4 col-sm-5 d-flex align-items-center">
+                                        <h5 class="font-default">{{$detail->menu->nama_menu}}</h5>
+                                    </div>
+                                    <div class="col-1 d-flex align-items-center justify-content-center">
+                                        <h5 class="font-default">2x</h5>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-right">
+                                        <h5 class="font-default font-weight-bold">150.900</h5>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="row mx-auto mt-5">
+                                <div class="col-md-12">
+                                    <h4 class="font-default text-center">Total Pembayaran</h4>
+                                    <h2 class="font-default text-center font-weight-bold">Rp. 301.900</h2>
+                                </div>
                             </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
+                            <div class="row mx-auto mt-5 mb-4">
+                                @php
+                                    $value = App\Models\Transaction::where('id_order', $order->id)->first();
+                                @endphp
+                                <form action="" method="POST" class="w-100 mr-4">
+                                    <input type="text" style="height: 45px;
+                                                        color: #494949;
+                                                        padding-left: 10px;
+                                                        background: rgba(101, 101, 101, 0.24);
+                                                        border: 2px solid #494949;
+                                                        box-sizing: border-box;
+                                                        border-radius: 6px;
+                                                        font-family: 'Montserrat', sans-serif;" name="" value="{{$value->uang_dibayar}}" class="w-100 mr-3 ml-3"
+                                        placeholder="Masukan Uang Dibayar">
+                                    <button type="submit"
+                                        class="btn bg-salmon mr-3 ml-3 btn-block font-default text-white mt-3">SUBMIT</button>
+                                </form>
                             </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">1x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5">
-                            <div class="col-md-12">
-                                <h4 class="font-default text-center">Total Pembayaran</h4>
-                                <h2 class="font-default text-center font-weight-bold">Rp. 301.900</h2>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5 mb-4">
-                            <form action="" method="POST" class="w-100 mr-4">
-                                <input type="text" style="height: 45px;
-                                                    color: #494949;
-                                                    padding-left: 10px;
-                                                    background: rgba(101, 101, 101, 0.24);
-                                                    border: 2px solid #494949;
-                                                    box-sizing: border-box;
-                                                    border-radius: 6px;
-                                                    font-family: 'Montserrat', sans-serif;" name="" class="w-100 mr-3 ml-3"
-                                    placeholder="Masukan Uang Dibayar">
-                                <button type="submit"
-                                    class="btn bg-salmon mr-3 ml-3 btn-block font-default text-white mt-3">SUBMIT</button>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
         <div class="modal fade" id="exampleModalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

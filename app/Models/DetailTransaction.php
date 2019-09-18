@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailTransaction extends Model
 {
     protected $fillable = ['id_transaksi', 'id_menu', 'jumlah', 'sub_total'];
+    public $timestamps = false;
 
     public function __construct(array $attributes = [])
     {

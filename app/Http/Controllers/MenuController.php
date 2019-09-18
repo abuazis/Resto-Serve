@@ -6,7 +6,6 @@ Use Alert;
 use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +22,9 @@ class MenuController extends Controller
         $types = Category::all();
 
         if($request->has('cari')) {
-            $menus = Menu::where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
+            $menus = DB::table('vMenu')->where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
         } else {
-            $menus = Menu::paginate(8);
+            $menus = DB::table('vMenu')->paginate(8);
         }
 
         return view('menu', compact('menus', 'categories', 'types'));

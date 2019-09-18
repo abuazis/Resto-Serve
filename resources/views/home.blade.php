@@ -59,12 +59,18 @@
           <h1 class="title-resto text-center">RestoServe</h1>
           <p class="text-center">Everything is presented in deliciousness</p>
           <div class="d-flex align-items-center justify-content-center mt-4">
-            <a href="/login">
-              <button class="btn-login mr-4 log">LOGIN</button>
-            </a>
-            <a href="/register">
-              <button class="btn-login ml-4 reg">REGISTRASI</button>
-            </a>
+              @if(!Auth::user())
+                <a href="/login">
+                  <button class="btn-login mr-4 log">LOGIN</button>
+                </a>
+                <a href="/register">
+                  <button class="btn-login ml-4 reg">REGISTRASI</button>
+                </a>
+              @else
+                <a href="/dashboard">
+                  <button class="btn-login mr-4 log">MY DASHBOARD</button>
+                </a>
+              @endif
           </div>
         </div>
       </div>

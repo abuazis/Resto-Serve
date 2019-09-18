@@ -330,7 +330,7 @@ INSERT INTO `users` (`id`, `id_level`, `nickname`, `username`, `email`, `email_v
 (1, 1, NULL, 'admin', 'admin@resto.co.id', NULL, '$2y$10$TiMCa2s1BzNdLoLtyyKFVe/YptkkSdwZIBfULEZJ6RF3g2bWKcI6y', NULL, '2019-08-30 04:31:20', '2019-08-30 04:31:20'),
 (2, 2, NULL, 'waiter', 'waiter@resto.co.id', NULL, '$2y$10$BnDJjQ.cSb6f1oSVemld4.hIjh10IZIi5SkllAU56q9I9dGGeuC0K', NULL, '2019-08-30 20:55:01', '2019-08-30 20:55:01'),
 (3, 4, NULL, 'owner', 'owner@resto.co.id', NULL, '$2y$10$QimYFsOJ6haOn52Ocx2neOzkk/BoTjLdmS.WSji8mdb1THXME3yNK', NULL, '2019-08-30 21:39:35', '2019-08-30 21:39:35'),
-(4, 5, NULL, 'rudikun', 'abuazis801@gmail.com', NULL, '$2y$10$xnyEE4dCJvvBlImxL6bX1.YEiJy/tDcnI6fsdx6i1pgSAFYoYKPsG', 'nwwU20ZzDJJ993Nq0v0vyw4kF4vHuzn9C4LD6l6RFQ3Q6RlCM9GXHhYMy4t6', '2019-08-31 01:04:37', '2019-09-04 04:39:16'),
+(4, 5, NULL, 'rudikun', 'abuazis801@gmail.com', NULL, '$2y$10$xnyEE4dCJvvBlImxL6bX1.YEiJy/tDcnI6fsdx6i1pgSAFYoYKPsG', NULL, '2019-08-31 01:04:37', '2019-09-04 04:39:16'),
 (5, 3, NULL, 'kasir', 'kasir@resto.co.id', NULL, '$2y$10$GLM6NBz6ZFwRRSDQ/LU/yOJksfOIuPY0KwBxeskNjwNJJKpuRRAmq', NULL, '2019-09-01 01:54:06', '2019-09-01 01:54:06'),
 (10, 5, NULL, 'abuazis', 'muhammadazis801@gmail.com', NULL, NULL, 'TG3NaorSkf3E0FmUqnjp25i52ianUTp2q7hUuxFguW7vaTiEEcQXnHsIBOcd', '2019-09-12 04:59:09', '2019-09-12 04:59:09');
 

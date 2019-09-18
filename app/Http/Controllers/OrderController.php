@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
 use Cart;
 use Alert;
@@ -22,7 +23,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::latest()->get();
+        $orders = DB::table('vOrderWaiter')->latest()->get();
 
         return view('order', compact('orders'));
     }
@@ -59,6 +60,9 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::id();
+        $total = Cart::session($user)->getTotal();
+
         $this->validate($request, [
             'nama' => 'required|max:30|min:3',
             'meja' => 'required',
@@ -78,6 +82,7 @@ class OrderController extends Controller
         $order->waktu_order = Carbon::now()->format('H:i:s').' WIB';
         $order->keterangan = $request->keterangan;
         $order->status_order = 'Belum Dibayar';
+        $order->total_pembayaran = $total;
         $order->save();
 
         $items = Cart::session(Auth::id())->getContent();
