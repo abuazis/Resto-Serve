@@ -22,9 +22,9 @@ class MenuController extends Controller
         $types = Category::all();
 
         if($request->has('cari')) {
-            $menus = DB::table('vMenu')->where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
+            $menus = Menu::where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
         } else {
-            $menus = DB::table('vMenu')->paginate(8);
+            $menus = Menu::paginate(8);
         }
 
         return view('menu', compact('menus', 'categories', 'types'));
@@ -68,7 +68,7 @@ class MenuController extends Controller
         $menu->save();
         Alert::toast('Menu Berhasil Ditambahkan','success');
 
-        return redirect('/menu');
+        redirect('/menu');
     }
 
     public function update(Request $request, $id)

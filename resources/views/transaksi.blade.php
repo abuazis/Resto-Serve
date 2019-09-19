@@ -40,159 +40,139 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>W7582987</td>
-                            <td>Rp. 50.000</td>
-                            <td>Rp. 100.000</td>
-                            <td>Rp. 50.000</td>
-                            <td>
-                                <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
-                                    data-target="#exampleModalDetail">DETAIL</button>
-                                <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
-                                    data-target="#exampleModalEdit">EDIT</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>W7582987</td>
-                            <td>Rp. 50.000</td>
-                            <td>Rp. 100.000</td>
-                            <td>Rp. 50.000</td>
-                            <td>
-                                <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
-                                    data-target="#exampleModalDetail">DETAIL</button>
-                                <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
-                                    data-target="#exampleModalEdit">EDIT</button>
-                            </td>
-                        </tr>
+                        @foreach($histories as $history)
+                            <tr>
+                                <td class="font-weight-bold">{{$history->id_order}}</td>
+                                <td>Rp. {{number_format($history->total_bayar, 0, ',', '.')}}</td>
+                                <td>Rp. {{number_format($history->uang_dibayar, 0, ',', '.')}}</td>
+                                <td>Rp. {{number_format($history->total_kembali, 0, ',', '.')}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
+                                        data-target="#exampleModalDetail{{$history->id}}">STRUK</button>
+                                    <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
+                                        data-target="#exampleModalEdit{{$history->id}}">EDIT</button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title font-default" id="exampleModalLabel">Edit Transaksi
-                        </h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row mx-auto">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
-                            </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">2x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-1">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
-                            </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">1x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5">
-                            <div class="col-md-12">
-                                <h4 class="font-default text-center">Total Pembayaran</h4>
-                                <h2 class="font-default text-center font-weight-bold">Rp. 301.900</h2>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5 mb-4">
-                            <form action="" method="POST" class="w-100 mr-4">
-                                <input type="text" style="height: 45px;
-                                                    color: #494949;
-                                                    padding-left: 10px;
-                                                    background: rgba(101, 101, 101, 0.24);
-                                                    border: 2px solid #494949;
-                                                    box-sizing: border-box;
-                                                    border-radius: 6px;
-                                                    font-family: 'Montserrat', sans-serif;" name="" class="w-100 mr-3 ml-3"
-                                    placeholder="Masukan Uang Dibayar">
-                                <button type="submit"
-                                    class="btn bg-salmon mr-3 ml-3 btn-block font-default text-white mt-3">SUBMIT</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="exampleModalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        @foreach ($histories as $history)
+            <div class="modal fade" id="exampleModalEdit{{$history->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title font-default" id="exampleModalLabel">Detail Transaksi
-                        </h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row mx-auto">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
-                            </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">2x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-default" id="exampleModalLabel">Edit Transaksi
+                            </h5>
                         </div>
-                        <div class="row mx-auto mt-1">
-                            <div class="col-3">
-                                <img src="{{asset('img/pizza-buah.png')}}" width="80" class="border-salmon img-fluid"
-                                    alt="">
+                        <div class="modal-body">
+                            @php
+                                $details = App\Models\DetailTransaction::where('id_transaksi', $history->id)->get();
+                            @endphp
+                            @foreach ($details as $detail)
+                                <div class="row mx-auto mb-1">
+                                    <div class="col-3">
+                                        <img src="{{asset('img/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
+                                            alt="">
+                                    </div>
+                                    <div class="col-4 col-sm-5 d-flex align-items-center">
+                                        <h5 class="font-default">{{$detail->menu['nama_menu']}}</h5>
+                                    </div>
+                                    <div class="col-1 d-flex align-items-center justify-content-center">
+                                        <h5 class="font-default">{{$detail->menu['jumlah']}}x</h5>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-right">
+                                        <h5 class="font-default font-weight-bold">{{number_format($detail->sub_total, 0, ',', '.')}}</h5>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="row mx-auto mt-5">
+                                <div class="col-md-12">
+                                    <h4 class="font-default text-center">Total Pembayaran</h4>
+                                    <h2 class="font-default text-center font-weight-bold">Rp. {{number_format($history->total_bayar, 0, ',', '.')}}</h2>
+                                </div>
                             </div>
-                            <div class="col-4 col-sm-5 d-flex align-items-center">
-                                <h5 class="font-default">Splitza Classic</h5>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <h5 class="font-default">1x</h5>
-                            </div>
-                            <div class="col-3 d-flex align-items-center text-right">
-                                <h5 class="font-default font-weight-bold">150.900</h5>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5">
-                            <div class="col-md-12">
-                                <h4 class="font-default text-center">Total Pembayaran</h4>
-                                <h2 class="font-default text-center font-weight-bold">Rp. 301.900</h2>
-                            </div>
-                        </div>
-                        <div class="row mx-auto mt-5 mb-4">
-                            <div class="col-6 font-default">
-                                <center>
-                                    <h4>Uang Dibayar</h4>
-                                    <h3 class="font-weight-bold">Rp. 150.000</h4>
-                                </center>
-                            </div>
-                            <div class="col-6 font-default">
-                                <center>
-                                    <h4>Uang Kembali</h4>
-                                    <h3 class="font-weight-bold">Rp. 150.000</h4>
-                                </center>
+                            <div class="row mx-auto mt-5 mb-4">
+                                <form action="/transaksi/update/{{$history->id}}" method="POST" class="w-100 mr-4">
+                                    @csrf
+                                    @error('bayar')
+                                        <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+                                    @enderror
+                                    <input type="text" style="height: 45px;
+                                                        color: #494949;
+                                                        padding-left: 10px;
+                                                        background: rgba(101, 101, 101, 0.24);
+                                                        border: 2px solid #494949;
+                                                        box-sizing: border-box;
+                                                        border-radius: 6px;
+                                                        font-family: 'Montserrat', sans-serif;" name="bayar" value="{{$history->uang_dibayar}}" class="w-100 mr-3 ml-3 @error('bayar') no-valid @enderror"
+                                        placeholder="Masukan Uang Dibayar">
+                                    <button type="submit"
+                                        class="btn bg-salmon mr-3 ml-3 btn-block font-default text-white mt-3">SUBMIT</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endforeach
+        @foreach($histories as $history)
+            <div class="modal fade" id="exampleModalDetail{{$history->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-default" id="exampleModalLabel">Struk Transaksi
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            @php
+                                $details = App\Models\DetailTransaction::where('id_transaksi', $history->id)->get();
+                            @endphp
+                            @foreach ($details as $detail)
+                                <div class="row mx-auto mc-1">
+                                    <div class="col-3">
+                                        <img src="{{asset('img/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
+                                            alt="">
+                                    </div>
+                                    <div class="col-4 col-sm-5 d-flex align-items-center">
+                                        <h5 class="font-default">{{$detail->menu['gambar']}}</h5>
+                                    </div>
+                                    <div class="col-1 d-flex align-items-center justify-content-center">
+                                        <h5 class="font-default">{{$detail->jumlah}}x</h5>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-right">
+                                        <h5 class="font-default font-weight-bold">{{number_format($detail->sub_total, 0, ',', '.')}}</h5>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="row mx-auto mt-5">
+                                <div class="col-md-12">
+                                    <h4 class="font-default text-center">Total Pembayaran</h4>
+                                    <h2 class="font-default text-center font-weight-bold">Rp. {{number_format($history->total_bayar, 0, ',', '.')}}</h2>
+                                </div>
+                            </div>
+                            <div class="row mx-auto mt-5 mb-4">
+                                <div class="col-6 font-default">
+                                    <center>
+                                        <h4>Uang Dibayar</h4>
+                                        <h3 class="font-weight-bold">Rp. {{number_format($history->uang_dibayar, 0, ',', '.')}}</h4>
+                                    </center>
+                                </div>
+                                <div class="col-6 font-default">
+                                    <center>
+                                        <h4>Uang Kembali</h4>
+                                        <h3 class="font-weight-bold">Rp. {{number_format($history->total_kembali, 0, ',', '.')}}</h4>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     @endsection

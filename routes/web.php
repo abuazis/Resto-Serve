@@ -43,10 +43,8 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     // Routing For Transaksi
     Route::get('/transaksi/order', 'TransaksiController@order');
     Route::post('/order/pay/{id}', 'TransaksiController@bayar');
-
-    Route::get('/transaksi', function () {
-        return view('transaksi');
-    });
+    Route::get('/transaksi', 'TransaksiController@history');
+    Route::post('/transaksi/update/{id}', 'TransaksiController@update');
 
     Route::get('/laporan', function () {
         return view('laporan');

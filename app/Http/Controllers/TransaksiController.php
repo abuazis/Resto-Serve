@@ -20,7 +20,7 @@ class TransaksiController extends Controller
 
     public function order()
     {
-        $orders = DB::table('vOrderKasir')->latest()->get();
+        $orders = DB::table('vOrderKasir')->where('status_order', 'Belum Dibayar')->latest()->get();
         $details = DetailOrder::latest()->get();
 
         return view('order_transaksi', compact('orders', 'details'));
@@ -62,5 +62,24 @@ class TransaksiController extends Controller
         return redirect()->back();
     }
 
-    //
+    public function history()
+    {
+        $histories = Transaction::all();
+
+        return view('transaksi', compact('histories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'bayar' => 'required',
+        ]);
+
+        $history = Transaction::find($id);
+        $history->uang_dibayar = $request->bayar;
+        $history->save();
+
+        Alert::toast('Struk Berhasil Diedit','success');
+        return redirect()->back();
+    }
 }

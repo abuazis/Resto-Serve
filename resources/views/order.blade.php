@@ -81,7 +81,7 @@
                                         @endphp
                                         @foreach ($details as $detail)
                                             <div class="col-3">
-                                                <img src="{{asset('img/'.$detail->menu->gambar)}}" width="80"
+                                                <img src="{{asset('img/'.$detail->menu['gambar'])}}" width="80"
                                                     class="border-salmon img-fluid" alt="">
                                             </div>
                                         @endforeach

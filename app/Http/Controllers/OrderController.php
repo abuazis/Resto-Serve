@@ -23,7 +23,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = DB::table('vOrderWaiter')->latest()->get();
+        $orders = Order::latest()->get();
 
         return view('order', compact('orders'));
     }
