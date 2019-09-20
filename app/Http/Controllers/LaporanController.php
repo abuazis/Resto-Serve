@@ -15,9 +15,15 @@ class LaporanController extends Controller
 
     public function monthly()
     {
-        $last = Carbon::now()->subMonths(5);
-        dd($last);
-        // $datas = Order::whereMonth('created_at', '<=', date('m'))->count();
-        // dd($datas);
+        $months = [
+            Carbon::now()->subMonths(5)->format('F'),
+            Carbon::now()->subMonths(4)->format('F'),
+            Carbon::now()->subMonths(3)->format('F'),
+            Carbon::now()->subMonths(2)->format('F'),
+            Carbon::now()->subMonths(1)->format('F'),
+        ];
+        $bulan  = json_encode($months);
+
+        return view('laporan', compact('bulan'));
     }
 }

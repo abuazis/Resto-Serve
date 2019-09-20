@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/customer', function () {
+    return view('customer.index');
+});
+
 Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
     Route::get('/dashboard', function () {
@@ -46,6 +50,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/transaksi', 'TransaksiController@history');
     Route::post('/transaksi/update/{id}', 'TransaksiController@update');
 
+    Route::get('/monthly', 'LaporanController@monthly');
     Route::get('/laporan', function () {
         return view('laporan');
     });

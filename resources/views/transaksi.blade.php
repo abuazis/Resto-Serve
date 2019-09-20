@@ -74,7 +74,7 @@
                             @foreach ($details as $detail)
                                 <div class="row mx-auto mb-1">
                                     <div class="col-3">
-                                        <img src="{{asset('img/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
+                                        <img src="{{asset('uploads/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
                                             alt="">
                                     </div>
                                     <div class="col-4 col-sm-5 d-flex align-items-center">
@@ -134,13 +134,13 @@
                                 $details = App\Models\DetailTransaction::where('id_transaksi', $history->id)->get();
                             @endphp
                             @foreach ($details as $detail)
-                                <div class="row mx-auto mc-1">
+                                <div class="row mx-auto mb-1">
                                     <div class="col-3">
-                                        <img src="{{asset('img/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
+                                        <img src="{{asset('uploads/'.$detail->menu['gambar'])}}" width="80" class="border-salmon img-fluid"
                                             alt="">
                                     </div>
                                     <div class="col-4 col-sm-5 d-flex align-items-center">
-                                        <h5 class="font-default">{{$detail->menu['gambar']}}</h5>
+                                        <h5 class="font-default">{{$detail->menu['nama_menu']}}</h5>
                                     </div>
                                     <div class="col-1 d-flex align-items-center justify-content-center">
                                         <h5 class="font-default">{{$detail->jumlah}}x</h5>
@@ -169,6 +169,9 @@
                                         <h3 class="font-weight-bold">Rp. {{number_format($history->total_kembali, 0, ',', '.')}}</h4>
                                     </center>
                                 </div>
+                            </div>
+                            <div class="row mx-auto mt-5">
+                                <button class="btn btn-block btn-success font-weight-bold font-default"><i class="fas fa-print"></i> CETAK STRUK</button>
                             </div>
                         </div>
                     </div>

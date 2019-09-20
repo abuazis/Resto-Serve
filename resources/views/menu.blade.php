@@ -32,7 +32,7 @@
             @foreach ($menus as $menu)
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 col-pad tr">
                     <a href="" data-toggle="modal" data-target="#exampleModalMenu{{$menu->id}}">
-                        <img src="{{asset('img/'.$menu->gambar)}}" class="tab img-fluid shadow" alt="">
+                        <img src="{{asset('uploads/'.$menu->gambar)}}" class="tab img-fluid shadow" alt="">
                     </a>
                     <div class="modal fade mx-auto modal-detail" id="exampleModalMenu{{$menu->id}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,7 +45,7 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <center>
-                                                <img src="{{asset('img/'.$menu->gambar)}}" class="border-salmon" alt="">
+                                                <img src="{{asset('uploads/'.$menu->gambar)}}" class="border-salmon" alt="">
                                             </center>
                                         </div>
                                         <div class="col-md-6">

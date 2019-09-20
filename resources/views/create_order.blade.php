@@ -39,7 +39,7 @@
                         @foreach($menus as $menu)
                             <div class="col-md-4 item">
                                 <a href="/cart/add/{{$menu->id}}" class="add-to-cart">
-                                    <img src="{{asset('img/'.$menu->gambar)}}" class="tab-order w-100 shadow" alt="">
+                                    <img src="{{asset('uploads/'.$menu->gambar)}}" class="tab-order w-100 shadow" alt="">
                                 </a>
                                 <div class="harga-menu font-default ml-3 text-center font-weight-bold">Rp. {{number_format($menu->harga, 0, ',', '.')}}</div>
                                 <div class="judul-menu font-default ml-3 text-center font-weight-bold">{{$menu->nama_menu}}</div>
@@ -131,7 +131,7 @@
                                     @foreach($items as $item)
                                         <div class="row mx-auto mt-1">
                                             <div class="col-3">
-                                                <img src="{{asset('img/'.$item->attributes->picture)}}" width="80"
+                                                <img src="{{asset('uploads/'.$item->attributes->picture)}}" width="80"
                                                     class="border-salmon img-fluid" alt="">
                                             </div>
                                             <div class="col-sm-4 d-flex pr-0 align-items-center">
