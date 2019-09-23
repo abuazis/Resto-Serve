@@ -29,7 +29,7 @@
     <div class="fluid-container">
       <div class="tranparent-back">
         <nav class="navbar navbar-expand-lg navbar-dark bg-black pt-4 pb-3 fixed-top">
-          <a href="">
+          <a href="/">
             <img src="{{asset('img/logo.png')}}" class="ml-5 logo" width="200px" height="60px" />
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -39,15 +39,15 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mr-5">
-                <a class="nav-link" href="#footer">Menu</a>
+                <a class="nav-link" href="/customer/menu">Menu</a>
               </li>
               <li class="nav-item mr-5">
-                <a class="nav-link" href="#footer">Order</a>
+                <a class="nav-link" href="/customer/order">Order</a>
               </li>
               <li class="nav-item mr-5">
                 <i class="fas fa-shopping-cart text-white"></i>
-                <a class="nav-link d-inline-block pl-0 pr-0" href="#category">
-                    Cart 
+                <a class="nav-link d-inline-block pl-0 pr-0" href="/customer/cart">
+                    Cart
                     {{-- <span class="badge badge-light">2</span> --}}
                 </a>
               </li>

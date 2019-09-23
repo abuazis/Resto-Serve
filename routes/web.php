@@ -15,15 +15,17 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/customer', function () {
+Route::get('/customer/menu', function () {
     return view('customer.index');
+});
+
+Route::get('/customer/cart', function () {
+    return view('customer.cart');
 });
 
 Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/dashboard', 'DashboardController@index');
 
     // Routing For Menu Feature
     Route::get('/menu', 'MenuController@index');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
-use Check;
+use Alert;
 use Auth;
 use Cart;
 
@@ -23,6 +23,7 @@ class CartController extends Controller
             ]
         ]);
 
+        Alert::toast($menu->nama_menu . ' Ditambahkan', 'success');
         return redirect()->back();
     }
 

@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'order' => \App\Http\Middleware\OrderAuth::class,
         'transaksi' => \App\Http\Middleware\TransaksiAuth::class,
         'laporan' => \App\Http\Middleware\LaporanAuth::class,
+        'dashboard' => \App\Http\Middleware\DashboardAuth::class,
     ];
 
     /**
