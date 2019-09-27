@@ -20,7 +20,7 @@
                                     <img src="{{asset('img/menu-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Menu</h1>
-                                <p class="font-default">Terdapat 4 menu tersedia sekarang</p>
+                                <p class="font-default">Terdapat {{$jmlMenu}} menu tersedia sekarang</p>
                             </center>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                     <img src="{{asset('img/order-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Order</h1>
-                                <p class="font-default">Total 243 orderan untuk bulan ini</p>
+                                <p class="font-default">Total {{$jmlOrder}} orderan untuk bulan ini</p>
                             </center>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                     <img src="{{asset('img/transaction-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Transaksi</h1>
-                                <p class="font-default">Pemasukan terkini Rp.1.220.900 bulan ini</p>
+                                <p class="font-default">Pemasukan terkini Rp. {{number_format($totalTransaksi, 0, ',', '.')}} bulan ini</p>
                             </center>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                                     <img src="{{asset('img/report-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Laporan</h1>
-                                <p class="font-default">Laporan bulan juli sudah tersedia</p>
+                                <p class="font-default">Laporan bulan {{$month}} sudah tersedia</p>
                             </center>
                         </div>
                     </div>

@@ -48,7 +48,11 @@
                 <i class="fas fa-shopping-cart text-white"></i>
                 <a class="nav-link d-inline-block pl-0 pr-0" href="/customer/cart">
                     Cart
-                    {{-- <span class="badge badge-light">2</span> --}}
+                </a>
+              </li>
+              <li class="nav-item mr-5">
+                <a class="nav-link d-inline-block pl-0 pr-0" href="/customer/user">
+                    <h5><i class="fas fa-sign-out-alt"></i></h5>
                 </a>
               </li>
             </ul>

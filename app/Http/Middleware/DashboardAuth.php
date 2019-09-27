@@ -20,6 +20,7 @@ class DashboardAuth
         $waiter = Auth::user()->id_level == 2;
         $kasir = Auth::user()->id_level == 3;
         $owner = Auth::user()->id_level == 4;
+        $pelanggan = Auth::user()->id_level == 5;
 
         if ($admin || $waiter || $kasir || $owner) {
             return $next($request);

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +14,6 @@
 
 Route::get('/', function () {
     return view('home');
-});
-
-Route::get('/customer/menu', function () {
-    return view('customer.index');
-});
-
-Route::get('/customer/cart', function () {
-    return view('customer.cart');
 });
 
 Route::group(['middleware' => ['auth', 'revalidate']], function () {
@@ -51,6 +44,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/order/pay/{id}', 'TransaksiController@bayar');
     Route::get('/transaksi', 'TransaksiController@history');
     Route::post('/transaksi/update/{id}', 'TransaksiController@update');
+    Route::post('/transaksi/diskon', 'TransaksiController@diskon');
 
     Route::get('/monthly', 'LaporanController@monthly');
     Route::get('/laporan', function () {
@@ -59,6 +53,25 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
     Route::get('/logout', 'HomeController@logout');
 
+    Route::get('/customer', function () {
+        return redirect('customer/menu');
+    });
+
+    Route::get('/customer/menu', function () {
+        return view('customer.index');
+    });
+
+    Route::get('/customer/cart', function () {
+        return view('customer.cart');
+    });
+
+    Route::get('/customer/user', function () {
+        return view('customer.user');
+    });
+
+    Route::get('/customer/order', function () {
+        return view('customer.order');              
+    });
 });
 
 Auth::routes();

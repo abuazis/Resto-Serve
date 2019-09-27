@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\DetailOrder;
 use App\Models\DetailTransaction;
 use App\Models\Transaction;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -80,6 +81,20 @@ class TransaksiController extends Controller
         $history->save();
 
         Alert::toast('Struk Berhasil Diedit','success');
+        return redirect()->back();
+    }
+
+    public function diskon(Request $request)
+    {
+        // $this->validate($request, [
+        //     'diskon' => 'exist:discounts,diskon|size:8'
+        // ]);
+
+        $discount = Discount::where('kode', $request->diskon)->where('status', 'valid')->first();
+
+        $order = Order::find($request->id);
+        Order::where('id', $request->id)->update(['total_pembayaran' => ($order['total_pembayaran'] * 20) / 100]);
+
         return redirect()->back();
     }
 }

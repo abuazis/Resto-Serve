@@ -20,10 +20,11 @@ class LaporanAuth
         $waiter = (Auth::user() &&  Auth::user()->id_level == 2);
         $kasir = (Auth::user() &&  Auth::user()->id_level == 3);
         $owner = (Auth::user() &&  Auth::user()->id_level == 4);
+        $pelanggan = (Auth::user() &&  Auth::user()->id_level == 5);
 
         if ($admin OR $waiter OR $kasir OR $owner) {
             return $next($request);
-        } else {
+        } elseif($pelanggan) {
             return redirect()->back();
         }
     }

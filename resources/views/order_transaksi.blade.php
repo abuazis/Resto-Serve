@@ -56,9 +56,9 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-sm btn-light shadow" data-toggle="modal"
-                                        data-target="#exampleModalInsert{{$order->id}}">BAYAR</button>
-                                    <button class="btn btn-sm btn-light shadow" data-toggle="modal"
-                                        data-target="#exampleModalDiskon{{$order->id}}">DISKON</button>
+                                        data-target="#exampleModalInsert{{$order->id}}">BAYAR ORDER</button>
+                                    {{-- <button class="btn btn-sm btn-light shadow" data-toggle="modal"
+                                        data-target="#exampleModalDiskon{{$order->id}}">DISKON</button> --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -140,14 +140,14 @@
                         </div>
                         <div class="modal-body">
                             <div class="row mx-auto mb-4">
-                                <form action="/diskon" method="POST" class="w-100 mr-4 pr-2">
+                                <form action="/transaksi/diskon" method="POST" class="w-100 mr-4 pr-2">
                                     @csrf
                                     @error('diskon')
                                         <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
                                             <strong>{{$message}}</strong>
                                         </span>
                                     @enderror
-                                    <label for="" class="font-default ml-3 font-weight-bold">Kode Diskon</label>
+                                    <label for="diskon" class="font-default ml-3 font-weight-bold">Kode Diskon</label>
                                     <input type="text" style="height: 45px;
                                             color: #494949;
                                             padding-left: 10px;
@@ -157,7 +157,7 @@
                                             border-radius: 6px;
                                             font-family: 'Montserrat', sans-serif;" name="diskon"
                                         class="w-100 mr-3 ml-3 @error('diskon') no-valid @enderror" placeholder="Masukan Diskon (Jika Ada)">
-                                    <input type="hidden" name="total" value="{{$order->total_pembayaran}}">
+                                    <input type="hidden" name="total" value="{{$order->id}}">
                                     <button type="submit"
                                         class="btn bg-salmon mr-3 ml-3 btn-block font-default text-white mt-3">SUBMIT</button>
                                 </form>

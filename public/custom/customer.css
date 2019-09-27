@@ -18,6 +18,11 @@ body {
     background-color: black;
 }
 
+.border-salmon {
+    border: 4px solid #FF4242;
+    border-radius: 7px;
+}
+
 /* Header CSS */
 
 header {

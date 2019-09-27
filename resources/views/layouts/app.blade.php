@@ -19,7 +19,8 @@
 
     <!-- Icon -->
     <link rel="icon" href="{{asset('img/icon.png')}}">
-    <script src="https://kit.fontawesome.com/7a87ef3e19.js"></script>
+    <link rel="stylesheet" href="{{asset('fonts/css/all.css')}}">
+    <script src="{{asset('fonts/js/all.js')}}"></script>
 
     <title>@yield('title')</title>
 </head>

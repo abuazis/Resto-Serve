@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/aos.css')}}">
   <link rel="stylesheet" href="{{asset('custom/index.css')}}">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="{{ asset('aos/aos.css') }}" rel="stylesheet">
 
   <!-- Fonts External -->
   <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet">
@@ -243,7 +243,7 @@
   <script src="{{asset('js/jquery.imgcheckbox.js')}}"></script>
   <script src="{{asset('js/aos.js')}}"></script>
   <script src="{{asset('custom/script.js')}}"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{{asset('aos/aos.js')}}"></script>
   <script>
     AOS.init();
   </script>
