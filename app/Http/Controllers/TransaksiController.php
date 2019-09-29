@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use PDF;
 use Auth;
 use Alert;
 use App\Models\Order;
@@ -11,6 +12,7 @@ use App\Models\DetailTransaction;
 use App\Models\Transaction;
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TransaksiController extends Controller
 {
@@ -78,17 +80,38 @@ class TransaksiController extends Controller
 
         $history = Transaction::find($id);
         $history->uang_dibayar = $request->bayar;
+        $history->total_kembali = $history->total_bayar - $history->uang_dibayar;
         $history->save();
 
         Alert::toast('Struk Berhasil Diedit','success');
         return redirect()->back();
     }
 
-    public function diskon(Request $request)
+    public function receipt($id)
     {
-        // $this->validate($request, [
-        //     'diskon' => 'exist:discounts,diskon|size:8'
-        // ]);
+        $date = Carbon::now()->format('d/M/Y');
+        $time = Carbon::now()->format('H:i:s').' WIB';
+
+        $receipts = DetailTransaction::find($id);
+
+        $pdf = PDF::loadView('pdf/struk', compact('date', 'time', 'receipts'))->setPaper([0,0,204,650]);
+        return $pdf->download('struk_order');
+    }
+
+
+
+
+
+
+
+
+
+
+    /* public function diskon(Request $request)
+    {
+        $this->validate($request, [
+            'diskon' => 'exist:discounts,diskon|size:8'
+        ]);
 
         $discount = Discount::where('kode', $request->diskon)->where('status', 'valid')->first();
 
@@ -96,5 +119,5 @@ class TransaksiController extends Controller
         Order::where('id', $request->id)->update(['total_pembayaran' => ($order['total_pembayaran'] * 20) / 100]);
 
         return redirect()->back();
-    }
+    } */
 }

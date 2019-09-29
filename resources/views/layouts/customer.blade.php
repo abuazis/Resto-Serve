@@ -8,9 +8,8 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-  <link rel="stylesheet" href="{{asset('css/aos.css')}}">
   <link rel="stylesheet" href="{{asset('custom/customer.css')}}">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel='stylesheet' href="{{asset('css/sweetalert2.css')}}">
 
   <!-- Fonts External -->
   <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet">
@@ -19,7 +18,8 @@
 
   <!-- Icon -->
   <link rel="icon" href="{{asset('img/icon.png')}}">
-  <script src="https://kit.fontawesome.com/7a87ef3e19.js"></script>
+  <link rel="stylesheet" href="{{asset('fonts/css/all.css')}}">
+  <script src="{{asset('fonts/js/all.js')}}"></script>
 
   <title>RestoServe | All Presented In Deliciousness</title>
 </head>
@@ -48,10 +48,11 @@
                 <i class="fas fa-shopping-cart text-white"></i>
                 <a class="nav-link d-inline-block pl-0 pr-0" href="/customer/cart">
                     Cart
+                    <h6 class="d-inline-block"><span class="badge badge-danger">{{$quantity}}</span></h6>
                 </a>
               </li>
               <li class="nav-item mr-5">
-                <a class="nav-link d-inline-block pl-0 pr-0" href="/customer/user">
+                <a class="nav-link d-inline-block pl-0 pr-0 btn-logout" style="cursor: pointer;">
                     <h5><i class="fas fa-sign-out-alt"></i></h5>
                 </a>
               </li>
@@ -62,6 +63,7 @@
     </div>
   </section>
 
+  @include('sweetalert::alert')
   @yield('content')
 
   <footer id="footer">
@@ -94,15 +96,12 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{{asset('js/sweetalert2.js')}}"></script>
   <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
   <script src="{{asset('js/popper.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/jquery.imgcheckbox.js')}}"></script>
-  <script src="{{asset('js/aos.js')}}"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script src="{{asset('custom/alert.js')}}"></script>
 </body>
 
 </html>

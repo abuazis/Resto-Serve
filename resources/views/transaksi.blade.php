@@ -81,7 +81,7 @@
                                         <h5 class="font-default">{{$detail->menu['nama_menu']}}</h5>
                                     </div>
                                     <div class="col-1 d-flex align-items-center justify-content-center">
-                                        <h5 class="font-default">{{$detail->menu['jumlah']}}x</h5>
+                                        <h5 class="font-default">{{$detail->jumlah}}x</h5>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-right">
                                         <h5 class="font-default font-weight-bold">{{number_format($detail->sub_total, 0, ',', '.')}}</h5>
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div class="row mx-auto mt-5">
-                                <button class="btn btn-block btn-success font-weight-bold font-default"><i class="fas fa-print"></i> CETAK STRUK</button>
+                                <a href="/print/{{$history->id}}" class="btn btn-block btn-success font-weight-bold font-default"><i class="fas fa-print"></i> CETAK STRUK</a>
                             </div>
                         </div>
                     </div>
