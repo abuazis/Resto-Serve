@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/struk', function () {
-    return view('pdf.struk');
-});
-
 Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
     Route::get('/dashboard', 'DashboardController@index');
@@ -47,10 +43,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/transaksi/diskon', 'TransaksiController@diskon');
     Route::get('/print/{id}', 'TransaksiController@receipt');
 
-    Route::get('/monthly', 'LaporanController@monthly');
-    Route::get('/laporan', function () {
-        return view('laporan');
-    });
+    Route::get('/laporan', 'LaporanController@index');
 
     Route::get('/logout', 'HomeController@logout');
 

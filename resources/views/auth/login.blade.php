@@ -5,7 +5,7 @@
     @stop
     @section('content')
         <center>
-            <a href="/">
+            <a href="{{ url('/') }}">
                 <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
             </a>
         </center>
@@ -38,9 +38,9 @@
             </div>
         </form>
         <center>
-            <a href="/register" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
+            <a href="{{ url('/register') }}" class="text-decoration-none text-white font-default text-center mt-5 mr-5">No Have Account?</a>
             @if(Route::has('password.request'))
-                <a href="/password/reset" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
+                <a href="{{ url('/password/reset') }}" class="text-decoration-none text-white font-default text-center mt-5 ml-5">Forgot Password</a>
             @endif
         </center>
     @endsection

@@ -5,7 +5,7 @@
     @stop
     @section('content')
         <center>
-            <a href="/">
+            <a href="{{ url('/') }}">
                 <img src="{{asset('img/logo.png')}}" class="d-inline-block mx-auto" width="200" alt="">
             </a>
         </center>
@@ -52,6 +52,6 @@
             </div>
         </form>
         <center>
-            <a href="/login" class="text-decoration-none text-white font-default text-center">Have Account?</a>
+            <a href="{{ url('/login') }}" class="text-decoration-none text-white font-default text-center">Have Account?</a>
         </center>
     @endsection

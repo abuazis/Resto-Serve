@@ -9,7 +9,7 @@
                 <h1 class="fas fa-pizza-slice ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Transaksi Tab</h3>
                 @if(Request::segment(1) == 'menu')
-                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
                         <input type="text" name="cari" id="cari" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="#"
+            <a href="{{ url('/transaksi/order') }}"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="/transaksi"
+            <a href="{{ url('/transaksi') }}"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST TRANSAKSI
             </a>
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="row mx-auto mt-5 mb-4">
-                                <form action="/order/pay/{{$order->id}}" method="POST" class="w-100 mr-4 pr-2">
+                                <form action="{{ url('/order/pay/'.$order->id) }}" method="POST" class="w-100 mr-4 pr-2">
                                     @csrf
                                     @error('bayar')
                                         <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="row mx-auto mb-4">
-                                <form action="/transaksi/diskon" method="POST" class="w-100 mr-4 pr-2">
+                                <form action="{{ url('/transaksi/diskon') }}" method="POST" class="w-100 mr-4 pr-2">
                                     @csrf
                                     @error('diskon')
                                         <span class="text-danger font-weight-light font-label ml-1 font-default" style="font-size: 80%" role="alert">

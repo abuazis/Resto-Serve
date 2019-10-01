@@ -92,20 +92,11 @@ class TransaksiController extends Controller
         $date = Carbon::now()->format('d/M/Y');
         $time = Carbon::now()->format('H:i:s').' WIB';
 
-        $receipts = DetailTransaction::find($id);
+        $receipts = DetailTransaction::where('id_transaksi', $id)->get();
 
-        $pdf = PDF::loadView('pdf/struk', compact('date', 'time', 'receipts'))->setPaper([0,0,204,650]);
+        $pdf = PDF::loadView('exports/struk', compact('date', 'time', 'receipts'))->setPaper([0,0,204,650]);
         return $pdf->download('struk_order');
     }
-
-
-
-
-
-
-
-
-
 
     /* public function diskon(Request $request)
     {

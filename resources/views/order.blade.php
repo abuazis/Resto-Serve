@@ -9,7 +9,7 @@
                 <h1 class="fas fa-pizza-slice ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Order Tab</h3>
                 @if(Request::segment(1) == 'menu')
-                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
                         <input type="text" name="cari" id="cari" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="/order"
+            <a href="{{ url('/order') }}"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="/order/create"
+            <a href="{{ url('/order/create') }}"
                 class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 CREATE ORDER
             </a>
@@ -59,7 +59,7 @@
                                             class="fas fa-pen"></i></a> --}}
                                     <button class="btn btn-sm btn-light shadow mb-2" data-toggle="modal"
                                         data-target="#exampleModalMenu{{$order->id}}"><i class="fas fa-info-circle"></i></button>
-                                    <a href="/order/destroy/{{$order->id}}" class="btn btn-sm btn-danger shadow btn-deletes mb-2 text-white"><i
+                                    <a href="{{ url('/order/destroy/'.$order->id) }}" class="btn btn-sm btn-danger shadow btn-deletes mb-2 text-white"><i
                                             class="fas fa-trash"></i></a>
                                 </td>
                             </tr>

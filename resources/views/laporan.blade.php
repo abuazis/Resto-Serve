@@ -9,7 +9,7 @@
                 <h1 class="fas fa-chart-bar ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Report Tab</h3>
                 @if(Request::segment(1) == 'menu')
-                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
                         <input type="text" name="cari" id="cari" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
@@ -29,25 +29,12 @@
                     PDF <i class="fas fa-file-pdf"></i></button>
             </div>
         </div>
-        <div class="row mt-4 ml-1 mr-2">
-            <div class="col-md-6 mb-3">
-                <div class="w-100 bg-white rounded p-3">
-                    <h4 class="font-default font-weight-bold">Monthly Order</h4>
-                    <canvas id="laporanOrder" height="200vh"></canvas>
-                </div>
-            </div>
-            <div class="col-md-6 mb-3">
-                <div class="w-100 bg-white rounded p-3">
-                    <h4 class="font-default font-weight-bold">Most Ordered Menu</h4>
-                    <canvas id="laporanMenu" height="200vh"></canvas>
-                </div>
-            </div>
-        </div>
         <div class="row mt-4 ml-1 mr-3 mb-5">
+            <h4 class="font-weight-bold ml-3 font-default bg-white mb-0 p-3 rounded">Track Record Order</h4>
             <div class="col-12">
                 <div class="w-100 bg-white rounded p-3">
-                    <h4 class="font-default font-weight-bold">Track Record</h4>
-                    <canvas id="laporanHarian" height="100vh"></canvas>
+                    {!! $chart->container() !!}
+                    {!! $chart->script() !!}
                 </div>
             </div>
         </div>

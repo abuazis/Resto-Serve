@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
+use App\Models\DetailOrder;
+use App\Charts\ReportChart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -13,17 +16,41 @@ class LaporanController extends Controller
         $this->middleware('laporan');
     }
 
-    public function monthly()
+    public function index()
     {
         $months = [
-            Carbon::now()->subMonths(5)->format('F'),
             Carbon::now()->subMonths(4)->format('F'),
             Carbon::now()->subMonths(3)->format('F'),
             Carbon::now()->subMonths(2)->format('F'),
             Carbon::now()->subMonths(1)->format('F'),
+            Carbon::now()->subMonths(0)->format('F'),
         ];
-        $bulan  = json_encode($months);
 
-        return view('laporan', compact('bulan'));
+        $dataOrder = [
+            Order::whereMonth('created_at', Carbon::now()->subMonths(4)->format('m'))->count(),
+            Order::whereMonth('created_at', Carbon::now()->subMonths(3)->format('m'))->count(),
+            Order::whereMonth('created_at', Carbon::now()->subMonths(2)->format('m'))->count(),
+            Order::whereMonth('created_at', Carbon::now()->subMonths(1)->format('m'))->count(),
+            Order::whereMonth('created_at', Carbon::now()->subMonths(0)->format('m'))->count(),
+        ];
+
+        $backgroundColor = [
+            'rgba(255, 99, 132, 0.2)',
+        ];
+
+        $color = [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ];
+
+        $chart = new ReportChart;
+        $chart->labels($months);
+        $chart->dataset('Total Order', 'line', $dataOrder)->color($color)->backgroundColor($backgroundColor);
+
+        return view('laporan', compact('chart'));
     }
 }

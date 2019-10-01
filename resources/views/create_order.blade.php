@@ -9,7 +9,7 @@
                 <h1 class="fas fa-pizza-slice ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Order Tab</h3>
                 @if(Request::segment(1) == 'menu')
-                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
                         <input type="text" name="cari" id="cari" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
@@ -24,7 +24,7 @@
                         <ul class="nav justify-content-center font-default">
                             @foreach ($categories as $category)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/order/create/{{$category->nama_kategori}}">{{$category->nama_kategori}}</a>
+                                    <a class="nav-link" href="{{ url('/order/create/'.$category->nama_kategori) }}">{{$category->nama_kategori}}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -38,7 +38,7 @@
                     <div class="row mx-auto">
                         @foreach($menus as $menu)
                             <div class="col-md-4 item">
-                                <a href="/cart/add/{{$menu->id}}" class="add-to-cart">
+                                <a href="{{ url('/cart/add/'.$menu->id) }}" class="add-to-cart">
                                     <img src="{{asset('uploads/'.$menu->gambar)}}" class="tab-order w-100 shadow" alt="">
                                 </a>
                                 <div class="harga-menu font-default ml-3 text-center font-weight-bold">Rp. {{number_format($menu->harga, 0, ',', '.')}}</div>
@@ -62,13 +62,13 @@
                     </div>
                     <div class="row mx-auto mt-2">
                         <div class="col-sm-6 pl-0">
-                            <a href="/order"
+                            <a href="{{ url('/order') }}"
                                 class="btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 LIST ORDER
                             </a>
                         </div>
                         <div class="col-sm-6 pr-0 last-action">
-                            <a href="/order/create"
+                            <a href="{{ url('/order/create') }}"
                                 class="btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 CREATE ORDER
                             </a>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="row">
                         <div class="container-form bg-white w-100 ml-3 mr-3 rounded p-4 shadow">
-                            <form action="/order/store" method="POST">
+                            <form action="{{ url('/order/store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="Nama" class="font-default">Nama Pelanggan</label>
@@ -144,7 +144,7 @@
                                                 <h5 class="font-weight-bold"> &nbsp;{{number_format($item->price * $item->quantity, 0, ',', '.')}}</h5>
                                             </div>
                                             <div class="col-1 d-flex align-items-center text-right font-default">
-                                                <a href="/cart/remove/{{$item->id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <a href="{{ url('/cart/remove/'.$item->id) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     @endforeach

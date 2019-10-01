@@ -28,7 +28,7 @@
                                             <td class="align-middle">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
                                             <td class="align-middle">{{ $item->quantity }}</td>
                                             <td class="align-middle">Rp. {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</td>
-                                            <td class="align-middle"><a href="/cart/remove/{{$item->id}}"><i class="fa fa-trash"></i></a></td>
+                                            <td class="align-middle"><a href="{{ url('/cart/remove/'.$item->id) }}"><i class="fa fa-trash"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -54,7 +54,7 @@
                         </button>
                     </div>
                     <div class="col-md-3 pt-5 mt-md-5">
-                        <form action="/customer/discount" method="POST" class="form-inline font-default">
+                        <form action="{{ url('/customer/discount') }}" method="POST" class="form-inline font-default">
                             @csrf
                             <label class="sr-only">Diskon</label>
                             @error('diskon')
@@ -79,7 +79,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row mx-auto mb-4">
-                            <form action="/customer/checkout" method="POST" class="w-100 mr-4 pr-2">
+                            <form action="{{ url('/customer/checkout') }}" method="POST" class="w-100 mr-4 pr-2">
                                 @csrf
                                 <label for="nama" class="font-default ml-3 font-weight-bold">Atas Nama</label>
                                 <input type="text" style="height: 45px;

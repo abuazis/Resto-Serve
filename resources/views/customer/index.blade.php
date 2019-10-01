@@ -8,7 +8,7 @@
                             <ul class="nav d-flex justify-content-around">
                                 @foreach ($categories as $category)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/customer/menu/{{$category->nama_kategori}}"><i class="{{$category->icon}}"></i> {{$category->nama_kategori}}</a>
+                                        <a class="nav-link" href="{{ url('/customer/menu/'.$category->nama_kategori) }}"><i class="{{$category->icon}}"></i> {{$category->nama_kategori}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -28,7 +28,7 @@
                                             <h5 class="card-title font-weight-bold mb-2">{{$menu->nama_menu}}</h5>
                                             <h5><span class="badge badge-danger">Rp. {{number_format($menu->harga, 0, ',', '.')}} </span></h5>
                                             <p class="card-text" style="font-size: 15px;">{{$menu->deskripsi}}</p>
-                                            <a href="/cart/add/{{$menu->id}}" class="btn btn-sm btn-danger float-right mb-2 mb-xl-0"><i class="fas fa-cart-plus"></i> Order</a>
+                                            <a href="{{ url('/cart/add/'.$menu->id) }}" class="btn btn-sm btn-danger float-right mb-2 mb-xl-0"><i class="fas fa-cart-plus"></i> Order</a>
                                         </div>
                                     </div>
                                 </div>

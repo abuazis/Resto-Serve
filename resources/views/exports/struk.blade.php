@@ -23,6 +23,7 @@
           font-size: 0.7rem;
       }
       td {
+          width: auto;
           font-size: 0.55rem;
           padding-left: 3px;
           padding-right: 3px;
@@ -46,24 +47,14 @@
                     <h6>{{$date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$time}}</h6>
                     <center>
                         <table class="mt-4 mx-auto">
+                            @foreach($receipts as $receipt)
                             <tr>
-                                <td class="pr-2 pl-2 pb-3">Splitza Pizza</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 40.000</td>
-                                <td class="pr-2 pl-2 pb-3">2x</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 80.000</td>
+                                <td class="pr-2 pl-2 pb-3">{{$receipt->menu['nama_menu']}}</td>
+                                <td class="pr-2 pl-2 pb-3">Rp. {{number_format($receipt->menu['harga'], 0, ',', '.')}}</td>
+                                <td class="pr-2 pl-2 pb-3">{{$receipt->jumlah}}</td>
+                                <td class="pr-2 pl-2 pb-3">Rp. {{number_format($receipt->menu['harga'] * $receipt->jumlah, 0, ',', '.')}}</td>
                             </tr>
-                            <tr>
-                                <td class="pr-2 pl-2 pb-3">Pudding Choco</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 40.000</td>
-                                <td class="pr-2 pl-2 pb-3">2x</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 80.000</td>
-                            </tr>
-                            <tr>
-                                <td class="pr-2 pl-2 pb-3">Egg Malte</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 40.000</td>
-                                <td class="pr-2 pl-2 pb-3">2x</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 80.000</td>
-                            </tr>
+                            @endforeach
                             <tr>
                                 <td class="pr-2 pl-2 pb-3"></td>
                                 <td class="pr-2 pl-2 pb-3"></td>
@@ -80,19 +71,19 @@
                                 <td class="pr-2 pl-2 pb-3"></td>
                                 <td class="pr-2 pl-2 pb-3"></td>
                                 <td class="pr-2 pl-2 pb-3">T</td>
-                                <td class="pr-2 pl-2 pb-3">Rp. 240.000</td>
+                                <td class="pr-2 pl-2 pb-3">Rp. {{number_format($receipt->transaction->total_bayar, 0, ',', '.')}}</td>
                             </tr>
                             <tr>
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2">Py</td>
-                                <td class="pr-2 pl-2">Rp. 250.000</td>
+                                <td class="pr-2 pl-2">Rp. {{number_format($receipt->transaction->uang_dibayar, 0, ',', '.')}}</td>
                             </tr>
                             <tr>
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2">Bk</td>
-                                <td class="pr-2 pl-2">Rp. 10.000</td>
+                                <td class="pr-2 pl-2">Rp. {{number_format($receipt->transaction->total_kembali, 0, ',', '.')}}</td>
                             </tr>
                         </table>
                         </center>

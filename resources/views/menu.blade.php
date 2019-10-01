@@ -9,7 +9,7 @@
                 <h1 class="fas fa-hamburger ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Menu Tab</h3>
                 @if(Request::segment(1) == 'menu')
-                    <form action="/menu/result" method="POST" class="d-inline-block cari mr-4">
+                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
                         <input type="text" name="cari" id="cari" onkeyup="search()" placeholder="Find Menu...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
@@ -22,7 +22,7 @@
                 <ul class="nav justify-content-center font-default">
                     @foreach ($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="/menu/{{$category->nama_kategori}}">{{$category->nama_kategori}}</a>
+                            <a class="nav-link" href="{{ url('/menu/'.$category->nama_kategori) }}">{{$category->nama_kategori}}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -56,7 +56,7 @@
                                             <p class="font-default mt-2">{{$menu->deskripsi}}</p>
                                             <div class="row mt-5">
                                                 <div class="col-md-5">
-                                                    <a href="/menu/destroy/{{$menu->id}}" class="btn btn-danger btn-block font-default btn-deletes">
+                                                    <a href="{{ url('/menu/destroy/'.$menu->id) }}" class="btn btn-danger btn-block font-default btn-deletes">
                                                         Hapus
                                                     </a>
                                                 </div>
@@ -123,7 +123,7 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <form action="/menu/store" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/menu/store') }}" method="POST" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h5 class="modal-title font-default" id="exampleModalLabel">Insert New Menu</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -237,7 +237,7 @@
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <form action="/menu/update/{{$menu->id}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('/menu/update/'.$menu->id) }}" method="POST" enctype="multipart/form-data">
                                 <div class="modal-header">
                                     <h5 class="modal-title font-default" id="exampleModalLabel">Edit Data Menu</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

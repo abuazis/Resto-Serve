@@ -16,7 +16,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="w-100 bg-white sec-tab shadow ">
                             <center>
-                                <a href="/menu">
+                                <a href="{{ url('/menu') }}">
                                     <img src="{{asset('img/menu-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Menu</h1>
@@ -29,7 +29,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="w-100 bg-white sec-tab shadow">
                             <center>
-                                <a href="/order">
+                                <a href="{{ url('/order') }}">
                                     <img src="{{asset('img/order-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Order</h1>
@@ -42,7 +42,7 @@
                     <div class="col-md-6">
                         <div class="w-100 bg-white sec-tab shadow mb-3">
                             <center>
-                                <a href="/transaksi">
+                                <a href="{{ url('/transaksi/order') }}">
                                     <img src="{{asset('img/transaction-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Transaksi</h1>
@@ -55,7 +55,7 @@
                     <div class="col-md-6 ">
                         <div class="w-100 bg-white sec-tab shadow mb-3">
                             <center>
-                                <a href="/laporan">
+                                <a href="{{ url('/laporan') }}">
                                     <img src="{{asset('img/report-pic.png')}}" class="mt-4" width="170" alt="">
                                 </a>
                                 <h1 class="font-default mt-2">Laporan</h1>

@@ -60,14 +60,14 @@
           <p class="text-center">Everything is presented in deliciousness</p>
           <div class="d-flex align-items-center justify-content-center mt-4">
               @if(!Auth::user())
-                <a href="/login">
+                <a href="{{ url('/login') }}">
                   <button class="btn-login mr-4 log">LOGIN</button>
                 </a>
-                <a href="/register">
+                <a href="{{ url('/register') }}">
                   <button class="btn-login ml-4 reg">REGISTRASI</button>
                 </a>
               @else
-                <a href="/dashboard">
+                <a href="{{ url('/dashboard') }}">
                   <button class="btn-login mr-4 log">MY DASHBOARD</button>
                 </a>
               @endif
@@ -85,15 +85,7 @@
         <div class="container pb-5">
           <div class="row mt-4">
             <div class="col-md-6 d-flex align-items-center">
-              <p class="font-default float-left text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Omnis magni ut, odit,
-                quibusdam accusantium id sapiente earum voluptates, doloribus perferendis exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Omnis magni ut, odit,
-                quibusdam accusantium id sapiente earum voluptates, doloribus perferendis exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt! doloribus perferendis
-                exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt! </p>
+              <p class="font-default float-left text-justify">Our Quarter Pounder* patty is made with 100% fresh beef and cooked right when you order. It’s hot and deliciously juicy and full of flavor. We serve our 100% fresh beef patties on a variety of burgers. Enjoy the mouthwatering fresh flavor on our classic Quarter Pounder with Cheese. Or try our Quarter Pounder with Cheese Bacon, layered with thick-cut Applewood smoked bacon or the Quarter Pounder Deluxe, topped with Roma tomato slices and crisp leaf lettuce.</p>
             </div>
             <div class="col-md-6">
               <center>
@@ -108,15 +100,7 @@
               </center>
             </div>
             <div class="col-md-6">
-              <p class="font-default float-right text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Omnis magni ut, odit,
-                quibusdam accusantium id sapiente earum voluptates, doloribus perferendis exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Omnis magni ut, odit,
-                quibusdam accusantium id sapiente earum voluptates, doloribus perferendis exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt! doloribus perferendis
-                exercitationem
-                illo repudiandae excepturi cum perspiciatis minima minus nobis sunt!</p>
+              <p class="font-default float-right text-justify">fresh beef that’s cooked when you order and it’s hot and deliciously juicy. Seasoned with just a pinch of salt and pepper and sizzled on our flat iron grill. Layered with two slices of melty American cheese, creamy mayo, slivered onions and tangy pickles on a soft, fluffy sesame seed bun. Each Quarter Pounder with Cheese Bacon burger features thick-cut Applewood smoked bacon atop a ¼ lb.* of 100% fresh beef that’s cooked when you order. It’s hot and deliciously juicy, seasoned with just a pinch of salt and pepper and sizzled on our flat iron grid.</p>
             </div>
           </div>
         </div>
@@ -134,7 +118,7 @@
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <a href="/order">
+              <a href="{{ url('/order') }}">
                 <button class="mt-3">ORDER NOW</button>
               </a>
             </div>
@@ -142,7 +126,7 @@
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <a href="/order">
+              <a href="{{ url('/order') }}">
                 <button class="mt-3">ORDER NOW</button>
               </a>
             </div>
@@ -150,7 +134,7 @@
               <img src="{{asset('img/Group 6.png')}}" alt="">
               <h2 class="judul">Honey Chicken<br> Signature</h2>
               <h2 class="harga">Rp. 70.800</h2>
-              <a href="/order">
+              <a href="{{ url('/order') }}">
                 <button class="mt-3">ORDER NOW</button>
               </a>
             </div>
