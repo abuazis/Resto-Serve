@@ -11,10 +11,10 @@ use Illuminate\Support\Carbon;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
+Route::get('/pdf', function () {
+    return view('exports.report');
 });
+Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => ['auth', 'revalidate']], function () {
 
@@ -23,7 +23,6 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/menu', 'MenuController@index');
     Route::get('/menu/{name}', 'MenuController@category');
     Route::get('/menu/destroy/{id}', 'MenuController@destroy');
-    Route::post('/menu/result', 'MenuController@index');
     Route::post('/menu/store', 'MenuController@store');
     Route::post('/menu/update/{id}', 'MenuController@update');
 
@@ -32,6 +31,7 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/order/create/{name}', 'OrderController@category');
     Route::post('/order/store', 'OrderController@store');
     Route::get('/order/destroy/{id}', 'OrderController@destroy');
+    Route::post('/order/result', 'OrderController@index');
 
     Route::get('/cart/add/{id}', 'CartController@store');
     Route::get('/cart/remove/{id}', 'CartController@remove');
@@ -40,8 +40,8 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/order/pay/{id}', 'TransaksiController@bayar');
     Route::get('/transaksi', 'TransaksiController@history');
     Route::post('/transaksi/update/{id}', 'TransaksiController@update');
-    Route::post('/transaksi/diskon', 'TransaksiController@diskon');
     Route::get('/print/{id}', 'TransaksiController@receipt');
+    Route::post('/transaksi/result', 'TransaksiController@order');
 
     Route::get('/laporan', 'LaporanController@index');
 
@@ -61,6 +61,5 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 });
 
 Auth::routes();
-Route::get('/auth/{provider}', 'Auth\SocialiteController@redirectToProvider');
-Route::get('/auth/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/report/pdf', 'LaporanController@download');

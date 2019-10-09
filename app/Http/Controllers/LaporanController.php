@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
+use PDF;
 use App\Models\Order;
-use App\Models\DetailOrder;
 use App\Charts\ReportChart;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class LaporanController extends Controller
@@ -50,7 +48,16 @@ class LaporanController extends Controller
         $chart = new ReportChart;
         $chart->labels($months);
         $chart->dataset('Total Order', 'line', $dataOrder)->color($color)->backgroundColor($backgroundColor);
-
         return view('laporan', compact('chart'));
+    }
+
+    public function download()
+    {
+        $jauh = Order::whereMonth('created_at', Carbon::now()->startOfMonth())->where('alamat', null)->sum('total_pembayaran');
+        $dekat = Order::whereMonth('created_at', Carbon::now()->startOfMonth())->where('alamat', '!=', null)->sum('total_pembayaran');
+        $total = $jauh + $dekat;
+
+        $pdf = PDF::loadView('exports/report', compact('jauh', 'dekat', 'total'));
+        return $pdf->download('report-monthly');
     }
 }

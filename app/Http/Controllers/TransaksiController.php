@@ -21,15 +21,20 @@ class TransaksiController extends Controller
         $this->middleware('transaksi');
     }
 
-    public function order()
+    public function order(Request $request)
     {
-        $orders = DB::table('vOrderKasir')->where('status_order', 'Belum Dibayar')->latest()->get();
-        $details = DetailOrder::latest()->get();
+        if($request->has('cari')) {
+            $orders = DB::table('vOrderKasir')->where('nama_pelanggan', 'LIKE', '%'.$request->cari.'%')->latest()->get();
+            $details = DetailOrder::latest()->get();
+        } else {
+            $orders = DB::table('vOrderKasir')->where('status_order', 'Belum Dibayar')->whereDate('created_at', Carbon::now())->latest()->get();
+            $details = DetailOrder::latest()->get();
+        }
 
         return view('order_transaksi', compact('orders', 'details'));
     }
 
-    public function bayar(Request $request, $id) //masih error 'id_order' not found
+    public function bayar(Request $request, $id)
     {
         $this->validate($request, [
             'bayar' => 'required',

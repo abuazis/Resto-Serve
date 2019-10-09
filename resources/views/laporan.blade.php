@@ -19,18 +19,22 @@
         </div>
         <div class="row mx-auto mt-2">
             <div class="col-sm-6">
-                <button
+                <a href="{{ url('/report/excel') }}">
+                    <button
                     class="w-100 btn-lg bg-success font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded text-white mb-3">EXPORT
                     EXCEL <i class="fas fa-file-excel"></i></button>
+                </a>
             </div>
             <div class="col-sm-6">
-                <button
+                <a href="{{ url('/report/pdf') }}">
+                    <button
                     class="w-100 btn-lg bg-danger font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded text-white mb-3">EXPORT
                     PDF <i class="fas fa-file-pdf"></i></button>
+                </a>
             </div>
         </div>
         <div class="row mt-4 ml-1 mr-3 mb-5">
-            <h4 class="font-weight-bold ml-3 font-default bg-white mb-0 p-3 rounded">Track Record Order</h4>
+            <h4 class="font-weight-bold ml-3 font-default bg-white mb-0 p-3 rounded">Monthly Track Order</h4>
             <div class="col-12">
                 <div class="w-100 bg-white rounded p-3">
                     {!! $chart->container() !!}

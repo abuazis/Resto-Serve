@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Auth;
 use Cart;
 use Alert;
@@ -21,9 +20,13 @@ class OrderController extends Controller
         $this->middleware('order');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::latest()->get();
+        if($request->has('cari')) {
+            $orders = Order::where('nama_pelanggan', 'LIKE', '%'.$request->cari.'%')->latest()->get();
+        } else {
+            $orders = Order::whereDate('created_at', Carbon::now())->latest()->get();
+        }
 
         return view('order', compact('orders'));
     }

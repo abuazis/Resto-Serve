@@ -114,30 +114,16 @@
         <div class="layer pt-5 pb-5">
           <h1 class="font-weight-bold text-center mt-3">HOT PROMO</h1>
           <div class="row mt-5 pt-3">
-            <div class="col-md-4 text-center mb-5" data-aos="fade-right" data-aos-easing="linear" data-duration="3000">
+            @foreach($promos as $promo)
+            <div class="col-md-4 text-center mb-5" data-aos="fade-up" data-aos-easing="linear" data-duration="3000">
               <img src="{{asset('img/Group 6.png')}}" alt="">
-              <h2 class="judul">Honey Chicken<br> Signature</h2>
-              <h2 class="harga">Rp. 70.800</h2>
-              <a href="{{ url('/order') }}">
+              <h2 class="judul">{{$promo->nama_menu}}</h2>
+              <h2 class="harga">Rp. {{number_format($promo->harga, 0, ',', '.')}}</h2>
+              <a href="{{ url('/customer') }}">
                 <button class="mt-3">ORDER NOW</button>
               </a>
             </div>
-            <div class="col-md-4 text-center mb-5" data-aos="fade-down" data-aos-easing="linear" data-duration="4000">
-              <img src="{{asset('img/Group 6.png')}}" alt="">
-              <h2 class="judul">Honey Chicken<br> Signature</h2>
-              <h2 class="harga">Rp. 70.800</h2>
-              <a href="{{ url('/order') }}">
-                <button class="mt-3">ORDER NOW</button>
-              </a>
-            </div>
-            <div class="col-md-4 text-center mb-5" data-aos="fade-left" data-aos-easing="linear" data-duration="3000">
-              <img src="{{asset('img/Group 6.png')}}" alt="">
-              <h2 class="judul">Honey Chicken<br> Signature</h2>
-              <h2 class="harga">Rp. 70.800</h2>
-              <a href="{{ url('/order') }}">
-                <button class="mt-3">ORDER NOW</button>
-              </a>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

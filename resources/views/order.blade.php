@@ -8,10 +8,10 @@
             <div class="top-bar w-100 bg-white mb-3 mr-3">
                 <h1 class="fas fa-pizza-slice ml-4"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Order Tab</h3>
-                @if(Request::segment(1) == 'menu')
-                    <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
+                @if(Request::segment(1) == 'order')
+                    <form action="{{ url('/order/result') }}" method="POST" class="d-inline-block cari mr-4">
                         @csrf
-                        <input type="text" name="cari" id="cari" placeholder="Find Menu...">
+                        <input type="text" name="cari" id="cari" placeholder="Find Customer...">
                         <button type="submit" class="btn bg-salmon text-white"><i class="fas fa-search"></i></button>
                     </form>
                 @endif
