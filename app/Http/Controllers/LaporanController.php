@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Models\Order;
 use App\Charts\ReportChart;
+use App\Exports\MonthlyReport;
 use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanController extends Controller
 {
@@ -59,5 +61,10 @@ class LaporanController extends Controller
 
         $pdf = PDF::loadView('exports/report', compact('jauh', 'dekat', 'total'));
         return $pdf->download('report-monthly');
+    }
+
+    public function export()
+    {
+        return Excel::download(new MonthlyReport, 'report-monthly.xlsx');
     }
 }

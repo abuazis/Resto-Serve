@@ -63,3 +63,4 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/report/pdf', 'LaporanController@download');
+Route::get('/report/excel', 'LaporanController@export');
