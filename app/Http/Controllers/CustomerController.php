@@ -120,6 +120,7 @@ class CustomerController extends Controller
         }
 
         Cart::clear();
+        Cart::clearCartConditions();
         Alert::toast('Order Berhasil, Pengiriman Segera Dilakukan','success');
 
         return redirect('/customer/order');

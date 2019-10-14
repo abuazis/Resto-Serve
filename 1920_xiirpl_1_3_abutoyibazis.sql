@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 29, 2019 at 08:24 AM
+-- Generation Time: Oct 11, 2019 at 01:53 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -93,16 +93,13 @@ CREATE TABLE `detail_orders` (
 --
 
 INSERT INTO `detail_orders` (`id`, `id_menu`, `id_order`, `jumlah`, `harga`, `status_detail_order`, `created_at`, `updated_at`) VALUES
-(1, 12, 'wtw527n3', 1, 150000, 'On Process', NULL, NULL),
-(2, 13, 'wtw527n3', 1, 19000, 'On Process', NULL, NULL),
-(3, 18, 'wtw527n3', 1, 10000, 'On Process', NULL, NULL),
-(4, 17, 'wtw527n3', 1, 38000, 'On Process', NULL, NULL),
-(5, 12, 'HOGNOAV7', 1, 150000, 'On Process', NULL, NULL),
-(6, 16, 'HOGNOAV7', 1, 156900, 'On Process', NULL, NULL),
-(7, 13, 'HOGNOAV7', 1, 19000, 'On Process', NULL, NULL),
-(8, 12, 'JGKO2LTH', 1, 150000, 'On Process', NULL, NULL),
-(9, 2, 'JGKO2LTH', 1, 150000, 'On Process', NULL, NULL),
-(10, 16, 'JGKO2LTH', 1, 156900, 'On Process', NULL, NULL);
+(18, 16, '09NZY8SN', 1, 156900, 'On Process', NULL, NULL),
+(19, 13, 'ABLKHY8J', 1, 19000, 'On Process', NULL, NULL),
+(20, 2, '0X3XUEI3', 1, 150000, 'On Process', NULL, NULL),
+(21, 13, '0X3XUEI3', 1, 19000, 'On Process', NULL, NULL),
+(22, 17, 'RCZ9KRXU', 1, 38000, 'On Process', NULL, NULL),
+(23, 19, 'RCZ9KRXU', 1, 18000, 'On Process', NULL, NULL),
+(24, 1, 'RCZ9KRXU', 1, 79000, 'On Process', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -123,22 +120,11 @@ CREATE TABLE `detail_transactions` (
 --
 
 INSERT INTO `detail_transactions` (`id`, `id_transaksi`, `id_menu`, `jumlah`, `sub_total`) VALUES
-(5, 20, 12, 1, 150000),
-(6, 20, 13, 1, 19000),
-(7, 20, 18, 1, 10000),
-(8, 20, 17, 1, 38000),
-(9, 21, 12, 1, 150000),
-(10, 21, 16, 1, 156900),
-(11, 21, 13, 1, 19000),
-(12, 22, 12, 1, 150000),
-(13, 22, 16, 1, 156900),
-(14, 22, 13, 1, 19000),
-(15, 23, 12, 1, 150000),
-(16, 23, 2, 1, 150000),
-(17, 23, 16, 1, 156900),
-(18, 24, 12, 1, 150000),
-(19, 24, 2, 1, 150000),
-(20, 24, 16, 1, 156900);
+(24, 28, 2, 1, 150000),
+(25, 28, 13, 1, 19000),
+(26, 29, 17, 1, 38000),
+(27, 29, 19, 1, 18000),
+(28, 29, 1, 1, 79000);
 
 -- --------------------------------------------------------
 
@@ -287,9 +273,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `id_user`, `nama_pelanggan`, `no_meja`, `alamat`, `waktu_order`, `keterangan`, `status_order`, `total_pembayaran`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('HOGNOAV7', 6, 'Dot Blade', '02', NULL, '18:32:30 WIB', 'Semua Bungkus, Bawa Pulang', 'Belum Dibayar', 325900, '2019-09-18 11:32:30', '2019-09-19 03:40:46', NULL),
-('JGKO2LTH', 6, 'Abu Azis', '02', NULL, '11:31:30 WIB', 'chvasjgcvajvschagvscg', 'Sudah Dibayar', 456900, '2019-09-19 04:31:30', '2019-09-20 02:05:16', NULL),
-('wtw527n3', 6, 'Rudi Hartono', '02', NULL, '22:48:46 WIB', 'Semua Gratis Untuk Raja', 'Sudah Dibayar', 217000, '2019-09-17 15:48:46', '2019-09-23 22:57:16', NULL);
+('09NZY8SN', 6, 'Spike', '01', NULL, '12:44:26 WIB', 'Watch My Dog', 'Belum Dibayar', 156900, '2019-09-10 05:44:26', '2019-10-05 05:44:26', NULL),
+('0X3XUEI3', 6, 'Santo', '02', 'jl. bleter', '17:31:07 WIB', NULL, 'Sudah Dibayar', 169000, '2019-10-09 10:31:07', '2019-10-09 10:31:07', NULL),
+('ABLKHY8J', 6, 'Kevin', '03', NULL, '12:45:27 WIB', NULL, 'Belum Dibayar', 19000, '2019-08-13 05:45:27', '2019-10-05 05:45:27', NULL),
+('RCZ9KRXU', 6, 'MBCode Group', '02', NULL, '17:49:30 WIB', 'Bungkus Cog', 'Sudah Dibayar', 135000, '2019-08-10 10:49:30', '2019-10-09 10:49:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -340,11 +327,21 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `id_user`, `id_order`, `total_bayar`, `uang_dibayar`, `total_kembali`, `created_at`, `updated_at`) VALUES
-(20, 6, 'wtw527n3', 217000, 220000, -3000, '2019-09-18 06:03:52', '2019-09-28 03:35:43'),
-(21, 6, 'HOGNOAV7', 325900, 328000, 4100, '2019-09-18 12:56:21', '2019-09-19 03:25:59'),
-(22, 6, 'HOGNOAV7', 325900, 400000, 74100, '2019-09-19 03:40:45', '2019-09-19 03:40:45'),
-(23, 6, 'JGKO2LTH', 456900, 460000, 3100, '2019-09-20 01:57:25', '2019-09-20 01:57:25'),
-(24, 6, 'JGKO2LTH', 456900, 460000, 3100, '2019-09-20 02:05:15', '2019-09-20 02:05:15');
+(28, 6, '0X3XUEI3', 169000, 170000, 1000, '2019-10-09 10:31:20', '2019-10-09 10:31:20'),
+(29, 6, 'RCZ9KRXU', 135000, 150000, 15000, '2019-10-09 10:49:50', '2019-10-09 10:49:50');
+
+--
+-- Triggers `transactions`
+--
+DELIMITER $$
+CREATE TRIGGER `ubahStatusOrder` AFTER INSERT ON `transactions` FOR EACH ROW BEGIN
+UPDATE orders
+SET status_order = 'Sudah Dibayar'
+WHERE id = NEW.id_order;
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -370,11 +367,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_level`, `nickname`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(6, 1, NULL, 'admin', 'admin@resto.co.id', NULL, '$2y$10$Jv4/yUWBwIffiTMcsTYdV.QHO1zzYVYN1CvrOhDALi7iLLhIAiDK6', 'x8TaST3MZ91TOTLZOGC80dCxWEARO23Xl1igrhvI8o7G0M2bkAzIAd82LSP7', '2019-09-17 14:08:39', '2019-09-23 22:48:57'),
-(7, 3, NULL, 'kasir', 'kasir@resto.co.id', NULL, '$2y$10$cJlFqBWZz9NP.8ePyl7PSOV4EUAFqK7sQIKdudozZgJ9CsN2rqSU6', NULL, '2019-09-17 15:36:44', '2019-09-23 22:52:17'),
+(6, 1, NULL, 'admin', 'admin@resto.co.id', NULL, '$2y$10$Jv4/yUWBwIffiTMcsTYdV.QHO1zzYVYN1CvrOhDALi7iLLhIAiDK6', 'f5mOCf5iuFvhklPJcMMR6puFLWEPzk650CyV56fDBCMnyZEvZM0D4yWwPl6a', '2019-09-17 14:08:39', '2019-09-23 22:48:57'),
+(7, 3, NULL, 'kasir', 'kasir@resto.co.id', NULL, '$2y$10$cJlFqBWZz9NP.8ePyl7PSOV4EUAFqK7sQIKdudozZgJ9CsN2rqSU6', 'bZnxGBPSQRdyo1jIyZNk91T1lY0BBK7t6t1prNlhm0zZZutUG72GZAcoQjKI', '2019-09-17 15:36:44', '2019-09-23 22:52:17'),
 (8, 2, NULL, 'waiter', 'waiter@resto.co.id', NULL, '$2y$10$1aauRip3hYoU29XBEwd/aO8qqu.FsxoP1ec28nPnEoA90SPDHG0oq', NULL, '2019-09-19 06:14:06', '2019-09-23 22:55:23'),
 (9, 4, NULL, 'owner', 'owner@resto.co.id', NULL, '$2y$10$HR/.e1gczNuH5aXOiORbzeLXifoE3z./fbmGaZShFPNohD/Jn/sWi', NULL, '2019-09-19 06:15:36', '2019-09-23 22:59:34'),
-(10, 5, NULL, 'customer', 'customer@test.com', NULL, '$2y$10$UMdse07H7fTP97tBGDpmZukgXMOV2fejCaRYFRglvDxNrDkiggayO', 'kquHKubVqj6L9FZkMGDyscUyPJG2KKUgHZcXfbVoj7rU1YNu1MseEcfIGxdt', '2019-09-23 13:36:29', '2019-09-23 23:01:40');
+(10, 5, NULL, 'customer', 'customer@test.com', NULL, '$2y$10$UMdse07H7fTP97tBGDpmZukgXMOV2fejCaRYFRglvDxNrDkiggayO', 'b7hviODczmtdI8AXSwG0V7xmaX8AEdBA2gcgAEt1OFQu2shrybfWFzIzJofI', '2019-09-23 13:36:29', '2019-09-23 23:01:40');
 
 -- --------------------------------------------------------
 
@@ -585,13 +582,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `detail_transactions`
 --
 ALTER TABLE `detail_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -627,7 +624,7 @@ ALTER TABLE `social_accounts`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`

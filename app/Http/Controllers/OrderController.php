@@ -25,7 +25,7 @@ class OrderController extends Controller
         if($request->has('cari')) {
             $orders = Order::where('nama_pelanggan', 'LIKE', '%'.$request->cari.'%')->latest()->get();
         } else {
-            $orders = Order::whereDate('created_at', Carbon::now())->latest()->get();
+            $orders = Order::whereDate('created_at', Carbon::now())->where('alamat', null)->latest()->get();
         }
 
         return view('order', compact('orders'));

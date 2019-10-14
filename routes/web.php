@@ -11,9 +11,6 @@ use Illuminate\Support\Carbon;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/pdf', function () {
-    return view('exports.report');
-});
 Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => ['auth', 'revalidate']], function () {

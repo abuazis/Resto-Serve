@@ -65,7 +65,7 @@
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2"></td>
                                 <td class="pr-2 pl-2">Ds</td>
-                                <td class="pr-2 pl-2">10%</td>
+                                <td class="pr-2 pl-2">0%</td>
                             </tr>
                             <tr>
                                 <td class="pr-2 pl-2 pb-3"></td>
