@@ -18,7 +18,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="text" name="username" class="w-100 @error('username') no-valid @enderror" value="{{old('username')}}" placeholder="Masukan Username Anda" />
+                <input type="text" name="username" class="w-100 @error('username') no-valid @enderror" value="{{old('username')}}" placeholder="Masukan Username Anda" autocomplete="off"/>
             </div>
             <div class="form-group">
                 <label for="Email" class="text-white">Email</label>
@@ -27,7 +27,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="text" name="email" class="w-100 @error('email') no-valid @enderror" value="{{old('email')}}" placeholder="Masukan Email Privilege" />
+                <input type="text" name="email" class="w-100 @error('email') no-valid @enderror" value="{{old('email')}}" placeholder="Masukan Email Privilege" autocomplete="off"/>
             </div>
             <div class="form-group">
                 <label for="Password" class="text-white">Password</label>
@@ -36,7 +36,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="password" name="password" class="w-100 @error('password') no-valid @enderror" value="{{old('password')}}" placeholder="Masukan Password Anda" />
+                <input type="password" name="password" class="w-100 @error('password') no-valid @enderror" value="{{old('password')}}" placeholder="Masukan Password Anda" autocomplete="off"/>
             </div>
             <div class="form-group">
                 <label for="Konfirmasi Password" class="text-white">Konfirmasi Password</label>
@@ -45,7 +45,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="Password" name="password_confirmation" class="w-100 @error('password_confirmation') no-valid @enderror" value="{{old('password_confirmation')}}" placeholder="Masukan Konfirmasi Password Anda" />
+                <input type="Password" name="password_confirmation" class="w-100 @error('password_confirmation') no-valid @enderror" value="{{old('password_confirmation')}}" placeholder="Masukan Konfirmasi Password Anda" autocomplete="off"/>
             </div>
             <div class="form-group mb-4">
                 <button type="submit" class="submit mt-3">REGISTRASI</button>

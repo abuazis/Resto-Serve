@@ -47,7 +47,6 @@
     <script src="{{asset('custom/script.js')}}"></script>
     <script src="{{asset('chart/chart.js/dist/Chart.js')}}"></script>
     <script src="{{asset('chart/chart.js/dist/Chart.min.js')}}"></script>
-    <script src="{{asset('custom/chart.js')}}"></script>
     <script src="{{asset('custom/alert.js')}}"></script>
 
 </body>

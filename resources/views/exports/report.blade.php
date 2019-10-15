@@ -43,13 +43,13 @@
                 <td colspan="2" style="padding-top: 60px;">
                     <table>
                         <tr>
-                            <td style="padding-right: 400px; padding-bottom: 50px;">
+                            <td style="padding-right: 400px; padding-bottom: 30px;">
                                 Pizza Serve, Inc.
                                 17148 Pekayon Jaya
                                 Bekasi City, CA 17148
                             </td>
 
-                            <td style="text-align: right; padding-bottom: 50px;">
+                            <td style="text-align: right; padding-bottom: 30px;">
                                 Resto Serve Corp<br>
                                 Administrator<br>
                                 admin@resto.co.id
@@ -57,6 +57,10 @@
                         </tr>
                     </table>
                 </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align: center; padding-bottom: 20px;"><h1>RestoServe Monthly Incomes</h1></td>
             </tr>
 
             <tr class="heading">
@@ -148,7 +152,7 @@
             </tr>
         </table>
 
-        <div class="signature" style="margin-top: 300px;">
+        <div class="signature" style="margin-top: 250px;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Signature_of_BTS%27_Jungkook.png" width="30%" style="float: right;" alt=""><br><br><br><br><br><br><br>
             <span style="float: right; display: inline-block; margin-right: 25px">Director Of RestoServe</span>
         </div>
