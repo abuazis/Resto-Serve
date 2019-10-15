@@ -9,6 +9,10 @@
 
   <!-- Native CSS -->
   <style>
+      @page {
+          margin: 0;
+          margin-top: 40px;
+      }
       body {
           padding: 0;
           margin: 0;
@@ -17,16 +21,28 @@
         font-family: 'Mansalva', cursive;
       }
       h3 {
-          font-size : 0.85rem;
+          font-size : 1.25rem;
+          margin-bottom: 10px;
       }
       span {
-          font-size: 0.7rem;
+          font-size: 0.85rem;
+      }
+      table {
+          margin: auto;
       }
       td {
           width: auto;
-          font-size: 0.55rem;
+          font-size: 0.73rem;
           padding-left: 3px;
+          padding-bottom: 5px;
           padding-right: 3px;
+      }
+      .alamat {
+        font-size: 0.80rem !important;
+      }
+      .footer {
+          margin-left: 6px;
+          margin-right: 6px;
       }
   </style>
 
@@ -42,16 +58,16 @@
         <div class="row mx-auto">
             <div class="col-12 justify-content-center pt-5 text-center">
                 <center>
-                    <h3>Restoran Makan Padang</h3>
-                    <span>Jln. Grinedwall Famile R. Miller</span><br>
-                    <h6>{{$date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$time}}</h6>
+                    <h3>RestoServe Pizza's Home</h3>
+                    <span class="alamat">Jln. Grinedwall Famile R. Miller<br>Bintara Jaya, Bekasi City<br>021-44233857</span><br>
+                    <h5>{{$date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$time}}</h5>
                     <center>
                         <table class="mt-4 mx-auto">
                             @foreach($receipts as $receipt)
                             <tr>
                                 <td class="pr-2 pl-2 pb-3">{{$receipt->menu['nama_menu']}}</td>
                                 <td class="pr-2 pl-2 pb-3">Rp. {{number_format($receipt->menu['harga'], 0, ',', '.')}}</td>
-                                <td class="pr-2 pl-2 pb-3">{{$receipt->jumlah}}</td>
+                                <td class="pr-2 pl-2 pb-3">{{$receipt->jumlah}}x</td>
                                 <td class="pr-2 pl-2 pb-3">Rp. {{number_format($receipt->menu['harga'] * $receipt->jumlah, 0, ',', '.')}}</td>
                             </tr>
                             @endforeach
@@ -88,7 +104,8 @@
                         </table>
                         </center>
                         <span>============================</span><br /><br />
-                        <span>Terima Kasih Telah Berkunjung Ke Restoran Kami</span>
+                        <img src="{{ public_path()}}/img/barcode.png" width="85%">
+                        <span class="footer">Terima Kasih Telah Berkunjung Ke Restoran Kami</span>
                 </center>
             </div>
         </div>

@@ -32,7 +32,7 @@
                 <table class="table font-default rounded text-center">
                     <thead class="bg-salmon text-white">
                         <tr>
-                            <th scope="col">Order ID</th>
+                            <th scope="col">Nama Pelanggan</th>
                             <th scope="col">Total Bayar</th>
                             <th scope="col">Uang Dibayar</th>
                             <th scope="col">Uang Kembali</th>
@@ -42,7 +42,7 @@
                     <tbody>
                         @foreach($histories as $history)
                             <tr>
-                                <td class="font-weight-bold">{{$history->id_order}}</td>
+                                <td class="font-weight-bold">{{$history->order->nama_pelanggan}}</td>
                                 <td>Rp. {{number_format($history->total_bayar, 0, ',', '.')}}</td>
                                 <td>Rp. {{number_format($history->uang_dibayar, 0, ',', '.')}}</td>
                                 <td>Rp. {{number_format($history->total_kembali, 0, ',', '.')}}</td>
