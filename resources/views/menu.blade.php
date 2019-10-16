@@ -6,7 +6,7 @@
     @section('content')
         <div class="row mx-auto">
             <div class="top-bar w-100 bg-white mb-3 mr-3">
-                <h1 class="fas fa-hamburger ml-4"></h1>
+                <h1 class="fas fa-hamburger ml-4" style="font-size: 35px;"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Menu Tab</h3>
                 @if(Request::segment(1) == 'menu')
                     <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">

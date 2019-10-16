@@ -6,7 +6,7 @@
     @section('content')
         <div class="row mx-auto">
             <div class="top-bar w-100 bg-white mb-3 mr-3">
-                <h1 class="fas fa-pizza-slice ml-4"></h1>
+                <h1 class="fas fa-pizza-slice ml-4" style="font-size: 35px;"></h1>
                 <h3 class="font-default mt-3 pt-1 ml-2 d-inline-block font-weight-bold">Order Tab</h3>
                 @if(Request::segment(1) == 'menu')
                     <form action="{{ url('/menu/result') }}" method="POST" class="d-inline-block cari mr-4">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-sm-6 pr-0 last-action">
                             <a href="{{ url('/order/create') }}"
-                                class="btn-block bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
+                                class="btn-block bg-grey font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                                 CREATE ORDER
                             </a>
                         </div>

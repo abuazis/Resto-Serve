@@ -40,6 +40,10 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/print/{id}', 'TransaksiController@receipt');
     Route::post('/transaksi/result', 'TransaksiController@order');
 
+    Route::get('/settings', function () {
+        return view('setting');
+    });
+
     Route::get('/laporan', 'LaporanController@index');
 
     Route::get('/logout', 'HomeController@logout');
