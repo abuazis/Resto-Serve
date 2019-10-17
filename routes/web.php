@@ -40,9 +40,10 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::get('/print/{id}', 'TransaksiController@receipt');
     Route::post('/transaksi/result', 'TransaksiController@order');
 
-    Route::get('/settings', function () {
-        return view('setting');
-    });
+    Route::get('/settings', 'SettingController@index');
+    Route::post('/settings/discount/store', 'SettingController@store');
+    Route::post('/settings/discount/update/{id}', 'SettingController@update');
+    Route::get('/settings/discount/destroy/{id}', 'SettingController@destroy');
 
     Route::get('/laporan', 'LaporanController@index');
 

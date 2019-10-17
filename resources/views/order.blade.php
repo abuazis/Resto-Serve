@@ -29,7 +29,7 @@
         </div>
         <div class="row mt-4 ml-1 mr-3">
             <div class="table-responsive">
-                <table class="table font-default rounded text-center" id="tableMenu">
+                <table class="table font-default rounded text-center">
                     <thead class="bg-salmon text-white">
                         <tr>
                             <th scope="col">Nama Pelanggan</th>

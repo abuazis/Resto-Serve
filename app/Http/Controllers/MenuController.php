@@ -67,7 +67,7 @@ class MenuController extends Controller
         $menu->save();
         Alert::toast('Menu Berhasil Ditambahkan','success');
 
-        redirect('/menu');
+        return redirect('/menu');
     }
 
     public function update(Request $request, $id)

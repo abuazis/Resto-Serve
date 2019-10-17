@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel='stylesheet' href="{{asset('css/sweetalert2.css')}}">
+    <link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
     @yield('css')
 
     <!-- Fonts External -->
@@ -48,6 +49,17 @@
     <script src="{{asset('chart/chart.js/dist/Chart.js')}}"></script>
     <script src="{{asset('chart/chart.js/dist/Chart.min.js')}}"></script>
     <script src="{{asset('custom/alert.js')}}"></script>
+    <script src="{{asset('DataTables/datatables.min.js')}}"></script>
+    {{-- <script>
+        $(document).ready(function() {
+            $('table').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
+        } );
+    </script> --}}
 
 </body>
 
