@@ -41,9 +41,15 @@ Route::group(['middleware' => ['auth', 'revalidate']], function () {
     Route::post('/transaksi/result', 'TransaksiController@order');
 
     Route::get('/settings', 'SettingController@index');
-    Route::post('/settings/discount/store', 'SettingController@store');
-    Route::post('/settings/discount/update/{id}', 'SettingController@update');
-    Route::get('/settings/discount/destroy/{id}', 'SettingController@destroy');
+    Route::post('/settings/discount/store', 'SettingController@store_discount');
+    Route::post('/settings/discount/update/{id}', 'SettingController@update_discount');
+    Route::get('/settings/discount/destroy/{id}', 'SettingController@destroy_discount');
+    Route::post('/settings/category/store', 'SettingController@store_category');
+    Route::post('/settings/category/update/{id}', 'SettingController@update_category');
+    Route::get('/settings/category/destroy/{id}', 'SettingController@destroy_category');
+    Route::post('/settings/member/store', 'SettingController@store_member');
+    Route::post('/settings/member/update/{id}', 'SettingController@update_member');
+    Route::get('/settings/member/destroy/{id}', 'SettingController@destroy_member');
 
     Route::get('/laporan', 'LaporanController@index');
 
