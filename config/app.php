@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost:8000'),
+    'url' => env('APP_URL', 'http://197.168.7.7/web_rpl_1718/03/be_pwpb_xiirpl_1920_03_abu/'),
 
     'asset_url' => env('ASSET_URL', null),
 

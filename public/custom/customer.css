@@ -31,6 +31,11 @@ header {
     background: linear-gradient(180deg, #000000 0%, rgba(60, 60, 60, 0.34) 100%), url('../img/image.png');
     background-size: cover;
 }
+.header-order {
+    width: 100%;
+    background: linear-gradient(180deg, #000000 0%, rgba(60, 60, 60, 0.34) 100%), url('../img/image.png');
+    background-size: cover;
+}
 .nav-link {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;

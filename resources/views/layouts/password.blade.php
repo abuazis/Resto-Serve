@@ -11,11 +11,7 @@
     @yield('css')
 
     <!-- Fonts External -->
-    <link href="{{asset('fonts/Bubblegum_Sans/BubblegumSans-Regular.ttf')}}" rel="stylesheet">
-    <link href="{{asset('fonts/Italiana/Italiana-Regular.ttf')}}" rel="stylesheet">
-    <link href="{{asset('fonts/Montserrat/Montserrat-Medium.ttf')}}" rel="stylesheet">
-    <link href="{{asset('fonts/Montserrat/Montserrat-SemiBold.ttf')}}" rel="stylesheet">
-    <link href="{{asset('fonts/Montserrat/Montserrat-Bold.ttf')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Italiana|Montserrat:500,600,700&display=swap" rel="stylesheet">
 
     <!-- Icon -->
     <link rel="icon" href="{{asset('img/icon.png')}}">

@@ -1,6 +1,6 @@
 @extends('layouts.customer')
     @section('content')
-        <header id="content" class="mt-5" style="min-height: 800px;">
+        <div id="content" class="mt-5 header-order">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 pt-5 mt-5">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
         @foreach($orders as $order)
             <div class="modal fade" id="exampleModalMenu{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
