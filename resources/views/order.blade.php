@@ -18,14 +18,16 @@
             </div>
         </div>
         <div class="row mx-auto mt-2">
-            <a href="{{ url('/order') }}"
+            <a {{--@if(Auth::user()->id_level == 2)--}} href="{{ url('/order') }}" {{--@endif--}}
                 class="bg-grey font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
                 LIST ORDER
             </a>
-            <a href="{{ url('/order/create') }}"
-                class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
-                CREATE ORDER
-            </a>
+            {{--@if(Auth::user()->id_level == 2)--}}
+                <a href="{{ url('/order/create') }}"
+                    class="bg-white font-default shadow mr-4 border-0 p-2 pr-3 pl-3 rounded font-weight-bold text-center text-dark btn-action mb-3">
+                    CREATE ORDER
+                </a>
+            {{--@endif--}}
         </div>
         <div class="row mt-4 ml-1 mr-3">
             <div class="table-responsive">

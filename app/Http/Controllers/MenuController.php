@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-Use Alert;
+use Alert;
 use App\Models\Category;
 use App\Models\Menu;
 use Illuminate\Http\Request;
@@ -20,8 +20,8 @@ class MenuController extends Controller
         $categories = Category::all();
         $types = Category::all();
 
-        if($request->has('cari')) {
-            $menus = Menu::where('nama_menu', 'LIKE', '%'.$request->cari.'%')->paginate(8);
+        if ($request->has('cari')) {
+            $menus = Menu::where('nama_menu', 'LIKE', '%' . $request->cari . '%')->paginate(8);
         } else {
             $menus = Menu::paginate(8);
         }
@@ -59,13 +59,13 @@ class MenuController extends Controller
         $menu->status_menu = $request->status;
         $menu->deskripsi = $request->deskripsi;
 
-        if($request->has('gambar')) {
-            $request->file('gambar')->move(public_path().'/uploads', $request->file('gambar')->getClientOriginalName());
+        if ($request->has('gambar')) {
+            $request->file('gambar')->move(public_path() . '/uploads', $request->file('gambar')->getClientOriginalName());
             $menu->gambar = $request->file('gambar')->getClientOriginalName();
         }
 
         $menu->save();
-        Alert::toast('Menu Berhasil Ditambahkan','success');
+        Alert::toast('Menu Berhasil Ditambahkan', 'success');
 
         return redirect('/menu');
     }
@@ -89,13 +89,13 @@ class MenuController extends Controller
         $menu->status_menu = $request->status;
         $menu->deskripsi = $request->deskripsi;
 
-        if($request->has('gambar')) {
-            $request->file('gambar')->move(public_path().'/uploads', $request->file('gambar')->getClientOriginalName());
+        if ($request->has('gambar')) {
+            $request->file('gambar')->move(public_path() . '/uploads', $request->file('gambar')->getClientOriginalName());
             $menu->gambar = $request->file('gambar')->getClientOriginalName();
         }
 
         $menu->save();
-        Alert::toast('Menu Berhasil Diedit','success');
+        Alert::toast('Menu Berhasil Diedit', 'success');
 
         return redirect('/menu');
     }
@@ -103,10 +103,10 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $menuImage = Menu::where('id', $id)->first();
-        Storage::disk('local')->delete('public/uploads/'.$menuImage->gambar);
+        Storage::disk('local')->delete('public/uploads/' . $menuImage->gambar);
 
         Menu::find($id)->delete();
-        Alert::toast('Menu Berhasil Dihapus','success');
+        Alert::toast('Menu Berhasil Dihapus', 'success');
 
         return redirect('/menu');
     }

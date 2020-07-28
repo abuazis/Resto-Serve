@@ -1,0 +1,117 @@
+/====================ADMIN====================/
+GRANT USAGE ON *.* TO '19xiirpl03_admin'@'localhost' IDENTIFIED BY PASSWORD '*4ACFE3202A5FF5CF467898FC58AAB1D615029441';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_orders` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`levels` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`transactions` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`users` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_transactions` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`orders` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `1920_xiirpl_1_3_abutoyibazis`.`password_resets` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `1920_xiirpl_1_3_abutoyibazis`.`discounts` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`categories` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`vOrderKasir` TO '19xiirpl03_admin'@'localhost';
+
+GRANT INSERT ON `1920_xiirpl_1_3_abutoyibazis`.`social_accounts` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT ON `1920_xiirpl_1_3_abutoyibazis`.`migrations` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`vMenu` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`menus` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`vUser` TO '19xiirpl03_admin'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`vOrderWaiter` TO '19xiirpl03_admin'@'localhost';
+/=====================ADMIN============================/
+
+/=====================KASIR============================/
+GRANT USAGE ON *.* TO '19xiirpl03_kasir'@'localhost' IDENTIFIED BY PASSWORD '*6E02B27D5638DD2E97ABAA5B61A4FE6D03D8DF45';
+
+GRANT REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`levels` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_orders` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`discounts` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`users` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_transactions` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`transactions` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`orders` TO '19xiirpl03_kasir'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`menus` TO '19xiirpl03_kasir'@'localhost';
+/=====================KASIR============================/
+
+/=====================WAITER============================/
+GRANT USAGE ON *.* TO '19xiirpl03_wtr'@'localhost' IDENTIFIED BY PASSWORD '*568974F7C8F6BDBBFF4E0672BB244DA26F13E881';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`menus` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`categories` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_orders` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`transactions` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`orders` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`levels` TO '19xiirpl03_wtr'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE (updated_at, remember_token, password), REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`users` TO '19xiirpl03_wtr'@'localhost';
+/=====================WAITER============================/
+
+/=====================OWNER============================/
+GRANT USAGE ON *.* TO '19xiirpl03_own'@'localhost' IDENTIFIED BY PASSWORD '*B37DE9C6D0F92025B94F935C9914C8A2F10A9DC1';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`transactions` TO '19xiirpl03_own'@'localhost';
+
+GRANT REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`levels` TO '19xiirpl03_own'@'localhost';
+
+GRANT SELECT (nama_kategori), REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`categories` TO '19xiirpl03_own'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`orders` TO '19xiirpl03_own'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`menus` TO '19xiirpl03_own'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE (updated_at, remember_token, password), REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`users` TO '19xiirpl03_own'@'localhost';
+/=====================OWNER============================/
+
+/=====================PELANGGAN============================/
+GRANT USAGE ON *.* TO '19xiirpl03_plg'@'localhost' IDENTIFIED BY PASSWORD '*D00BB5CF987DFDF650506842DE975A06BC95E69B';
+
+GRANT SELECT, UPDATE ON `1920_xiirpl_1_3_abutoyibazis`.`discounts` TO '19xiirpl03_plg'@'localhost';
+
+GRANT SELECT ON `1920_xiirpl_1_3_abutoyibazis`.`categories` TO '19xiirpl03_plg'@'localhost';
+
+GRANT SELECT, INSERT, UPDATE (updated_at, remember_token, password), REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`users` TO '19xiirpl03_plg'@'localhost';
+
+GRANT REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`levels` TO '19xiirpl03_plg'@'localhost';
+
+GRANT SELECT, INSERT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`detail_orders` TO '19xiirpl03_plg'@'localhost';
+
+GRANT SELECT, INSERT, DELETE, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`orders` TO '19xiirpl03_plg'@'localhost';
+
+GRANT SELECT, REFERENCES ON `1920_xiirpl_1_3_abutoyibazis`.`menus` TO '19xiirpl03_plg'@'localhost';
+/=====================PELANGGAN============================/
+
+
+
+
+
+
+
+
+
+

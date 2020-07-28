@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 11, 2019 at 01:53 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 28 Okt 2019 pada 06.16
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 
 DELIMITER $$
 --
--- Procedures
+-- Prosedur
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertDetailOrder` (IN `_id` INT, IN `_id_menu` INT, IN `_id_order` CHAR(8), IN `_jumlah` INT, IN `_harga` INT, IN `_status_detail_order` ENUM('Selesai','On Process'))  NO SQL
 BEGIN
@@ -51,7 +51,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -61,7 +61,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id`, `nama_kategori`, `icon`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `categories` (`id`, `nama_kategori`, `icon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_orders`
+-- Struktur dari tabel `detail_orders`
 --
 
 CREATE TABLE `detail_orders` (
@@ -89,7 +89,7 @@ CREATE TABLE `detail_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `detail_orders`
+-- Dumping data untuk tabel `detail_orders`
 --
 
 INSERT INTO `detail_orders` (`id`, `id_menu`, `id_order`, `jumlah`, `harga`, `status_detail_order`, `created_at`, `updated_at`) VALUES
@@ -99,12 +99,40 @@ INSERT INTO `detail_orders` (`id`, `id_menu`, `id_order`, `jumlah`, `harga`, `st
 (21, 13, '0X3XUEI3', 1, 19000, 'On Process', NULL, NULL),
 (22, 17, 'RCZ9KRXU', 1, 38000, 'On Process', NULL, NULL),
 (23, 19, 'RCZ9KRXU', 1, 18000, 'On Process', NULL, NULL),
-(24, 1, 'RCZ9KRXU', 1, 79000, 'On Process', NULL, NULL);
+(24, 1, 'RCZ9KRXU', 1, 79000, 'On Process', NULL, NULL),
+(25, 12, 'HWMRER3P', 1, 150000, 'On Process', NULL, NULL),
+(26, 2, 'HWMRER3P', 1, 150000, 'On Process', NULL, NULL),
+(27, 19, 'JPVNFBNK', 1, 18000, 'On Process', NULL, NULL),
+(28, 2, 'JPVNFBNK', 1, 150000, 'On Process', NULL, NULL),
+(29, 1, 'JPVNFBNK', 1, 79000, 'On Process', NULL, NULL),
+(30, 16, 'HC5U5IZU', 1, 156900, 'On Process', NULL, NULL),
+(31, 1, 'HC5U5IZU', 1, 79000, 'On Process', NULL, NULL),
+(32, 17, 'HC5U5IZU', 1, 38000, 'On Process', NULL, NULL),
+(33, 2, 'ZLKELNBY', 1, 150000, 'On Process', NULL, NULL),
+(34, 17, 'ZLKELNBY', 1, 38000, 'On Process', NULL, NULL),
+(35, 13, 'ZLKELNBY', 1, 19000, 'On Process', NULL, NULL),
+(36, 1, 'ZLKELNBY', 2, 79000, 'On Process', NULL, NULL),
+(37, 19, 'QENUHCLO', 1, 18000, 'On Process', NULL, NULL),
+(38, 16, 'QENUHCLO', 1, 156900, 'On Process', NULL, NULL),
+(39, 1, 'QENUHCLO', 1, 79000, 'On Process', NULL, NULL),
+(40, 17, 'QENUHCLO', 2, 38000, 'On Process', NULL, NULL),
+(41, 1, '4GTHYKXH', 1, 79000, 'On Process', NULL, NULL),
+(42, 12, '4GTHYKXH', 1, 150000, 'On Process', NULL, NULL),
+(43, 19, '4GTHYKXH', 2, 18000, 'On Process', NULL, NULL),
+(44, 2, 'J5NWCCBT', 1, 150000, 'On Process', NULL, NULL),
+(45, 17, 'J5NWCCBT', 1, 38000, 'On Process', NULL, NULL),
+(46, 2, '9SQUQPX3', 1, 150000, 'On Process', NULL, NULL),
+(47, 19, '9SQUQPX3', 1, 18000, 'On Process', NULL, NULL),
+(48, 13, '9SQUQPX3', 2, 19000, 'On Process', NULL, NULL),
+(49, 2, 'OKYZDAE6', 2, 150000, 'On Process', NULL, NULL),
+(50, 1, 'OKYZDAE6', 1, 79000, 'On Process', NULL, NULL),
+(51, 2, 'X7BKIP4I', 1, 150000, 'On Process', NULL, NULL),
+(52, 2, 'MKP12VSF', 1, 150000, 'On Process', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_transactions`
+-- Struktur dari tabel `detail_transactions`
 --
 
 CREATE TABLE `detail_transactions` (
@@ -116,7 +144,7 @@ CREATE TABLE `detail_transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `detail_transactions`
+-- Dumping data untuk tabel `detail_transactions`
 --
 
 INSERT INTO `detail_transactions` (`id`, `id_transaksi`, `id_menu`, `jumlah`, `sub_total`) VALUES
@@ -124,12 +152,23 @@ INSERT INTO `detail_transactions` (`id`, `id_transaksi`, `id_menu`, `jumlah`, `s
 (25, 28, 13, 1, 19000),
 (26, 29, 17, 1, 38000),
 (27, 29, 19, 1, 18000),
-(28, 29, 1, 1, 79000);
+(28, 29, 1, 1, 79000),
+(29, 30, 12, 1, 150000),
+(30, 30, 2, 1, 150000),
+(31, 31, 19, 1, 18000),
+(32, 31, 16, 1, 156900),
+(33, 31, 1, 1, 79000),
+(34, 31, 17, 2, 76000),
+(35, 32, 1, 1, 79000),
+(36, 32, 12, 1, 150000),
+(37, 32, 19, 2, 36000),
+(38, 33, 2, 1, 150000),
+(39, 33, 17, 1, 38000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discounts`
+-- Struktur dari tabel `discounts`
 --
 
 CREATE TABLE `discounts` (
@@ -142,16 +181,16 @@ CREATE TABLE `discounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `discounts`
+-- Dumping data untuk tabel `discounts`
 --
 
 INSERT INTO `discounts` (`id`, `kode`, `diskon`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'rdcs53dr', '20%', 'invalid', '2019-09-24 11:26:42', '2019-09-29 06:04:28');
+(4, 'grt56nr5', '10%', 'valid', '2019-10-18 00:31:58', '2019-10-18 00:31:58');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `levels`
+-- Struktur dari tabel `levels`
 --
 
 CREATE TABLE `levels` (
@@ -163,20 +202,20 @@ CREATE TABLE `levels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `levels`
+-- Dumping data untuk tabel `levels`
 --
 
 INSERT INTO `levels` (`id`, `nama_level`, `email_level`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', 'admin@resto.co.id', '2019-08-30 04:28:34', '2019-08-30 04:28:34'),
 (2, 'Waiter', 'waiter@resto.co.id', '2019-08-30 19:40:20', '2019-08-30 19:40:20'),
 (3, 'Kasir', 'kasir@resto.co.id', '2019-08-30 19:40:20', '2019-08-30 19:40:20'),
-(4, 'Owner', 'owner@resto.co.id', '2019-08-30 19:40:20', '2019-08-30 19:40:20'),
+(4, 'Owner', '', '2019-08-30 19:40:20', '2019-08-30 19:40:20'),
 (5, 'Pelanggan', '', '2019-08-30 19:40:20', '2019-08-30 19:40:20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Struktur dari tabel `menus`
 --
 
 CREATE TABLE `menus` (
@@ -193,7 +232,7 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `menus`
+-- Dumping data untuk tabel `menus`
 --
 
 INSERT INTO `menus` (`id`, `id_kategori`, `nama_menu`, `harga`, `status_menu`, `deskripsi`, `gambar`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -204,12 +243,13 @@ INSERT INTO `menus` (`id`, `id_kategori`, `nama_menu`, `harga`, `status_menu`, `
 (16, 3, 'Chicken Spice', 156900, 'Tersedia', 'With pepperoni, mozzarella cheese, parsley and a special PHD sauce.', 'chicken-dinner.jpg', '2019-09-02 17:57:05', '2019-09-19 14:49:15', NULL),
 (17, 4, 'Sandwich Bread', 38000, 'Tersedia', 'With pepperoni, mozzarella cheese, parsley and a special PHD sauce.', 'sandwich.jpg', '2019-09-08 20:03:03', '2019-09-19 14:49:38', NULL),
 (18, 1, 'Pizza Matang', 10000, 'Tersedia', 'With pepperoni, mozzarella cheese, parsley and a special PHD sauce.', 'pizza-buah.png', '2019-09-08 20:19:43', '2019-09-19 07:56:40', NULL),
-(19, 5, 'Roast Coffee', 18000, 'Tersedia', 'With pepperoni, mozzarella cheese, parsley and a special PHD sauce.', 'drink.png', '2019-09-19 04:23:21', '2019-09-19 14:50:40', NULL);
+(19, 5, 'Roast Coffee', 18000, 'Tersedia', 'With pepperoni, mozzarella cheese, parsley and a special PHD sauce.', 'drink.png', '2019-09-19 04:23:21', '2019-10-17 00:37:34', NULL),
+(24, 2, 'Chicken Dinner booyah', 79000, 'Tersedia', 'lezatos', 'pudding-choco.jpg', '2019-10-17 01:10:56', '2019-10-17 01:11:43', '2019-10-17 01:11:43');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -219,7 +259,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -250,7 +290,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Struktur dari tabel `orders`
 --
 
 CREATE TABLE `orders` (
@@ -269,19 +309,30 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `orders`
+-- Dumping data untuk tabel `orders`
 --
 
 INSERT INTO `orders` (`id`, `id_user`, `nama_pelanggan`, `no_meja`, `alamat`, `waktu_order`, `keterangan`, `status_order`, `total_pembayaran`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('09NZY8SN', 6, 'Spike', '01', NULL, '12:44:26 WIB', 'Watch My Dog', 'Belum Dibayar', 156900, '2019-09-10 05:44:26', '2019-10-05 05:44:26', NULL),
+('09NZY8SN', 6, 'Spike', '01', NULL, '12:44:26 WIB', 'Watch My Dog', 'Belum Dibayar', 156900, '2019-09-10 05:44:26', '2019-10-14 04:24:35', NULL),
 ('0X3XUEI3', 6, 'Santo', '02', 'jl. bleter', '17:31:07 WIB', NULL, 'Sudah Dibayar', 169000, '2019-10-09 10:31:07', '2019-10-09 10:31:07', NULL),
+('4GTHYKXH', 6, 'Hakimudin', '02', NULL, '20:04:16 WIB', 'Marilah kita tingkatkan ketaqwaan', 'Belum Dibayar', 265000, '2019-10-15 13:04:16', '2019-10-15 13:04:16', NULL),
+('9SQUQPX3', 11, 'muhammad dzaky', NULL, 'jl bintara 8', '15:37:00 WIB', NULL, 'Bayar Ditempat', 123600, '2019-10-17 08:37:00', '2019-10-17 08:37:00', NULL),
 ('ABLKHY8J', 6, 'Kevin', '03', NULL, '12:45:27 WIB', NULL, 'Belum Dibayar', 19000, '2019-08-13 05:45:27', '2019-10-05 05:45:27', NULL),
-('RCZ9KRXU', 6, 'MBCode Group', '02', NULL, '17:49:30 WIB', 'Bungkus Cog', 'Sudah Dibayar', 135000, '2019-08-10 10:49:30', '2019-10-09 10:49:30', NULL);
+('HC5U5IZU', 6, 'Hakimudin', '03', NULL, '11:27:18 WIB', 'No Lama Please', 'Belum Dibayar', 273900, '2019-07-02 04:27:18', '2019-10-14 04:27:18', NULL),
+('HWMRER3P', 6, 'Budi', '01', NULL, '10:21:05 WIB', 'Cepetan', 'Sudah Dibayar', 300000, '2019-10-14 03:21:05', '2019-10-14 03:21:05', NULL),
+('J5NWCCBT', 6, 'Hakimudin', '03', NULL, '07:35:59 WIB', NULL, 'Sudah Dibayar', 188000, '2019-10-16 00:35:59', '2019-10-16 00:35:59', NULL),
+('JPVNFBNK', 10, 'Hakimudin', NULL, 'Jln. Bintara 4, Gang Sempit Pertama Dekat Warteg', '11:15:35 WIB', NULL, 'Bayar Ditempat', 49400, '2019-06-08 04:15:35', '2019-10-14 04:15:35', NULL),
+('MKP12VSF', 10, 'hhahah', NULL, 'asdas', '15:44:08 WIB', NULL, 'Bayar Ditempat', 150000, '2019-10-19 08:44:08', '2019-10-19 08:44:08', NULL),
+('OKYZDAE6', 10, 'Hakimudin', NULL, 'Jln. Haji Hakim', '09:04:54 WIB', NULL, 'Bayar Ditempat', 379000, '2019-10-18 02:04:54', '2019-10-18 02:04:54', NULL),
+('QENUHCLO', 6, 'Hakimudin', '01', NULL, '08:26:12 WIB', 'Marilah kita tingkatkan ketaqwaan', 'Sudah Dibayar', 329900, '2019-10-15 01:26:12', '2019-10-15 06:49:42', NULL),
+('RCZ9KRXU', 6, 'MBCode Group', '02', NULL, '17:49:30 WIB', 'Bungkus Cog', 'Sudah Dibayar', 135000, '2019-08-10 10:49:30', '2019-10-09 10:49:30', NULL),
+('X7BKIP4I', 10, 'Mudin', NULL, 'Rumahnya', '15:29:06 WIB', NULL, 'Bayar Ditempat', 150000, '2019-10-19 08:29:06', '2019-10-19 08:29:06', NULL),
+('ZLKELNBY', 10, 'Hakimudin', NULL, 'Jln. Bintara 4, Gang Sempit Pertama Dekat Warteg', '13:42:45 WIB', NULL, 'Bayar Ditempat', 73000, '2019-10-14 06:42:45', '2019-10-14 06:42:45', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -290,10 +341,17 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('abuazis801@gmail.com', '$2y$10$7sl3v/F4DBIwxgrzdLWaAul4FFS/1wRXOge0DJYZykvSiPKtERSr6', '2019-10-26 14:51:39');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `social_accounts`
+-- Struktur dari tabel `social_accounts`
 --
 
 CREATE TABLE `social_accounts` (
@@ -308,7 +366,7 @@ CREATE TABLE `social_accounts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transactions`
+-- Struktur dari tabel `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -323,15 +381,19 @@ CREATE TABLE `transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `transactions`
+-- Dumping data untuk tabel `transactions`
 --
 
 INSERT INTO `transactions` (`id`, `id_user`, `id_order`, `total_bayar`, `uang_dibayar`, `total_kembali`, `created_at`, `updated_at`) VALUES
 (28, 6, '0X3XUEI3', 169000, 170000, 1000, '2019-10-09 10:31:20', '2019-10-09 10:31:20'),
-(29, 6, 'RCZ9KRXU', 135000, 150000, 15000, '2019-10-09 10:49:50', '2019-10-09 10:49:50');
+(29, 6, 'RCZ9KRXU', 135000, 150000, 15000, '2019-10-09 10:49:50', '2019-10-09 10:49:50'),
+(30, 6, 'HWMRER3P', 300000, 300000, 0, '2019-10-14 04:01:16', '2019-10-14 04:01:16'),
+(31, 6, 'QENUHCLO', 329900, 350000, 20100, '2019-10-15 01:26:41', '2019-10-15 01:26:41'),
+(32, 6, '4GTHYKXH', 265000, 270000, 5000, '2019-10-15 13:04:42', '2019-10-15 13:04:42'),
+(33, 6, 'J5NWCCBT', 188000, 200000, 12000, '2019-10-16 00:36:56', '2019-10-16 00:36:56');
 
 --
--- Triggers `transactions`
+-- Trigger `transactions`
 --
 DELIMITER $$
 CREATE TRIGGER `ubahStatusOrder` AFTER INSERT ON `transactions` FOR EACH ROW BEGIN
@@ -346,7 +408,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -363,21 +425,23 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `id_level`, `nickname`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(6, 1, NULL, 'admin', 'admin@resto.co.id', NULL, '$2y$10$Jv4/yUWBwIffiTMcsTYdV.QHO1zzYVYN1CvrOhDALi7iLLhIAiDK6', 'f5mOCf5iuFvhklPJcMMR6puFLWEPzk650CyV56fDBCMnyZEvZM0D4yWwPl6a', '2019-09-17 14:08:39', '2019-09-23 22:48:57'),
-(7, 3, NULL, 'kasir', 'kasir@resto.co.id', NULL, '$2y$10$cJlFqBWZz9NP.8ePyl7PSOV4EUAFqK7sQIKdudozZgJ9CsN2rqSU6', 'bZnxGBPSQRdyo1jIyZNk91T1lY0BBK7t6t1prNlhm0zZZutUG72GZAcoQjKI', '2019-09-17 15:36:44', '2019-09-23 22:52:17'),
-(8, 2, NULL, 'waiter', 'waiter@resto.co.id', NULL, '$2y$10$1aauRip3hYoU29XBEwd/aO8qqu.FsxoP1ec28nPnEoA90SPDHG0oq', NULL, '2019-09-19 06:14:06', '2019-09-23 22:55:23'),
-(9, 4, NULL, 'owner', 'owner@resto.co.id', NULL, '$2y$10$HR/.e1gczNuH5aXOiORbzeLXifoE3z./fbmGaZShFPNohD/Jn/sWi', NULL, '2019-09-19 06:15:36', '2019-09-23 22:59:34'),
-(10, 5, NULL, 'customer', 'customer@test.com', NULL, '$2y$10$UMdse07H7fTP97tBGDpmZukgXMOV2fejCaRYFRglvDxNrDkiggayO', 'b7hviODczmtdI8AXSwG0V7xmaX8AEdBA2gcgAEt1OFQu2shrybfWFzIzJofI', '2019-09-23 13:36:29', '2019-09-23 23:01:40');
+(6, 1, NULL, 'administrator', 'admin@resto.co.id', NULL, '$2y$10$voqrCPjUgEkZO7O10Ya5LO05yQuALSne4wRRpd1Q0mRDeRw88M9hy', '19zWryLYZjQWvIbUwzTmYGIseTHtAOJmKsAfbtYDhyXYyfCSvCC0YzR0eqOM', '2019-09-17 14:08:39', '2019-09-23 22:48:57'),
+(7, 3, NULL, 'kasir', 'kasir@resto.co.id', NULL, '$2y$10$A0CBCaPYEDrny48AgFqJCeslvPhxbFba784tvwaQuYEiLOqvyhacK', 'zh4oxze1RIHfzbfVfOJpxjiyeTcHlR0mPFNOXeVew0qmajTOD19K9Wh2WxEz', '2019-09-17 15:36:44', '2019-09-23 22:52:17'),
+(8, 2, NULL, 'waiter', 'waiter@resto.co.id', NULL, '$2y$10$9HQPgk0zEdOLJz8yLpSyr.QvhXEx0HiAJMPURMbhGvq/EnYXMA1oi', 'bf9DDfRnjRzfhuHMHveVKGwNIzkhMQqYL9c9M7maxjdh3Uud9KdQYymqXCoF', '2019-09-19 06:14:06', '2019-09-23 22:55:23'),
+(9, 4, NULL, 'owner', 'owner@resto.co.id', NULL, '$2y$10$MfSuEMXNNGLRjGnJb524a.aXfPiHW7TJkzkQpS7viZz6FPVWjCaMm', 'cvBQ6bs6lk5ZJBs4whZoym429OqVbtw5jvYuKvgt5sk7WuL92NiycAOdvf8l', '2019-09-19 06:15:36', '2019-09-23 22:59:34'),
+(10, 5, NULL, 'pelanggan', 'customer@test.com', NULL, '$2y$10$Udkw2Zkz4Y.31ShhdJ5Jg.XlJcl3kEawWJa5POADn97.ogE/au//a', 'Z9RM1O8tEGfhKSEksgNJZOmrISmGFIHQoOqkAsTiikBHQRcuLr4bKMzApNgt', '2019-09-23 13:36:29', '2019-09-23 23:01:40'),
+(11, 5, NULL, 'dzaky2510', 'dzaky@gmail.com', NULL, '$2y$10$dy6dGJgi3PQCRK1TFt23W.badr/15CiSnRZH5R1BT2uhSerOwylOa', NULL, '2019-10-17 08:34:33', '2019-10-17 08:34:33'),
+(13, 4, NULL, 'abuazis801', 'abuazis801@gmail.com', NULL, '$2y$10$l//VnNmOaFaKvWDFXrsJr.WZ31P6wErh/If1908fXPh0zHTXn5F6q', NULL, '2019-10-19 01:15:22', '2019-10-19 01:28:59');
 
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `vMenu`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `vMenu`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `vMenu` (
 `id` int(10) unsigned
@@ -393,8 +457,8 @@ CREATE TABLE `vMenu` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `vOrderKasir`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `vOrderKasir`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `vOrderKasir` (
 `id` char(8)
@@ -414,8 +478,8 @@ CREATE TABLE `vOrderKasir` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `vOrderWaiter`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `vOrderWaiter`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `vOrderWaiter` (
 `id` char(8)
@@ -435,8 +499,8 @@ CREATE TABLE `vOrderWaiter` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `vUser`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `vUser`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `vUser` (
 `id` bigint(20) unsigned
@@ -449,7 +513,7 @@ CREATE TABLE `vUser` (
 -- --------------------------------------------------------
 
 --
--- Structure for view `vMenu`
+-- Struktur untuk view `vMenu`
 --
 DROP TABLE IF EXISTS `vMenu`;
 
@@ -458,7 +522,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `vOrderKasir`
+-- Struktur untuk view `vOrderKasir`
 --
 DROP TABLE IF EXISTS `vOrderKasir`;
 
@@ -467,7 +531,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `vOrderWaiter`
+-- Struktur untuk view `vOrderWaiter`
 --
 DROP TABLE IF EXISTS `vOrderWaiter`;
 
@@ -476,7 +540,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `vUser`
+-- Struktur untuk view `vUser`
 --
 DROP TABLE IF EXISTS `vUser`;
 
@@ -487,13 +551,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `detail_orders`
+-- Indeks untuk tabel `detail_orders`
 --
 ALTER TABLE `detail_orders`
   ADD PRIMARY KEY (`id`),
@@ -501,59 +565,59 @@ ALTER TABLE `detail_orders`
   ADD KEY `detail_orders_id_menu_foreign` (`id_menu`);
 
 --
--- Indexes for table `detail_transactions`
+-- Indeks untuk tabel `detail_transactions`
 --
 ALTER TABLE `detail_transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `detail_transactions_id_transaksi_foreign` (`id_transaksi`);
 
 --
--- Indexes for table `discounts`
+-- Indeks untuk tabel `discounts`
 --
 ALTER TABLE `discounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `levels`
+-- Indeks untuk tabel `levels`
 --
 ALTER TABLE `levels`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menus`
+-- Indeks untuk tabel `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`),
   ADD KEY `menus_id_kategori_foreign` (`id_kategori`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indeks untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_id_user_foreign` (`id_user`);
 
 --
--- Indexes for table `password_resets`
+-- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `social_accounts`
+-- Indeks untuk tabel `social_accounts`
 --
 ALTER TABLE `social_accounts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `social_accounts_provider_id_unique` (`provider_id`);
 
 --
--- Indexes for table `transactions`
+-- Indeks untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
@@ -561,7 +625,7 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_id_order_foreign` (`id_order`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -569,107 +633,107 @@ ALTER TABLE `users`
   ADD KEY `users_id_level_foreign` (`id_level`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `detail_orders`
+-- AUTO_INCREMENT untuk tabel `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `detail_transactions`
+-- AUTO_INCREMENT untuk tabel `detail_transactions`
 --
 ALTER TABLE `detail_transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `discounts`
+-- AUTO_INCREMENT untuk tabel `discounts`
 --
 ALTER TABLE `discounts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `levels`
+-- AUTO_INCREMENT untuk tabel `levels`
 --
 ALTER TABLE `levels`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `menus`
+-- AUTO_INCREMENT untuk tabel `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `social_accounts`
+-- AUTO_INCREMENT untuk tabel `social_accounts`
 --
 ALTER TABLE `social_accounts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `transactions`
+-- AUTO_INCREMENT untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `detail_orders`
+-- Ketidakleluasaan untuk tabel `detail_orders`
 --
 ALTER TABLE `detail_orders`
   ADD CONSTRAINT `detail_orders_id_menu_foreign` FOREIGN KEY (`id_menu`) REFERENCES `menus` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `detail_orders_id_order_foreign` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `detail_transactions`
+-- Ketidakleluasaan untuk tabel `detail_transactions`
 --
 ALTER TABLE `detail_transactions`
   ADD CONSTRAINT `detail_transactions_id_transaksi_foreign` FOREIGN KEY (`id_transaksi`) REFERENCES `transactions` (`id`);
 
 --
--- Constraints for table `menus`
+-- Ketidakleluasaan untuk tabel `menus`
 --
 ALTER TABLE `menus`
   ADD CONSTRAINT `menus_id_kategori_foreign` FOREIGN KEY (`id_kategori`) REFERENCES `categories` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Ketidakleluasaan untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `transactions`
+-- Ketidakleluasaan untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_id_order_foreign` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `transactions_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Ketidakleluasaan untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_id_level_foreign` FOREIGN KEY (`id_level`) REFERENCES `levels` (`id`) ON UPDATE CASCADE;
